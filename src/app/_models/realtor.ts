@@ -1,0 +1,31 @@
+export class Realtor {
+    RealtorID: number;
+    RealtorImage: string;
+    RealtorName: string;
+    RealtorEmail: string;
+    MaritalStatus: string;
+    DOB: string;
+    Nationality: string;
+    RealtorAddress: string;
+    PhoneNumber: string;
+    Transactions: [];
+    DateAddedAsDownline: string;
+    NokName: string;
+    NokAddress: string;
+    NokEmail: string;
+    NokNumber: string;
+    EmployerName: string;
+    EmployerAddress: string;
+    EmployerNumber: string;
+    EmploymentPosition: string;
+    ReferralName: string;
+    ReferralNumber: string;
+    ReferralAddress: string;
+    ReferralEmail: string;
+    IDCardImage: string;
+    IDCardID: number;
+    Downline: [];
+    Commission: [];
+    DateCreated: string;
+    DateModified: string;
+}

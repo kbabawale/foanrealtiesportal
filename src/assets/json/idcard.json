@@ -1,0 +1,35 @@
+[
+    {
+        "IDCardID": 0,
+        "Name": "Gbenga Seun",
+        "Email": "seung@gmail.com",
+        "IDImage": "string",
+        "IssuedDate": "08/06/19",
+        "ExpiredDate": "04/07/21",
+        "IDCardNumber": "3487293",
+        "DateCreated": "12/04/19",
+        "DateModified": "17/05/19"
+    },
+    {
+        "IDCardID": 1,
+        "Name": "Adekoya Tolulope",
+        "Email": "tolulope@yahoo.com",
+        "IDImage": "string",
+        "IssuedDate": "02/05/19",
+        "ExpiredDate": "06/08/22",
+        "IDCardNumber": "9478734",
+        "DateCreated": "15/06/19",
+        "DateModified": "23/07/19"
+    },
+    {
+        "IDCardID": 2,
+        "Name": "George Steven",
+        "Email": "george@gmail.com",
+        "IDImage": "string",
+        "IssuedDate": "02/02/19",
+        "ExpiredDate": "05/06/22",
+        "IDCardNumber": "984342",
+        "DateCreated": "04/12/19",
+        "DateModified": "23/12/19"
+    }
+]

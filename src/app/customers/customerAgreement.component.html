@@ -1,0 +1,63 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+              START - Mobile Menu
+               -->
+        <app-customermobilemenu></app-customermobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+              START - Main Menu
+               -->
+        <app-customermainmenu></app-customermainmenu>
+        <!-- 
+              END - Main Menu
+               -->
+
+        <div class="content-w">
+            <!-- 
+                START - Top Bar
+                 -->
+            <app-customertopbar></app-customertopbar>
+            <!-- 
+                END - Top Bar
+                 -->
+
+            <!-- 
+                START - Breadcrumbs
+                 -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Customer Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="index.html">Invoices</a>
+                </li>
+            </ul>
+            <!-- 
+                END - Breadcrumbs
+                 -->
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-sm-3" *ngFor="let agreement of agreements">
+                            <div class="documents">
+                                <h5>
+                                    {{ agreement.Title }}
+                                </h5>
+                                <p>
+                                    {{ agreement.Format }} <span class="float-right"><i
+                                            class="icon-cloud-download"></i><a href="#">
+                                            {{ agreement.Download }}</a></span>
+                                </p>
+                                <p>{{ agreement.Date }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

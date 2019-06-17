@@ -1,0 +1,26 @@
+[
+    {
+        "PaymentHistoryiID": 0,
+        "PropertyName": "4 Plots of Land",
+        "Payment": "N 56,340",
+        "PaymentDate": "12/03/19",
+        "DateCreated": "04/06/19",
+        "DateModified": "08/06/19"
+    },
+    {
+        "PaymentHistoryiID": 1,
+        "PropertyName": "3 Acres of Land",
+        "Payment": "N 560,000",
+        "PaymentDate": "23/07/19",
+        "DateCreated": "12/07/19",
+        "DateModified": "19/06/19"
+    },
+    {
+        "PaymentHistoryiID": 2,
+        "PropertyName": "9 Plots of Land",
+        "Payment": "N 234,000",
+        "PaymentDate": "14/02/19",
+        "DateCreated": "23/05/19",
+        "DateModified": "28/04/19"
+    }
+]

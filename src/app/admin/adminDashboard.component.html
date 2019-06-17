@@ -1,0 +1,525 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+          START - Mobile Menu
+           -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+          START - Main Menu
+           -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+          END - Main Menu
+           -->
+
+        <div class="content-w">
+            <!-- 
+            START - Top Bar
+             -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+            END - Top Bar
+             -->
+
+            <!-- 
+            START - Breadcrumbs
+             -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="index.html">Products</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Laptop with retina screen</span>
+                </li>
+            </ul>
+            <!-- 
+            END - Breadcrumbs
+             -->
+            <div class="content-panel-toggler">
+                <i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span>
+            </div>
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="element-wrapper">
+                                <div class="element-content">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-xxxl-3">
+                                            <a class="element-box el-tablo" [routerLink]="['/adminallcustomers']">
+                                                <div class="label">
+                                                    No Of Customers
+                                                </div>
+                                                <div class="value">
+                                                    572
+                                                </div>
+                                                <div class="trending trending-up-basic">
+                                                    <span>12%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-4 col-xxxl-3">
+                                            <a class="element-box el-tablo" [routerLink]="['/adminallrealtors']">
+                                                <div class="label">
+                                                    No Of Realtors
+                                                </div>
+                                                <div class="value">
+                                                    457
+                                                </div>
+                                                <div class="trending trending-up-basic">
+                                                    <span>19%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-4 col-xxxl-3">
+                                            <a class="element-box el-tablo" [routerLink]="['/adminallland']">
+                                                <div class="label">
+                                                    No Of Properties
+                                                </div>
+                                                <div class="value">
+                                                    125
+                                                </div>
+                                                <div class="trending trending-down-basic">
+                                                    <span>45%</span><i class="os-icon os-icon-arrow-down"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xxxl-6">
+                            <div class="element-wrapper">
+                                <h6 class="element-header">
+                                    All Purchase
+                                </h6>
+                                <div class="element-box">
+                                    <div class="table-responsive">
+                                        <table class="table table-padded">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">
+                                                        Status
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Land Name
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Customer Name
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Price
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a class="badge badge-success" href="">Approved</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a [routerLink]="['/adminsinglelandproperty']">4 Plots Of
+                                                            Land</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a [routerLink]="['/admincustomersinglepage']">Olorungbe
+                                                            Adio</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        N 23,400
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a class="badge badge-danger" href="">Disapproved</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a [routerLink]="['/adminsinglelandproperty']">2 Acres Of
+                                                            Land</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a [routerLink]="['/admincustomersinglepage']">Mamodu
+                                                            Agebkoya</a>
+                                                    </td>
+                                                    <td class="row-actions">
+                                                        N 1,200
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none d-xxxl-block col-xxxl-6">
+                            <!--START - Questions per Product-->
+                            <div class="element-wrapper">
+                                <div class="element-actions">
+                                    <form class="form-inline justify-content-sm-end">
+                                        <select class="form-control form-control-sm rounded">
+                                            <option value="Pending">
+                                                Today
+                                            </option>
+                                            <option value="Active">
+                                                Last Week
+                                            </option>
+                                            <option value="Cancelled">
+                                                Last 30 Days
+                                            </option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <h6 class="element-header">
+                                    Inventory Stats
+                                </h6>
+                                <div class="element-box">
+                                    <div class="os-progress-bar primary">
+                                        <div class="bar-labels">
+                                            <div class="bar-label-left">
+                                                <span class="bigger">Eyeglasses</span>
+                                            </div>
+                                            <div class="bar-label-right">
+                                                <span class="info">25 items / 10 remaining</span>
+                                            </div>
+                                        </div>
+                                        <div class="bar-level-1" style="width: 100%">
+                                            <div class="bar-level-2" style="width: 70%">
+                                                <div class="bar-level-3" style="width: 40%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="os-progress-bar primary">
+                                        <div class="bar-labels">
+                                            <div class="bar-label-left">
+                                                <span class="bigger">Outwear</span>
+                                            </div>
+                                            <div class="bar-label-right">
+                                                <span class="info">18 items / 7 remaining</span>
+                                            </div>
+                                        </div>
+                                        <div class="bar-level-1" style="width: 100%">
+                                            <div class="bar-level-2" style="width: 40%">
+                                                <div class="bar-level-3" style="width: 20%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="os-progress-bar primary">
+                                        <div class="bar-labels">
+                                            <div class="bar-label-left">
+                                                <span class="bigger">Shoes</span>
+                                            </div>
+                                            <div class="bar-label-right">
+                                                <span class="info">15 items / 12 remaining</span>
+                                            </div>
+                                        </div>
+                                        <div class="bar-level-1" style="width: 100%">
+                                            <div class="bar-level-2" style="width: 60%">
+                                                <div class="bar-level-3" style="width: 30%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="os-progress-bar primary">
+                                        <div class="bar-labels">
+                                            <div class="bar-label-left">
+                                                <span class="bigger">Jeans</span>
+                                            </div>
+                                            <div class="bar-label-right">
+                                                <span class="info">12 items / 4 remaining</span>
+                                            </div>
+                                        </div>
+                                        <div class="bar-level-1" style="width: 100%">
+                                            <div class="bar-level-2" style="width: 30%">
+                                                <div class="bar-level-3" style="width: 10%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 border-top pt-3">
+                                        <div class="element-actions d-none d-sm-block">
+                                            <form class="form-inline justify-content-sm-end">
+                                                <select class="form-control form-control-sm form-control-faded">
+                                                    <option selected="true">
+                                                        Last 30 days
+                                                    </option>
+                                                    <option>
+                                                        This Week
+                                                    </option>
+                                                    <option>
+                                                        This Month
+                                                    </option>
+                                                    <option>
+                                                        Today
+                                                    </option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                        <h6 class="element-box-header">
+                                            Inventory History
+                                        </h6>
+                                        <div class="el-chart-w">
+                                            <canvas data-chart-data="13,28,19,24,43,49,40,35,42,46,38,32,45" height="50"
+                                                id="liteLineChartV3" width="300"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END - Questions per product                  -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xxxl-9">
+                            <div class="element-wrapper">
+                                <h6 class="element-header mb-3">
+                                    Sales Performance
+                                </h6>
+
+                                <div class="row">
+                                    <div class="col-sm-4 col-xxxl-3">
+                                        <a class="element-box el-tablo" [routerLink]="['/adminallcustomers']">
+                                            <div class="label">
+                                                No Of Customers
+                                            </div>
+                                            <div class="value">
+                                                572
+                                            </div>
+                                            <div class="trending trending-up-basic">
+                                                <span>12%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-4 col-xxxl-3">
+                                        <a class="element-box el-tablo" [routerLink]="['/adminallrealtors']">
+                                            <div class="label">
+                                                No Of Realtors
+                                            </div>
+                                            <div class="value">
+                                                457
+                                            </div>
+                                            <div class="trending trending-up-basic">
+                                                <span>19%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-4 col-xxxl-3">
+                                        <a class="element-box el-tablo" [routerLink]="['/adminallland']">
+                                            <div class="label">
+                                                No Of Properties
+                                            </div>
+                                            <div class="value">
+                                                125
+                                            </div>
+                                            <div class="trending trending-down-basic">
+                                                <span>45%</span><i class="os-icon os-icon-arrow-down"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <fusioncharts [type]="type" [width]="width" [height]="height" [dataSource]="dataSource">
+                                </fusioncharts>
+                            </div>
+                        </div>
+                        <div class="d-none d-xxxl-block col-xxxl-3">
+                            <div class="element-wrapper">
+                                <h6 class="element-header">
+                                    Visitors by Browser
+                                </h6>
+                                <div class="element-box less-padding">
+                                    <div class="el-chart-w">
+                                        <canvas height="120" id="donutChart1" width="120"></canvas>
+                                        <div class="inside-donut-chart-label">
+                                            <strong>1,248</strong><span>Visitors</span>
+                                        </div>
+                                    </div>
+                                    <div class="el-legend condensed">
+                                        <div class="row">
+                                            <div class="col-auto col-xxxxl-6 ml-sm-auto mr-sm-auto">
+                                                <div class="legend-value-w">
+                                                    <div class="legend-pin legend-pin-squared"
+                                                        style="background-color: #6896f9;"></div>
+                                                    <div class="legend-value">
+                                                        <span>Safari</span>
+                                                        <div class="legend-sub-value">
+                                                            17%, 12 Visits
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="legend-value-w">
+                                                    <div class="legend-pin legend-pin-squared"
+                                                        style="background-color: #85c751;"></div>
+                                                    <div class="legend-value">
+                                                        <span>Chrome</span>
+                                                        <div class="legend-sub-value">
+                                                            22%, 763 Visits
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 d-none d-xxxxl-block">
+                                                <div class="legend-value-w">
+                                                    <div class="legend-pin legend-pin-squared"
+                                                        style="background-color: #806ef9;"></div>
+                                                    <div class="legend-value">
+                                                        <span>Firefox</span>
+                                                        <div class="legend-sub-value">
+                                                            3%, 7 Visits
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="legend-value-w">
+                                                    <div class="legend-pin legend-pin-squared"
+                                                        style="background-color: #d97b70;"></div>
+                                                    <div class="legend-value">
+                                                        <span>Explorer</span>
+                                                        <div class="legend-sub-value">
+                                                            15%, 45 Visits
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 
+              START - Sidebar
+               -->
+                <div class="content-panel">
+                    <div class="content-panel-close">
+                        <i class="os-icon os-icon-close"></i>
+                    </div>
+                    <div class="element-wrapper">
+                        <h6 class="element-header">
+                            Quick Links
+                        </h6>
+                        <div class="element-box-tp">
+                            <div class="el-buttons-list full-width">
+                                <a class="btn btn-white btn-sm" [routerLink]="['/addproperty']"><i
+                                        class="os-icon os-icon-delivery-box-2"></i><span>Add New Property</span></a>
+                                <a class="btn btn-white btn-sm" [routerLink]="['/adminallrealtors']"><i
+                                        class="os-icon os-icon-window-content"></i><span>View All Realtors</span></a>
+                                <a class="btn btn-white btn-sm" data-target="#onboardingFormModal" data-toggle="modal"
+                                    href="#"><i class="os-icon os-icon-delivery-box-2"></i><span>Invite
+                                        Users</span></a>
+                                <a class="btn btn-white btn-sm" [routerLink]="['/adminsettings']"><i
+                                        class="os-icon os-icon-wallet-loaded"></i><span>Settings</span></a>
+                            </div>
+
+
+
+                            <!-- Modal for Invite Realtor-->
+                            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                id="onboardingFormModal" role="dialog" tabindex="-1">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="onboardingFormModal">
+                                                Invite Users
+                                            </h5>
+                                            <button aria-label="Close" class="close" data-dismiss="modal"
+                                                type="button"><span aria-hidden="true">
+                                                    &times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for=""> Email</label><input class="form-control"
+                                                        placeholder="Email" type="text">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Message</label><textarea class="form-control"
+                                                        rows="3"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                                Close</button><button class="btn btn-primary" type="button">
+                                                Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- 
+                START - Support Agents
+                 -->
+                    <div class="element-wrapper">
+                        <h6 class="element-header">
+                            Top Realtors
+                        </h6>
+                        <div class="element-box-tp">
+                            <div class="profile-tile">
+                                <a class="profile-tile-box" href="users_profile_small.html">
+                                    <div class="pt-avatar-w">
+                                        <img alt="" src="../../assets/img/avatar1.jpg">
+                                    </div>
+                                    <div class="pt-user-name">
+                                        Adekunle Adebanjo
+                                    </div>
+                                </a>
+                                <div class="profile-tile-meta">
+                                    <ul>
+                                        <li>
+                                            Email<strong>aguns@gmail.com</strong>
+                                        </li>
+                                        <li>
+                                            Tel:<strong>08123456723</strong>
+                                        </li>
+                                    </ul>
+                                    <div class="pt-btn">
+                                        <a class="btn btn-success btn-sm"
+                                            [routerLink]="['/adminrealtorsinglepage']">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-tile">
+                                <a class="profile-tile-box" href="users_profile_small.html">
+                                    <div class="pt-avatar-w">
+                                        <img alt="" src="../../assets/img/avatar3.jpg">
+                                    </div>
+                                    <div class="pt-user-name">
+                                        Agun Gbolahan
+                                    </div>
+                                </a>
+                                <div class="profile-tile-meta">
+                                    <ul>
+                                        <li>
+                                            Email<strong>aguns@gmail.com</strong>
+                                        </li>
+                                        <li>
+                                            Tel:<strong>08123456723</strong>
+                                        </li>
+                                    </ul>
+                                    <div class="pt-btn">
+                                        <a class="btn btn-success btn-sm"
+                                            [routerLink]="['/adminrealtorsinglepage']">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 
+                END - Support Agents
+                 -->
+                </div>
+                <!-- 
+              END - Sidebar
+               -->
+            </div>
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

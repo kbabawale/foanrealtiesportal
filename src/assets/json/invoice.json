@@ -1,0 +1,53 @@
+[
+    {
+        "InvoiceID": 0,
+        "InvoiceCode": "A1097",
+        "InvoiceToName": "Adeola Kayewu",
+        "InvoiceFromName": "Marble Tech Ltd",
+        "InvoiceToAddress": "1 wale balogun close ajah",
+        "InvoiceFromAddrress": "23, crescent road victoria island lagos",
+        "InvoiceFromEmail": "marbletech@gmail.com",
+        "InvoiceTel": "08034567823",
+        "InvoiceDescription": "3 Plots of Land",
+        "InvoiceQuantity": 3,
+        "InvoicePrice": "N 23,000",
+        "InvoiceTotal": "N 23,000",
+        "InvoiceDate": "23/06/19",
+        "DateCreated": "02/04/19",
+        "DateModified": "05/06/19"
+    },
+    {
+        "InvoiceID": 1,
+        "InvoiceCode": "B1097",
+        "InvoiceToName": "Seun Gabde",
+        "InvoiceFromName": "Baesin Solutions",
+        "InvoiceToAddress": "23, crescent ikeja",
+        "InvoiceFromAddrress": "34, Adeola odeku road lagos",
+        "InvoiceFromEmail": "baseicsolutions@yahoo.com",
+        "InvoiceTel": "09045761239",
+        "InvoiceDescription": "123 Acres of Land",
+        "InvoiceQuantity": 6,
+        "InvoicePrice": "N 234,000",
+        "InvoiceTotal": "N 230,000",
+        "InvoiceDate": "13/06/19",
+        "DateCreated": "04/07/19",
+        "DateModified": "23/07/19"
+    },
+    {
+        "InvoiceID": 2,
+        "InvoiceCode": "C1097",
+        "InvoiceToName": "Steven George",
+        "InvoiceFromName": "NDF group",
+        "InvoiceToAddress": "45, sherif avenue ikeja",
+        "InvoiceFromAddrress": "23, obasanjo road ojo",
+        "InvoiceFromEmail": "ndf@gmail.com",
+        "InvoiceTel": "09034781209",
+        "InvoiceDescription": "23 Plots of Land",
+        "InvoiceQuantity": 1,
+        "InvoicePrice": "N 123,000",
+        "InvoiceTotal": "N 123,000",
+        "InvoiceDate": "12/05/19",
+        "DateCreated": "23/06/19",
+        "DateModified": "30/07/19"
+    }
+]

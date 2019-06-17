@@ -1,0 +1,20 @@
+<div class="element-content">
+    <div class="row">
+        <div class="col-sm-3 col-xxxl-3" *ngFor="let invoice of invoices">
+            <a class="element-box el-tablo">
+                <div class="label mb-3 text-danger">
+                    {{ invoice.InvoiceCode }}
+                </div>
+                <div class="label">
+                    {{ invoice.InvoiceDescription }}
+                </div>
+                <div class="value mt-3">
+                    {{ invoice.InvoicePrice }}
+                </div>
+                <div class="mt-4 text-size-1">
+                    <i class="os-icon os-icon-clock mr-1"></i>{{ invoice.InvoiceDate }}
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

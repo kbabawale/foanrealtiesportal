@@ -1,0 +1,85 @@
+﻿<div class="all-wrapper menu-side with-pattern">
+    <div class="auth-box-w wider">
+        <div class="logo-w">
+            <a class="registrationlogo">
+                <img src="./assets/img/foanreal.png" />
+        </a>
+        </div>
+        <h4 class="auth-header">
+            Create new account
+        </h4>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""> First Name</label><input class="form-control" placeholder="First Name"
+                            type="text" name="FirstName" formControlName="FirstName"
+                            [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }">
+                        <div class="pre-icon os-icon os-icon-user"></div>
+
+                        <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">Last Name</label><input class="form-control" placeholder="Last Name" type="text"
+                            name="LastName" formControlName="LastName"
+                            [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }">
+
+                            <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for=""> Email address</label><input class="form-control" placeholder="Enter email" type="email"
+                    name="Email" formControlName="Email"
+                    [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                <div class="pre-icon os-icon os-icon-email-2-at2"></div>
+
+                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                    <div *ngIf="f.Email.errors.required">Email Address is required</div>
+                    <div *ngIf="f.Email.errors.pattern">Please enter correct email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Customer or Realtor?</label>
+                <select class="form-control" name="UserRole" formControlName="UserRole"
+                    [ngClass]="{ 'is-invalid': submitted && f.UserRole.errors }">
+                    <option value="">Please Select Role</option>
+                    <option value="1">Customer</option>
+                    <option value="2">Realtor</option>
+                </select>
+                <div class="pre-icon os-icon os-icon-users"></div>
+
+                <div *ngIf="submitted && f.UserRole.errors" class="invalid-feedback">
+                    <div *ngIf="f.UserRole.errors.required">lease Select User Role</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for=""> Password</label><input class="form-control" placeholder="Password" type="password"
+                    name="Password" formControlName="Password"
+                    [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+                <div class="pre-icon os-icon os-icon-fingerprint"></div>
+
+                <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                    <div *ngIf="f.Password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div>
+                <p class="mt-4 text-1">By clicking submit button means you have accepted to our term and condition</p>
+            </div>
+            <div class="buttons-w">
+                <button [disabled]="loading" class="btn btn-primary w-100">Register Now</button>
+                <img *ngIf="loading" class="pl-3 w-10"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+            <div>
+                <p class="mt-4 text-center text-1">Already have an account? <a [routerLink]="['/login']">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>

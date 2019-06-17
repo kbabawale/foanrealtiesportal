@@ -1,0 +1,29 @@
+﻿export class User {
+    UserID: number;
+    FirstName: string;
+    LastName: string;
+    UserRole: number;
+    Email: string;
+    Password: string;
+    AcessToken: string;
+    MaritalStatus: string;
+    DOB: string;
+    Nationality: string;
+    Address: string;
+    PhoneNumber: string;
+    Transactions: [];
+    NokName: string;
+    NokAddress: string;
+    NokEmail: string;
+    NokNumber: string;
+    EmployerName: string;
+    EmployerAddress: string;
+    EmployerNumber: string;
+    EmploymentPosition: string;
+    ReferralName: string;
+    ReferralNumber: string;
+    ReferralAddress: string;
+    ReferralEmail: string;
+    DateCreated: string;
+    DateModified: string;
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "CommissionID": 0,
+        "Status": true,
+        "LandName": "3 Plots of Land",
+        "ClientName": "Adesanya Tosin",
+        "CommissionRealtorName": "Gbadaga Seun",
+        "PercentageCommission": "34%",
+        "CommissionAmount": "N 23,000",
+        "Date": "12/05/19",
+        "DateCreated": "02/04/19",
+        "DateModified": "03/05/19"
+    },
+    {
+        "CommissionID": 1,
+        "Status": false,
+        "LandName": "6 Acres of Land",
+        "ClientName": "Wale Thomas",
+        "CommissionRealtorName": "Tolani Lavey",
+        "PercentageCommission": "45%",
+        "CommissionAmount": "N 450,000",
+        "Date": "23/06/19",
+        "DateCreated": "12/05/19",
+        "DateModified": "25/06/19"
+    },
+    {
+        "CommissionID": 2,
+        "Status": false,
+        "LandName": "7 Plots of Land",
+        "ClientName": "George Steven",
+        "CommissionRealtorName": "Rahman Balogun",
+        "PercentageCommission": "67%",
+        "CommissionAmount": "N 40,000",
+        "Date": "12/09/19",
+        "DateCreated": "23/09/19",
+        "DateModified": "29/09/19"
+    }
+]

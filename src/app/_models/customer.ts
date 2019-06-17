@@ -1,0 +1,34 @@
+export class Customer {
+    CustomerID: number;
+    CustomerImage: string;
+    CustomerName: string;
+    CustomerEmail: string;
+    CustomerNumber: string;
+    MaritalStatus: string;
+    DathOfBirth: string;
+    Nationality: string;
+    CustomerAddress: string;
+    TotalTransactions: [];
+    DateAdded: string;
+    NextOfKinName: string;
+    NextOfKinAddress: string;
+    NextOfKinEmail: string;
+    NextOfKinNumber: string;
+    CustomerEmployer: string;
+    EmployerDesignation: string;
+    EmployerNumber: string;
+    EmployerAddress: string;
+    CustomerPurposeOfPurchase: string;
+    CustomerPaymentOption: string;
+    CustomerPlotSize: string;
+    CustomerPopertyType: string;
+    ReferralName: string;
+    ReferralNumber: string;
+    ReferralEmail: string;
+    ReferralDateCreated: string;
+    CustomerLandAddress: string;
+    CustomerLandTitle: string;
+    CustomerLandFeatures: string;
+    DateCreated: string;
+    DateModified: string;
+}

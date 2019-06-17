@@ -1,0 +1,68 @@
+[
+    {
+        "MyLandID": 0,
+        "MyLandName": "8 Plots of Land",
+        "MyLandImage": "string",
+        "CoordicateY": "i dont know",
+        "CoordinateX": "i dont know",
+        "Price": "N 230,000",
+        "MyLandAddress": "24, Adeola odeku road lagos",
+        "NumberOfPlots": "2",
+        "PricePerPlot": "N 110,000",
+        "Area": "Magodo",
+        "SoilType": "Beach",
+        "MyLandType": "Dry Land",
+        "MyLandBio": "Good and in very condition",
+        "Features": {
+            "Fenced": "boolean",
+            "Cleared": "boolean"
+        },
+        "MyLandRealtors": [],
+        "DateCreated": "23/05/19",
+        "DateModified": "27/06/19"
+    },
+    {
+        "MyLandID": 1,
+        "MyLandName": "1 Plot of Land",
+        "MyLandImage": "string",
+        "CoordicateY": "string",
+        "CoordinateX": "string",
+        "Price": "N 12,000",
+        "MyLandAddress": "1, Wale Balogun close ajah",
+        "NumberOfPlots": "1",
+        "PricePerPlot": "N 12,000",
+        "Area": "Ajah",
+        "SoilType": "Clay",
+        "MyLandType": "Dry Land",
+        "MyLandBio": "Very Very Bad Land",
+        "Features": {
+            "Fenced": "boolean",
+            "Cleared": "boolean"
+        },
+        "MyLandRealtors": [],
+        "DateCreated": "12/04/19",
+        "DateModified": "17/04/19"
+    },
+    {
+        "MyLandID": 2,
+        "MyLandName": "2 Acres of Land",
+        "MyLandImage": "string",
+        "CoordicateY": "string",
+        "CoordinateX": "string",
+        "Price": "N 87,000",
+        "MyLandAddress": "2, Ogombo road Lagos",
+        "NumberOfPlots": "12",
+        "PricePerPlot": "N 12,000",
+        "Area": "Ogombo",
+        "SoilType": "Beach",
+        "MyLandType": "Dry",
+        "MyLandBio": "Good Land",
+        "Features": {
+            "Fenced": "boolean",
+            "Cleared": "boolean"
+        },
+        "MyLandRealtors": [],
+        "DateCreated": "23/06/19",
+        "DateModified": "29/06/19"
+    }
+]

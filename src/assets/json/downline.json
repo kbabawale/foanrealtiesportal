@@ -1,0 +1,29 @@
+[
+    {
+        "DownlineID": 0,
+        "RealtorName": "Ademola Thomas",
+        "RealtorEmail": "adethomas@gmail.com",
+        "Generation": "1st Generation",
+        "DateAddedAsDownline": "07/04/19",
+        "DateCreated": "12/06/19",
+        "DateModified": "23/07/19"
+    },
+    {
+        "DownlineID": 1,
+        "RealtorName": "Gbenga Fasura",
+        "RealtorEmail": "fasura@gmail.com",
+        "Generation": "3rd Generation",
+        "DateAddedAsDownline": "04/06/19",
+        "DateCreated": "13/09/19",
+        "DateModified": "17/09/19"
+    },
+    {
+        "DownlineID": 2,
+        "RealtorName": "Adeola Seun",
+        "RealtorEmail": "adeseun@yahoo.com",
+        "Generation": "2nd Generation",
+        "DateAddedAsDownline": "05/08/19",
+        "DateCreated": "23/04/19",
+        "DateModified": "30/05/19"
+    }
+]

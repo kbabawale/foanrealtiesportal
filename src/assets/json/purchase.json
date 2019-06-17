@@ -1,0 +1,32 @@
+[
+    {
+        "PurchaseID": 0,
+        "Status": "Approved",
+        "PurchaseLandName": "2 Plots of Land",
+        "PurchaseCustomerName": "Adeola Seun",
+        "PurchasePrice": "N 23,000",
+        "PurchaseDateBought": "12/04/19",
+        "DateCreated": "03/06/19",
+        "DateModified": "08/04/19"
+    },
+    {
+        "PurchaseID": 1,
+        "Status": "Dispproved",
+        "PurchaseLandName": "6 Plots of Land",
+        "PurchaseCustomerName": "Thomas Gbenga",
+        "PurchasePrice": "N 12,000",
+        "PurchaseDateBought": "23/06/19",
+        "DateCreated": "02/04/19",
+        "DateModified": "09/05/19"
+    },
+    {
+        "PurchaseID": 2,
+        "Status": "Approved",
+        "PurchaseLandName": "14 Acres of Land",
+        "PurchaseCustomerName": "George Eno",
+        "PurchasePrice": "N 230,000",
+        "PurchaseDateBought": "12/09/19",
+        "DateCreated": "25/05/19",
+        "DateModified": "08/06/19"
+    }
+]

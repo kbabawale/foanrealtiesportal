@@ -1,0 +1,117 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                                  START - Mobile Menu
+                                   -->
+        <app-customermobilemenu></app-customermobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                                  START - Main Menu
+                                   -->
+        <app-customermainmenu></app-customermainmenu>
+        <!-- 
+                                  END - Main Menu
+                                   -->
+
+        <div class="content-w">
+            <!-- 
+                                    START - Top Bar
+                                     -->
+            <app-customertopbar></app-customertopbar>
+            <!-- 
+                                    END - Top Bar
+                                     -->
+
+            <!-- 
+                                    START - Breadcrumbs
+                                     -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Customer Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="index.html">Invoices</a>
+                </li>
+            </ul>
+            <!-- 
+                                    END - Breadcrumbs
+                                     -->
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <div class="element-box-tp">
+                            <div class="element-box-tp">
+                                <!--------------------
+                                                START - Controls Above Table
+                                                -------------------->
+                                <div class="controls-above-table">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--------------------
+                                                END - Controls Above Table
+                                                ------------------          -->
+                                <!--------------------
+                                                START - Table with actions
+                                                ------------------  -->
+                                <div class="table-responsive">
+                                    <table class="table table-padded">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    Property Name
+                                                </th>
+                                                <th class="text-center">
+                                                    Payment
+                                                </th>
+                                                <th class="text-center">
+                                                    Payment Date
+                                                </th>
+                                                <th class="text-center">
+                                                    Status
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let paymenthistory of paymenthistorys">
+                                                <td class="text-center">
+                                                        {{ paymenthistory.PropertyName }}
+                                                </td>
+                                                <td class="text-center">
+                                                        {{ paymenthistory.Payment }}
+                                                </td>
+                                                <td class="text-center">
+                                                        {{ paymenthistory.PaymentDate }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="badge badge-success" href="#">Paid</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <!--------------------
+                                                END - Table with actions
+                                                ------------------            -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

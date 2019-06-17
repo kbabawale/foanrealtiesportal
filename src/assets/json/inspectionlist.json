@@ -1,0 +1,31 @@
+[
+    {
+        "InspectionListID": 0,
+        "PropertyName": "23 Acre of Land",
+        "PropertyAddress": "23, Allen avenue road ikeja",
+        "CustomerName": "Balogun Chris",
+        "DateRequested": "24/05/19",
+        "InspectionDate": "03/06/19",
+        "DateCreated": "23/06/19",
+        "DateModified": "12/07/19"
+    },
+    {
+        "InspectionListID": 1,
+        "PropertyName": "4 Plots of Land",
+        "PropertyAddress": "1, Wale Balogun close ajah",
+        "CustomerName": "Seun Thomas",
+        "DateRequested": "02/06/19",
+        "InspectionDate": "12/06/19",
+        "DateCreated": "23/04/19",
+        "DateModified": "27/05/19"
+    },{
+        "InspectionListID": 2,
+        "PropertyName": "1 Plot of Land",
+        "PropertyAddress": "12 Babadagdagri road abakaliki",
+        "CustomerName": "Thanos Strange",
+        "DateRequested": "15/04/19",
+        "InspectionDate": "23/04/19",
+        "DateCreated": "12/06/19",
+        "DateModified": "11/07/19"
+    }
+]

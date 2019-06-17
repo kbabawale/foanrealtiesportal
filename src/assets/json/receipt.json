@@ -1,0 +1,53 @@
+[
+    {
+        "ReceiptID": 0,
+        "ReceiptCode": "FY345",
+        "ReceiptToName": "Adeola Kayewu",
+        "ReceiptFromName": "Marble Tech Ltd",
+        "ReceiptToAddress": "1 wale balogun close ajah",
+        "ReceiptFromAddrress": "23, crescent road victoria island lagos",
+        "ReceiptFromEmail": "marbletech@gmail.com",
+        "ReceiptTel": "08034567823",
+        "ReceiptDescription": "3 Plots of Land",
+        "ReceiptQuantity": 3,
+        "ReceiptPrice": "N 23,000",
+        "ReceiptTotal": "N 23,000",
+        "ReceiptDate": "23/06/19",
+        "DateCreated": "02/04/19",
+        "DateModified": "05/06/19"
+    },
+    {
+        "ReceiptID": 1,
+        "ReceiptCode": "ET345",
+        "ReceiptToName": "Seun Gabde",
+        "ReceiptFromName": "Baesin Solutions",
+        "ReceiptToAddress": "23, crescent ikeja",
+        "ReceiptFromAddrress": "34, Adeola odeku road lagos",
+        "ReceiptFromEmail": "baseicsolutions@yahoo.com",
+        "ReceiptTel": "09045761239",
+        "ReceiptDescription": "123 Acres of Land",
+        "ReceiptQuantity": 6,
+        "ReceiptPrice": "N 234,000",
+        "ReceiptTotal": "N 230,000",
+        "ReceiptDate": "13/06/19",
+        "DateCreated": "04/07/19",
+        "DateModified": "23/07/19"
+    },
+    {
+        "ReceiptID": 2,
+        "ReceiptCode": "OP345",
+        "ReceiptToName": "Steven George",
+        "ReceiptFromName": "NDF group",
+        "ReceiptToAddress": "45, sherif avenue ikeja",
+        "ReceiptFromAddrress": "23, obasanjo road ojo",
+        "ReceiptFromEmail": "ndf@gmail.com",
+        "ReceiptTel": "09034781209",
+        "ReceiptDescription": "23 Plots of Land",
+        "ReceiptQuantity": 1,
+        "ReceiptPrice": "N 123,000",
+        "ReceiptTotal": "N 123,000",
+        "ReceiptDate": "12/05/19",
+        "DateCreated": "23/06/19",
+        "DateModified": "30/07/19"
+    }
+]

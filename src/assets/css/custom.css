@@ -1,0 +1,64 @@
+.text-size-1{ 
+    font-size: smaller !important;
+}
+.text-size-2{ 
+    font-size: 4.6rem !important;
+}
+.text-size-3{ 
+    font-size: .8rem !important;
+}
+.img-size{
+    width: 70px;
+    height: 70px;
+    margin-right: 1rem;
+}
+.registrationlogo{
+    width:50%;
+    height: auto;
+}
+.searchali{
+    display: flex;
+}   
+.facebook{
+    color: #0d509a;
+    margin-right: 7px;
+    font-size: 25px;
+}
+.twitter{
+    color: #2fafff;
+    margin-right: 7px;
+    font-size: 25px;
+}
+.instagram{
+    color: darkred;
+    font-size: 25px;
+}
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block; 
+    border: 2px dashed #800000;
+    width: 100%
+  }
+  
+  .btn.uploadcustom {
+    color: gray;
+    background-color: white;
+    font-weight: bold;
+    height: 150px;
+    font-size: 13px;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .ml-upload{
+    margin-left: 4rem !important;
+  }
