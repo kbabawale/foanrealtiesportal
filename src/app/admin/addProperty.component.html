@@ -29,11 +29,11 @@
                              -->
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Customer Dashboard</a>
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
                 </li>
-                <li class="breadcrumb-item">
+                <!-- <li class="breadcrumb-item">
                     <a href="index.html">Invoices</a>
-                </li>
+                </li> -->
             </ul>
             <!-- 
                             END - Breadcrumbs
@@ -79,65 +79,57 @@
                                                 <div class="col-lg-9">
                                                     <div class="element-wrapper">
                                                         <div class="element-box">
-                                                            <form>
+                                                            <button
+                                                            data-toggle="tooltip" data-placement="top" title="Click this button to notify that this is a new property about to be created. If this button is disabled, the system knows this is a fresh property."
+                                                            type="button" (click)="makeFresh()" [disabled]="freshProperty" class="btn btn-primary">Click To Signify New Property</button>
+                                                            <br><br>
+                                                            <form [formGroup]="addLandInfoForm" (ngSubmit)="onLISubmit()">
                                                                 <div class="form-group">
-                                                                    <label for=""> Property Name</label><input
+                                                                    <label for=""> Property Name</label><input formControlName="property_name"
                                                                         class="form-control" placeholder="Property Name"
-                                                                        type="text">
+                                                                        type="text" 
+                                                                        [ngClass]="{'is-invalid': f.property_name.touched && f.property_name.invalid}">
                                                                 </div>
+                                                                
                                                                 <div class="form-group">
                                                                     <label for="">Plot Size</label><input
+                                                                    formControlName="plot_size"
                                                                         class="form-control" placeholder="Plot Size"
-                                                                        type="text">
+                                                                        type="text"
+                                                                        [ngClass]="{'is-invalid': f.plot_size.touched && f.plot_size.invalid}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for=""> Price</label><input
+                                                                    formControlName="price"
                                                                         class="form-control" placeholder="Price"
-                                                                        type="text">
+                                                                        type="text"
+                                                                        [ngClass]="{'is-invalid': f.price.touched && f.price.invalid}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for=""> Number Of Plots</label><input
+                                                                    formControlName="no_of_plots"
                                                                         class="form-control"
-                                                                        placeholder="Number Of Plots" type="number">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for=""> Document Type</label><select
-                                                                        class="form-control">
-                                                                        <option>
-                                                                            Select
-                                                                        </option>
-                                                                        <option>
-                                                                            IMG
-                                                                        </option>
-                                                                        <option>
-                                                                            EXCEL
-                                                                        </option>
-                                                                        <option>
-                                                                            PDF
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for=""> Document Status</label><select
-                                                                        class="form-control">
-                                                                        <option>
-                                                                            Select
-                                                                        </option>
-                                                                        <option>
-                                                                            Not Verified
-                                                                        </option>
-                                                                        <option>
-                                                                            Verified
-                                                                        </option>
-                                                                    </select>
+                                                                        placeholder="Number Of Plots" type="text"
+                                                                        [ngClass]="{'is-invalid': f.no_of_plots.touched && f.no_of_plots.invalid}">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label> Description</label><textarea
-                                                                        class="form-control" rows="3"></textarea>
+                                                                        class="form-control" rows="3"
+                                                                        formControlName="description"
+                                                                        [ngClass]="{'is-invalid': f.description.touched && f.description.invalid}"
+                                                                        ></textarea>
                                                                 </div>
                                                                 <div class="form-buttons-w">
-                                                                    <button class="btn btn-primary w-100" type="submit">
+                                                                    <button class="btn btn-primary w-100" [disabled]="addLandInfoForm.invalid" type="submit">
                                                                         Submit</button>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted=='true'">Property Land Info Submitted</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted=='false'">An Error Occurred</p>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -159,63 +151,58 @@
                                                 <div class="col-lg-9">
                                                     <div class="element-wrapper">
                                                         <div class="element-box">
-                                                            <form>
+                                                            <form [formGroup]="addLandLocation" (ngSubmit)="onLLSubmit()">
                                                                 <div class="form-group">
                                                                     <label for=""> Address</label><input
-                                                                        class="form-control" placeholder="Address"
-                                                                        type="text">
+                                                                    formControlName="address"
+                                                                    class="form-control" placeholder="Address"
+                                                                    type="text" 
+                                                                    [ngClass]="{'is-invalid': g.address.touched && g.address.invalid}">
                                                                 </div>
 
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for=""> State</label><select
-                                                                                class="form-control">
-                                                                                <option>
-                                                                                    Lagos
-                                                                                </option>
-                                                                                <option>
-                                                                                    Ogun
-                                                                                </option>
-                                                                                <option>
-                                                                                    Oyo
-                                                                                </option>
-                                                                                <option>
-                                                                                    FCT
-                                                                                </option>
+                                                                            formControlName="state"
+                                                                                class="form-control"
+                                                                                [ngClass]="{'is-invalid': g.state.touched && g.state.invalid}">
+                                                                                <option selected [ngValue]="null">Select One:</option>
+                                                                                <option *ngFor="let item of states;" [value]="item.id">{{item.name}}</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <label for=""> Local
-                                                                                Government</label><select
-                                                                                class="form-control">
-                                                                                <option>
-                                                                                    Odonla
-                                                                                </option>
-                                                                                <option>
-                                                                                    eduter
-                                                                                </option>
-                                                                                <option>
-                                                                                    Araromi
-                                                                                </option>
-                                                                                <option>
-                                                                                    Arooooo
-                                                                                </option>
-                                                                            </select>
+                                                                                Government</label><input
+                                                                                formControlName="local_govt"
+                                                                                class="form-control" placeholder="Local Government"
+                                                                                type="text" 
+                                                                                [ngClass]="{'is-invalid': g.local_govt.touched && g.local_govt.invalid}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for=""> City</label><input
-                                                                        class="form-control" placeholder="City"
-                                                                        type="text">
+                                                                    formControlName="city"
+                                                                    class="form-control" placeholder="City"
+                                                                    type="text" 
+                                                                    [ngClass]="{'is-invalid': g.city.touched && g.city.invalid}">
                                                                 </div>
                                                                 <div class="form-buttons-w">
-                                                                    <button class="btn btn-primary w-100" type="submit">
+                                                                    <button class="btn btn-primary w-100" type="submit"
+                                                                    [disabled]="addLandLocation.invalid">
                                                                         Submit</button>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted2=='true'">Property Location Submitted</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted2=='false'">An Error Occurred</p>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -237,82 +224,39 @@
                                                 <div class="col-lg-12">
                                                     <div class="element-wrapper">
                                                         <div class="element-box">
-                                                            <form>
+                                                            <form [formGroup]="addLandFacilities" (ngSubmit)="onLFSubmit()">
 
 
                                                                 <div class="row">
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-3" formArrayName=fac
+                                                                    *ngFor="let control of addLandFacilities.controls.fac.controls; let i = index;">
                                                                         <div class="form-check">
                                                                             <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Perimeter
-                                                                                Fencing</label>
+                                                                                [formControlName]="i"
+                                                                                class="form-check-input"
+                                                                                type="checkbox"
+                                                                                >{{facil[i].name}}
+                                                                            </label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Street Light</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Security
-                                                                                House</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Good Road
-                                                                                Network</label>
-                                                                        </div>
-                                                                    </div>
+                                                                    
                                                                 </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Drainage
-                                                                                System</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Sewage
-                                                                                System</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Power Supply</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-check">
-                                                                            <label class="form-check-label"><input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox">Water Supply
-                                                                                System</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
 
                                                                 <div class="form-buttons-w">
-                                                                    <button class="btn btn-primary w-100" type="submit">
+                                                                    <button class="btn btn-primary w-100" [disabled]="facilError" type="submit">
                                                                         Submit</button>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='true'">Property Facilities Submitted</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='false'">An Error Occurred</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='empty'">Select At Least One</p>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -341,7 +285,7 @@
                                                                 <div class="col-sm-6">
                                                                     <a class="btn btn-sm btn-success float-right "
                                                                         data-target="#onboardingFeaturesModal"
-                                                                        data-toggle="modal" href="#">Add More</a>
+                                                                        data-toggle="modal" href="#">Add</a>
 
 
                                                                     <div aria-hidden="true"
@@ -353,7 +297,7 @@
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
                                                                                         id="onboardingFeaturesModal">
-                                                                                        Add More
+                                                                                        Add
                                                                                     </h5>
                                                                                     <button aria-label="Close"
                                                                                         class="close"
@@ -363,21 +307,23 @@
                                                                                             &times;</span></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <form>
+                                                                                    <form [formGroup]="addLandPaymentPlan">
                                                                                         <div class="form-group">
                                                                                             <label for=""> Square
                                                                                                 Meter</label><select
-                                                                                                class="form-control">
-                                                                                                <option>
+                                                                                                formControlName="square_meter"
+                                                                                                class="form-control"
+                                                                                                [ngClass]="{'is-invalid': h.square_meter.touched && h.square_meter.invalid}">
+                                                                                                <option value="300 Sqmt">
                                                                                                     300 Sqmt
                                                                                                 </option>
-                                                                                                <option>
+                                                                                                <option value="540 Sqmt">
                                                                                                     540 SqMt
                                                                                                 </option>
-                                                                                                <option>
+                                                                                                <option value="200 Sqmt">
                                                                                                     200 SqMt
                                                                                                 </option>
-                                                                                                <option>
+                                                                                                <option value="150 Sqmt">
                                                                                                     150 SqMt
                                                                                                 </option>
                                                                                             </select>
@@ -388,17 +334,19 @@
                                                                                                     <label for="">
                                                                                                         Outright
                                                                                                         Plan</label><select
-                                                                                                        class="form-control">
-                                                                                                        <option>
+                                                                                                        formControlName="outright_plan"
+                                                                                                        class="form-control"
+                                                                                                        [ngClass]="{'is-invalid': h.outright_plan.touched && h.outright_plan.invalid}">
+                                                                                                        <option value="3 months">
                                                                                                             3 months
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="6 months">
                                                                                                             6 Months
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="8 Months">
                                                                                                             8 Months
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="12 Months">
                                                                                                             12 Months
                                                                                                         </option>
                                                                                                     </select>
@@ -409,6 +357,8 @@
                                                                                                     <label for="">
                                                                                                         Initial
                                                                                                         Deposit</label><input
+                                                                                                        [ngClass]="{'is-invalid': h.initial_deposit.touched && h.initial_deposit.invalid}"
+                                                                                                        formControlName="initial_deposit"
                                                                                                         class="form-control"
                                                                                                         placeholder="Initial Deposit"
                                                                                                         type="text">
@@ -421,11 +371,13 @@
                                                                                                     <label for="">
                                                                                                         3
                                                                                                         Months</label><select
-                                                                                                        class="form-control">
-                                                                                                        <option>
+                                                                                                        formControlName="three_months_plan"
+                                                                                                        class="form-control"
+                                                                                                        [ngClass]="{'is-invalid': h.three_months_plan.touched && h.three_months_plan.invalid}">
+                                                                                                        <option value="Yes">
                                                                                                             Yes
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="No">
                                                                                                             No
                                                                                                         </option>
                                                                                                     </select>
@@ -436,11 +388,13 @@
                                                                                                     <label for="">
                                                                                                         6
                                                                                                         Months</label><select
-                                                                                                        class="form-control">
-                                                                                                        <option>
+                                                                                                        formControlName="six_months_plan"
+                                                                                                        class="form-control"
+                                                                                                        [ngClass]="{'is-invalid': h.six_months_plan.touched && h.six_months_plan.invalid}">
+                                                                                                        <option value="Yes">
                                                                                                             Yes
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="No">
                                                                                                             No
                                                                                                         </option>
                                                                                                     </select>
@@ -453,11 +407,13 @@
                                                                                                     <label for="">
                                                                                                         12
                                                                                                         Months</label><select
-                                                                                                        class="form-control">
-                                                                                                        <option>
+                                                                                                        formControlName="twelve_months_plan"
+                                                                                                        class="form-control"
+                                                                                                        [ngClass]="{'is-invalid': h.twelve_months_plan.touched && h.twelve_months_plan.invalid}">
+                                                                                                        <option value="Yes">
                                                                                                             Yes
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="No">
                                                                                                             No
                                                                                                         </option>
                                                                                                     </select>
@@ -468,11 +424,13 @@
                                                                                                     <label for="">
                                                                                                         18
                                                                                                         Months</label><select
-                                                                                                        class="form-control">
-                                                                                                        <option>
+                                                                                                        formControlName="eighteen_months_plan"
+                                                                                                        class="form-control"
+                                                                                                        [ngClass]="{'is-invalid': h.eighteen_months_plan.touched && h.eighteen_months_plan.invalid}">
+                                                                                                        <option value="Yes">
                                                                                                             Yes
                                                                                                         </option>
-                                                                                                        <option>
+                                                                                                        <option value="No">
                                                                                                             No
                                                                                                         </option>
                                                                                                     </select>
@@ -482,11 +440,13 @@
                                                                                         <div class="form-group">
                                                                                             <label for=""> 24
                                                                                                 Months</label><select
-                                                                                                class="form-control">
-                                                                                                <option>
+                                                                                                formControlName="twentyfour_months_plan"
+                                                                                                class="form-control"
+                                                                                                [ngClass]="{'is-invalid': h.twentyfour_months_plan.touched && h.twentyfour_months_plan.invalid}">
+                                                                                                <option value="Yes">
                                                                                                     Yes
                                                                                                 </option>
-                                                                                                <option>
+                                                                                                <option value="No">
                                                                                                     No
                                                                                                 </option>
                                                                                             </select>
@@ -497,9 +457,12 @@
                                                                                     <button class="btn btn-secondary"
                                                                                         data-dismiss="modal"
                                                                                         type="button">
-                                                                                        Close</button><button
+                                                                                        Close</button>
+                                                                                    <button
+                                                                                        data-dismiss="modal"
+                                                                                        [disabled]="addLandPaymentPlan.invalid"
                                                                                         class="btn btn-primary"
-                                                                                        type="button"> Save
+                                                                                        type="button" (click)="onPPSubmit()"> Save
                                                                                         changes</button>
                                                                                 </div>
                                                                             </div>
@@ -519,6 +482,18 @@
                                                         <!--------------------
                                                         START - Table with actions
                                                         ------------------  -->
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted4=='true'">Property Payment Plan Added. It'll reflect on property page.</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted4=='false'">An Error Occurred</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="table-responsive">
                                                             <table class="table table-padded">
                                                                 <thead>
@@ -549,60 +524,41 @@
                                                                         </th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
-                                                                    <tr>
+                                                                <tbody *ngIf="payment_plan_count;else other_content">
+                                                                    <tr *ngFor="let item of payment_plan">
                                                                         <td class="text-center">
-                                                                            320 SqMt
+                                                                            {{item.square_meters}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            8 Months
+                                                                            {{item.outright_plan}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            N 320,000
+                                                                            {{item.initial_deposit}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            Yes
+                                                                            {{item.three_months_plan}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            Yes
+                                                                            {{item.six_months_plan}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            Yes
+                                                                            {{item.twelve_months_plan}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            Yes
+                                                                            {{item.eighteen_months_plan}}
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            Yes
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-center">
-                                                                            320 SqMt
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            6 Months
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            N 320,000
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            Yes
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            Yes
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            Yes
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            Yes
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            Yes
+                                                                            {{item.twentyfour_months_plan}}
                                                                         </td>
                                                                     </tr>
+                                                                    
                                                                 </tbody>
+                                                                <ng-template #other_content>
+                                                                    <tr>
+                                                                        <td colspan="8" class="text-center">No Payment Plan For This Property Yet</td>
+                                                                    </tr>
+                                                                </ng-template>
+                                                                
                                                             </table>
                                                         </div>
                                                         <!--------------------
@@ -624,19 +580,31 @@
                                                 <div class="col-lg-7">
                                                     <div class="element-wrapper">
                                                         <div class="element-box">
-                                                            <div class="upload-btn-wrapper text-center">
-                                                                <button class="btn uploadcustom"><i
-                                                                        class="os-icon os-icon-upload pr-1"></i>Upload
-                                                                    a file</button>
-                                                                <input type="file" name="myfile" />
-                                                            </div>
-                                                            <form>
-                                                                <div class="form-group mt-2">
-                                                                    <label for=""> Add Video</label><input
-                                                                        class="form-control" placeholder="Add Video"
-                                                                        type="text">
+                                                                
+                                                            <form id="upform">
+                                                                
+                                                                <div class="row">
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted5=='false'">File Type Not Permitted (Must be png or jpg file)</p>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted5=='error'">An Error Occurred</p>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted5=='true'">Image Uploaded</p>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted5=='empty'">Select A File To Upload</p>
+                                                                </div>
+                                                                <div class="upload-btn-wrapper text-center">
+                                                                    <input style="display:none" name="image" class="file-input" #fileInput type="file" (change)="onFileSelected($event)">
+                                                                    <button class="btn uploadcustom" (click)="fileInput.click()"><i class="os-icon os-icon-upload pr-1"></i>{{uploadText}}</button>
+                                                                </div>
+                                                                <button class="btn btn-primary"
+                                                                type="button" (click)="onFUSubmit()">Upload</button>
+                                                                <br /><br />
+                                                                <div *ngIf="submittedSuccess">
+                                                                    <app-progress [progress]="progress"></app-progress>
                                                                 </div>
                                                             </form>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,12 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from '../_models/user';
-import { Land } from '../_models/land';
-import { AuthenticationService } from '../_services/authentication.service';
-import { UserService } from '../_services/user.service';
-import { FormBuilder } from '@angular/forms';
-import { SharedService } from '../_services/shared.service';
-import { ToastrService } from 'ngx-toastr';
-import { AdminService } from '../_services/admin.service';
+import { LandService } from '../_services/land.service';
+import { HttpHeaders,HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'app-adminallland',
@@ -15,29 +11,44 @@ import { AdminService } from '../_services/admin.service';
 
 export class AdminAllLandComponent implements OnInit{
     errorMessage: any;
-    currentUser: User = new User();
+    hostURL:String;
     myDate = new Date();
-    lands: Land;
-    land: Land = new Land();
+    lands: any;
+    searchTermResults:any='All Properties';
 
+    
     constructor(
-        private authenticationService: AuthenticationService,
-        private userService: UserService,
-        private formBuilder: FormBuilder,
-        private sharedService: SharedService,
-        private toaster: ToastrService,
-        private adminService: AdminService
+        private landservice: LandService,
+        private http: HttpClient
     ) {
-        this.currentUser = this.authenticationService.currentUserValue;
+        
     }
+
+    
 
     ngOnInit(): void {
+
         this.myDate = new Date();
 
-        this.sharedService.getAllLands()
-            .subscribe(land => {
-                this.lands = land;
-            },
-                error => this.errorMessage = <any>error);
+        this.landservice.loadProperties().subscribe(data=>{
+            if(data.status == 200){
+                this.lands = data.body.property;
+                //console.log(this.lands[0].location[0]);
+            }
+        });
+        
     }
+
+    
+
+    loadAllProperties(){
+        this.landservice.loadProperties().subscribe(data=>{
+            if(data.status == 200){
+                this.lands = data.body.property;
+                //console.log(this.lands[0].location[0]);
+            }
+        });
+    }
+    
+    
 }

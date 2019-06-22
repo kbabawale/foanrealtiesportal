@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { User } from '../../_models/user';
-import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../_services/authentication.service';
 import { UserService } from '../../_services/user.service';
-import { first } from 'rxjs/operators';
+//import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,43 +11,68 @@ import { Router } from '@angular/router';
 })
 
 export class AdminTopBarComponent implements OnInit, OnDestroy {
-    currentUser: User;
-    currentUserSubscription: Subscription;
-    users: User[] = [];
+    
+    //user details
+    user_details: User = {
+        UserID: 0,
+        FirstName: '',
+        LastName: '',
+        UserRole: 0,
+        Email: '',
+        Password: '',
+        MaritalStatus: '',
+        DOB: '',
+        Nationality: '',
+        Address: '',
+        PhoneNumber: '',
+        ProfilePix: "../../assets/img/avatar1.jpg",
+        NokName: '',
+        NokAddress: '',
+        NokEmail: '',
+        NokNumber: '',
+        EmployerName: '',
+        EmployerAddress: '',
+        EmployerNumber: '',
+        EmploymentPosition: '',
+        ReferralName: '',
+        ReferralNumber: '',
+        ReferralAddress: '',
+        ReferralEmail: '',
+        DateCreated: '',
+        DateModified: ''
+    };
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService,
+        private UserService: UserService,
         private router: Router
     ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
-        });
+        
     }
 
     ngOnInit() {
-        this.loadAllUsers();
+        //get all details of admin
+        this.UserService.getUserDetails().subscribe(data=>{
+            //debugger
+            // if(data.user[0].profile_pix_filename != null || data.user[0].profile_pix_filename != ''){
+            //     this.user_details.ProfilePix = data.user[0].profile_pix_filename;
+            // }
+            this.user_details.FirstName = data.user[0].firstname;
+            this.user_details.LastName = data.user[0].lastname;
+            
+        });
     }
 
     ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
-        this.currentUserSubscription.unsubscribe();
+        
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => {
-            this.loadAllUsers()
-        });
+    logout(){
+        //destroy all localstorage entries
+        localStorage.removeItem('FLRS-D');
+        localStorage.removeItem('FLRS-T');
+        this.router.navigate(['/login']);
     }
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => {
-            this.users = users;
-        });
-    }
-
-    logout() {
-      this.authenticationService.logout();
-      this.router.navigate(['/login']);
-    }
+    
 }

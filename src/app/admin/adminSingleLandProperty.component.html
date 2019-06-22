@@ -28,14 +28,14 @@
                     -------------------->
       <ul class="breadcrumb">
         <li class="breadcrumb-item">
-          <a>Home</a>
+          <a [routerLink]="['/admindashboard']">Home</a>
         </li>
         <li class="breadcrumb-item">
-          <a>Products</a>
+          <a [routerLink]="['/adminallland']">All Properties</a>
         </li>
-        <li class="breadcrumb-item">
+        <!-- <li class="breadcrumb-item">
           <span>Laptop with retina screen</span>
-        </li>
+        </li> -->
       </ul>
       <!--------------------
                     END - Breadcrumbs
@@ -58,22 +58,27 @@
               </div>
               <div class="item-features">
                 <div class="feature">
-                  Beach
+                  <!-- plot -->
+                  {{land.land_info[0].no_of_plots}} plot(s)
                 </div>
                 <div class="feature">
-                  500 SqMt
+                  <!-- city -->
+                  {{land.location[0].city}}
                 </div>
                 <div class="feature">
-                  32 Plots
+                  <!-- state -->
+                  {{land.location[0].city}}
                 </div>
               </div>
               <h1>
-                3 Acres Of Land
+                Plot Size: {{land.land_info[0].plot_size}}
               </h1>
-              <div>1, Wale Balogun close off pa shekoni crescent Ajah Lagos
-                state</div>
+              <div>
+                <!-- address -->
+                {{land.location[0].address}}, {{land.location[0].city}}, {{land.location[0].state}}
+              </div>
               <div class="property-price">
-                <strong>$1,240,000</strong><span>Listing Price</span>
+                <strong>{{land.land_info[0].price|currency:'NGN'}}</strong><span>Listing Price</span>
 
                 <div class="form-buttons mt-3 mb-3">
                   <a class="btn btn-primary" data-target="#onboardingFormModal" data-toggle="modal" href="#">Send as
@@ -123,22 +128,9 @@
 
               <div class="property-description">
                 <p>
-                  Exceptional Torrey Hills home located at the end of a cul-de-sac with expansive panoramic views of
-                  nature.
-                  This lot and location is unique with only 1 neighbor and open space all around. The seller has
-                  completely
-                  remodeled inside and out in a contemporary style. You approach to a fruit tree garden leading to a
-                  gated
-                  courtyard professionally landscaped with low water usage and easy-care plants. In award winning school
-                  districts, near shopping, entertainment, dining, beaches and easy freeway access.
+                    {{land.land_info[0].description}}  
                 </p>
-                <p>
-                  This lot and location is unique with only 1 neighbor and open space all around. The seller has
-                  completely
-                  remodeled inside and out in a contemporary style. You approach to a fruit tree garden leading to a
-                  gated
-                  courtyard professionally landscaped with low water usage and easy-care plants.
-                </p>
+                
               </div>
               <div class="property-section">
                 <div class="property-section-header">
@@ -440,10 +432,13 @@
                 </div>
                 <div class="side-section-content">
                   <div class="property-side-features">
-                    <div class="feature">
-                      <i class="os-icon os-icon-home-34"></i><span>3 Bedrooms</span>
+                    <!-- loop through facilities -->
+
+                    <div class="feature"
+                    *ngFor="let item of land.facilities">
+                      <i></i><span>{{item.name}}</span>
                     </div>
-                    <div class="feature">
+                    <!-- <div class="feature">
                       <i class="os-icon os-icon-home-13"></i><span>2 Bathrooms</span>
                     </div>
                     <div class="feature">
@@ -454,11 +449,11 @@
                     </div>
                     <div class="feature">
                       <i class="os-icon os-icon-home-10"></i><span>Washer and Dryer</span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
-              <div class="side-magic" style="background-image: url(../../assets/img/property1.jpg)">
+              <!-- <div class="side-magic" style="background-image: url(../../assets/img/property1.jpg)">
                 <div class="fader"></div>
                 <h4 class="side-magic-title">
                   You have a listing to offer?
@@ -467,7 +462,7 @@
                   List your property on our site and get a special offer
                 </div>
                 <a class="side-magic-btn">Submit Listing</a>
-              </div>
+              </div> -->
             </div>
           </div>
           <!--------------------

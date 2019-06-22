@@ -1,44 +1,51 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication.service';
-import { ToastrService } from 'ngx-toastr';
+
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
-    loading = false;
-    submitted = false;
+    submitted:boolean = false;
+    loading:boolean = false;
     returnUrl: string;
+    processed: boolean = true;
+
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService,
-        private toaster: ToastrService
+        private authenticationService: AuthenticationService
     ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue && this.authenticationService.currentUserValue.UserRole == 1) {
-            this.router.navigate(['/customerdashboard']);
-        } else if (this.authenticationService.currentUserValue && this.authenticationService.currentUserValue.UserRole == 2) {
-            this.router.navigate(['/realtordashboard']);
-        } else {
-            this.router.navigate(['/admindashboard']);
-        }
+        
     }
 
     ngOnInit() {
+        // redirect to home if already logged in
+        this.authenticationService.testLoginValidity().subscribe(valis=>{
+            let vali = valis.body.statResponse;
+            if(vali){ //if logged in, get usertype and redirect appropriately
+                if (this.authenticationService.getLoginTokenType == '2') {
+                    this.router.navigate(['/customerdashboard']);
+                } else if (this.authenticationService.getLoginTokenType == '3') {
+                    this.router.navigate(['/realtordashboard']);
+                } else if (this.authenticationService.getLoginTokenType == '1') {
+                    this.router.navigate(['/admindashboard']);
+                }
+            }else{
+                this.router.navigate(['/login']);
+            }
+        });
+
         this.loginForm = this.formBuilder.group({
             Email: ['', Validators.required],
             Password: ['', Validators.required]
         });
 
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
@@ -46,36 +53,37 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        this.loading = true;
         // stop here if form is invalid
         if (this.loginForm.invalid) {
+            this.loading = false;
             return;
         }
 
-        this.loading = true;
         this.authenticationService.login(this.f.Email.value, this.f.Password.value)
-            .pipe(first())
             .subscribe(
                 data => {
-                    this.loading = false;
-
-                    let role = this.authenticationService.currentUserValue.UserRole;
-                    alert(role);
-                    if (role == 1) {
-                        this.router.navigate(['/customerdashboard']);
-                    } else if (role == 2) {
-                        this.router.navigate(['/realtordashboard']);
-                    } else {
-                        this.router.navigate(['/admindashboard']);
+                    if(data.status == 200){
+                        this.authenticationService.setLoginToken(data.body.token, data.body.user.uid, data.body.user.user_type_id);
+                        this.processed = true;
+                        this.loading = false;
+                        // console.log(data); 
+                        if (data.body.user.user_type_id == 1) {
+                            this.router.navigate(['/admindashboard']);
+                        } else if (data.body.user.user_type_id == 2) {
+                            this.router.navigate(['/customerdashboard']);
+                        } else if(data.body.user.user_type_id == 3) {
+                            this.router.navigate(['/realtordashboard']);
+                        }
+                    }else{
+                        this.processed = false;
+                        this.loading = false;
                     }
-
-                    this.toaster.success('Welcome Back to Foan Realties!');
                 }, (err: any) => {
-                    this.loading = false;
                     if (err instanceof HttpErrorResponse) {
-                        this.toaster.error(err.error, 'Authentication Problem', {
-                            timeOut: 2000,
-                        });
+                        this.processed = false;
+                        this.loading = false;
+                        
                     }
                 }
             );

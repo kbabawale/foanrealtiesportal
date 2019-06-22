@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component,OnInit } from "@angular/core";
 import * as FusionCharts from 'fusioncharts';
+import { UserService } from '../_services/user.service';
+import {User} from 'src/app/_models/user';
 
 @Component({
     selector: 'app-adminDashboard',
@@ -12,7 +14,36 @@ export class AdminDashboardComponent {
     width: string;
     height: string;
 
-    constructor() {
+    user_details: User = {
+        UserID: 0,
+        FirstName: '',
+        LastName: '',
+        UserRole: 0,
+        Email: '',
+        Password: '',
+        MaritalStatus: '',
+        DOB: '',
+        Nationality: '',
+        Address: '',
+        PhoneNumber: '',
+        ProfilePix: "../../assets/img/avatar1.jpg",
+        NokName: '',
+        NokAddress: '',
+        NokEmail: '',
+        NokNumber: '',
+        EmployerName: '',
+        EmployerAddress: '',
+        EmployerNumber: '',
+        EmploymentPosition: '',
+        ReferralName: '',
+        ReferralNumber: '',
+        ReferralAddress: '',
+        ReferralEmail: '',
+        DateCreated: '',
+        DateModified: ''
+    };
+
+    constructor(private UserService:UserService) {
         this.type = 'timeseries';
         this.width = '100%';
         this.height = '300';
@@ -34,6 +65,17 @@ export class AdminDashboardComponent {
             ]
         };
         this.fetchData();
+    }
+
+    ngOnInit() {
+        
+        //get all details of admin
+        this.UserService.getUserDetails().subscribe(data=>{
+            
+            this.user_details.FirstName = data.user[0].firstname;
+            this.user_details.LastName = data.user[0].lastname;
+            
+        });
     }
 
 

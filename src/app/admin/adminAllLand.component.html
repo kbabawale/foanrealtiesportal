@@ -28,14 +28,9 @@
                 -------------------->
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a [routerLink]="['/admindashboard']">Home</a>
                 </li>
-                <li class="breadcrumb-item">
-                    <a href="index.html">Products</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <span>Laptop with retina screen</span>
-                </li>
+                
             </ul>
             <!--------------------
                 END - Breadcrumbs
@@ -205,7 +200,7 @@
                     <div class="rentals-list">
                         <div class="list-controls">
                             <div class="list-info">
-                                1,240 Properties found in Brooklyn, NY
+                                {{searchTermResults}}
                             </div>
                             <div class="list-order">
                                 <label for="">Order By:</label><select>
@@ -226,34 +221,36 @@
                           START - Property Item
                           -------------------->
                             <div class="property-item" *ngFor="let land of lands">
-                                <a class="item-media-w" [routerLink]="['/adminsinglelandproperty']">
+                                <a class="item-media-w" [routerLink]="['/adminsinglelandproperty', land.land_info[0].pid]">
                                     <div class="item-media">
-                                        <img src="../../assets/img/land/{{ land.LandImage }}">
+                                        <app-propertyimage [sourc]="land.land_info[0].pid" [sourc2]="land.images[0].filename"></app-propertyimage>
                                     </div>
                                 </a>
                                 <div class="item-info">
                                     <div class="item-features">
                                         <div class="feature">
-                                            {{ land.SoilType }}
+                                            <!-- no of plots -->
+                                            {{land.land_info[0].no_of_plots}} plot(s)
                                         </div>
                                         <div class="feature">
-                                            {{ land.Area }}
+                                            <!-- land area -->
+                                            {{land.location[0].city}}
                                         </div>
                                         <div class="feature">
-                                            {{ land.NumberOfPlots }}
+                                            {{land.location[0].state}}
                                         </div>
                                     </div>
                                     <h3 class="item-title">
-                                        <a [routerLink]="['/adminsinglelandproperty']">{{ land.LandName }}</a>
+                                        <a [routerLink]="['/adminsinglelandproperty', land.land_info[0].pid]">{{land.land_info[0].name}}</a>
                                     </h3>
-                                    <div>{{ land.LandAddress }}</div>
+                                    <div>{{land.land_info[0].price|currency:'NGN':'symbol'}}</div>
                                     <div class="item-price-buttons">
                                         <div class="item-price">
                                             <strong>{{ land.Price }}</strong><span>{{ land.Per_Acre }}</span>
                                         </div>
                                         <div class="item-buttons">
                                             <a class="btn btn-outline-primary"
-                                                [routerLink]="['/adminsinglelandproperty']"><span>Details</span><i
+                                            [routerLink]="['/adminsinglelandproperty', land.land_info[0].pid]"><span>Details</span><i
                                                     class="os-icon os-icon-arrow-2-right"></i></a>
                                         </div>
                                     </div>
@@ -265,7 +262,7 @@
                         </div>
                         <div class="pagination-w">
                             <div class="pagination-info">
-                                Showing 20-40 Properties found in Brooklyn, NY
+                                {{searchTermResults}}
                             </div>
                             <div class="pagination-links">
                                 <ul class="pagination">

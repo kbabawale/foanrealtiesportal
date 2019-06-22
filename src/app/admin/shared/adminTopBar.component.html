@@ -6,7 +6,7 @@
         <!-- 
             START - Messages Link in secondary top menu
              -->
-        <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
+        <!-- <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
             <i class="os-icon os-icon-others-43"></i>
             <div class="new-messages-count">
                 12
@@ -75,16 +75,16 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!-- 
             END - Messages Link in secondary top menu
              -->
 
 
         <!-- START - Tour icon -->
-        <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
+        <!-- <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
             <i class="os-icon os-icon-eye"></i>
-        </div>
+        </div> -->
 
         <!-- END - Tour icon -->
 
@@ -94,16 +94,16 @@
         <div class="logged-user-w">
             <div class="logged-user-i">
                 <div class="avatar-w">
-                    <img alt="" src="../../assets/img/avatar1.jpg">
+                    <img alt="" [src]="user_details.ProfilePix">
                 </div>
                 <div class="logged-user-menu color-style-bright">
                     <div class="logged-user-avatar-info">
                         <div class="avatar-w">
-                            <img alt="" src="../../assets/img/avatar1.jpg">
+                            <img alt="" [src]="user_details.ProfilePix">
                         </div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">
-                                {{currentUser.FirstName}} {{currentUser.LastName}}
+                                {{user_details.FirstName}} {{user_details.FirstName}}
                             </div>
                             <div class="logged-user-role">
                                 Administrator
@@ -115,7 +115,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="#"><i
+                            <a [routerLink]="['/adminsettings']"><i
                                     class="os-icon os-icon-user-male-circle2"></i><span>Profile
                                     Details</span></a>
                         </li>
@@ -123,7 +123,7 @@
                             <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="os-icon os-icon-ui-46"></i><span>Settings</span></a>
+                            <a [routerLink]="['/adminsettings']"><i class="os-icon os-icon-ui-46"></i><span>Settings</span></a>
                         </li>
                         <li>
                             <a (click)="logout()"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>

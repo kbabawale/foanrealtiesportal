@@ -1,0 +1,9 @@
+div#progressbar{
+    border:1px solid green;
+    background: green;
+    color:white;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
