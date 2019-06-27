@@ -29,10 +29,10 @@
                                  -->
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Customer Dashboard</a>
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="index.html">Invoices</a>
+                    <a [routerLink]="['/adminallrealtors']">Realtors</a>
                 </li>
             </ul>
             <!-- 
@@ -50,17 +50,18 @@
                                 <div class="controls-above-table">
                                     <div class="row">
                                         <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search Realtors" type="text" [(ngModel)]="typedTerm">
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <a class="btn btn-sm btn-success float-right "
                                                 data-target="#onboardingFormModal" data-toggle="modal" href="#">Add New
                                                 Realtor</a>
 
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- Modal for Add new Realtor-->
-                                    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                    <!-- <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
                                         id="onboardingFormModal" role="dialog" tabindex="-1">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -106,7 +107,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
@@ -117,52 +118,13 @@
                                             START - Table with actions
                                             ------------------  -->
                                 <div class="table-responsive">
-                                    <table class="table table-padded">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">
-                                                    Realtor Name
-                                                </th>
-                                                <th class="text-center">
-                                                    Email
-                                                </th>
-                                                <th class="text-center">
-                                                    Phone Number
-                                                </th>
-                                                <th class="text-center">
-                                                    Edit & Delete Realtor
-                                                </th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let realtor of realtors">
-                                                <td class="text-center">
-                                                    {{ realtor.RealtorName }}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{ realtor.RealtorEmail }}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{ realtor.PhoneNumber }}
-                                                </td>
-                                                <td class="row-actions">
-                                                    <a class="success" data-target="#exampleModal1" data-toggle="modal"
-                                                        href="#"><i class="os-icon os-icon-ui-49"></i></a>
-                                                    <a class="danger" href="#"><i class="os-icon os-icon-ui-15"></i></a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a class="badge badge-success"
-                                                        [routerLink]="['/adminrealtorsinglepage']">View</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <app-realtor [searchTerm]="typedTerm"></app-realtor>
                                 </div>
+                                
 
 
                                 <!-- Edit Modal-->
-                                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                <!-- <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
                                     id="exampleModal1" role="dialog" tabindex="-1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -206,7 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!--------------------
                                             END - Table with actions

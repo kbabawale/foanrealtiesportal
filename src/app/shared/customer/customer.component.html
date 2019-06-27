@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12 text-center text-success" *ngIf="changedStat">
+    Updating Customer Account...
+  </div>
+</div>
+
+<table class="table table-padded">
+    <thead>
+        <tr>
+            <th class="text-center">
+                Customer Name
+            </th>
+            <th class="text-center">
+                Email
+            </th>
+            <th class="text-center">
+                Phone Number
+            </th>
+            <th class="text-center">
+                Account Status
+            </th>
+            <th class="text-center">
+                View Customers
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td class="text-center">
+                {{ customer.firstname }} {{customer.lastname}}
+            </td>
+            <td class="text-center">
+                {{ customer.email }}
+            </td>
+            <td class="text-center">
+                {{ customer.phone_number}}
+            </td>
+            <td class="row-actions">
+                <div *ngIf="customer.status">
+                    <button type="button" (click)="editAccountStatus('deactivate', customer.uid)" class="btn btn-danger">Deactivate Account</button>
+                </div>
+                <div *ngIf="!customer.status">
+                    <button type="button" (click)="editAccountStatus('activate', customer.uid)" class="btn btn-success">Activate Account</button>
+                </div>
+
+            </td>
+            <td class="text-center">
+                <a class="badge badge-success" 
+                [routerLink]="['/admincustomersinglepage', customer.uid]">View</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

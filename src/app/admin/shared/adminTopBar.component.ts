@@ -69,8 +69,9 @@ export class AdminTopBarComponent implements OnInit, OnDestroy {
 
     logout(){
         //destroy all localstorage entries
-        localStorage.removeItem('FLRS-D');
-        localStorage.removeItem('FLRS-T');
+        localStorage.removeItem('FRLS-D');
+        localStorage.removeItem('FRLS-T');
+        localStorage.removeItem('FRLS');
         this.router.navigate(['/login']);
     }
 

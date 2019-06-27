@@ -13,6 +13,12 @@ export class AdminDashboardComponent {
     type: string;
     width: string;
     height: string;
+    statPurchases:any;
+    statNewCustomers:any;
+    statTopCustomers:any;
+    genPro;
+    genReal;
+    genCus;
 
     user_details: User = {
         UserID: 0,
@@ -42,6 +48,8 @@ export class AdminDashboardComponent {
         DateCreated: '',
         DateModified: ''
     };
+
+    topRealtors:any;
 
     constructor(private UserService:UserService) {
         this.type = 'timeseries';
@@ -75,6 +83,41 @@ export class AdminDashboardComponent {
             this.user_details.FirstName = data.user[0].firstname;
             this.user_details.LastName = data.user[0].lastname;
             
+        });
+
+        this.UserService.loadTopRealtors().subscribe(data=>{
+            if(data.status==200)
+                this.topRealtors = data.body.top_realtors;
+        });
+
+        this.UserService.getStatPurchases().subscribe(data=>{
+            if(data.status==200){
+                this.statPurchases = data.body.purchased_properties;
+                //console.log(this.statPurchases);
+            }
+        });
+
+        this.UserService.getNewCustomers().subscribe(data=>{
+            if(data.status==200){
+                this.statNewCustomers = data.body.user;
+                //console.log(this.statNewCustomers);
+            }
+        });
+
+        this.UserService.getTopCustomers().subscribe(data=>{
+            if(data.status==200){
+                this.statTopCustomers = data.body.user;
+                // console.log(this.statTopCustomers);
+            }
+        });
+
+        this.UserService.getGeneralStats().subscribe(data=>{
+            if(data.status==200){
+                this.genPro = data.body.properties;
+                this.genReal = data.body.realtors;
+                this.genCus = data.body.customers;
+                
+            }
         });
     }
 

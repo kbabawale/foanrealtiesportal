@@ -49,8 +49,9 @@
       START - Rentals Content
       -------------------->
         <div class="property-single">
-          <div class="property-media" style="background-image: url(./assets/img/landplot.jpg)">
-          </div>
+            <!-- <app-singlepageimage [sourc3]="pid" [sourc4]="imagea"></app-singlepageimage>  style="background-image: url({{dataUrl$|async}})"-->
+          <div class="property-media" style="background-image: url('../assets/img/landplot.jpg')"></div>
+          
           <div class="property-info-w">
             <div class="property-info-main">
               <div class="badge badge-red">
@@ -140,33 +141,28 @@
                   </div>
                 </div>
                 <div class="property-section-body">
-                  <div class="row">
-                    <div class="col-sm-6">
+                  <div class="row" *ngIf="documentcount">
+                    <div class="col-sm-6" *ngFor="let item of land.agreements;let i = index;">
                       <div class="documents">
                         <h5>
-                          Certificate of Ownership
+                          {{item.title}}
                         </h5>
                         <p>
-                          PDF <span class="float-right"><i class="icon-cloud-download"></i> Download</span>
+                            <app-propertydownload [sourc]="item.filename" [sourc2]="item.pid"></app-propertydownload>
                         </p>
-                        <p>Uploaded 03/02/19</p>
+                        <p>Uploaded {{item.createdAt|date :'short'}}</p>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="documents">
-                        <h5>
-                          Certificate of Ownership
-                        </h5>
-                        <p>
-                          PDF <span class="float-right"><i class="icon-cloud-download"></i> Download</span>
-                        </p>
-                        <p>Uploaded 03/02/19</p>
-                      </div>
+                    
+                  </div>
+                  <div *ngIf="!documentcount" class="col-md-12">
+                    <div>
+                      <p class="text-center">No Documents For This Property</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="property-section">
+              <!-- <div class="property-section">
                 <div class="property-section-header">
                   Extra Charges
                   <div class="filter-toggle">
@@ -208,7 +204,7 @@
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="property-section">
                 <div class="property-section-header">
                   Facts &amp; Features
@@ -218,20 +214,21 @@
                 </div>
                 <div class="property-section-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" *ngFor="let item of land.facilities">
                       <ul>
                         <li>
-                          <i class="os-icon os-icon-fire"></i><span>Is Not Fenced </span>
+                            <!-- <i class="os-icon os-icon-fire"></i> -->
+                          <span>{{item.name}}</span>
                         </li>
                       </ul>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <ul>
                         <li>
                           <i class="os-icon os-icon-home-11"></i><span>Is Cleared</span>
                         </li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -244,16 +241,15 @@
                 </div>
                 <div class="property-section-body">
                   <ul>
-                    <li>
-                      No smoking
-                    </li>
-                    <li>
-                      Not suitable for pets
-                    </li>
-                    <li>
-                      Check in is anytime after 3PM
+                    <li *ngFor="let item of land.rules">
+                      {{item.rule}}
                     </li>
                   </ul>
+                  <div *ngIf="!rulecount" class="col-md-12">
+                    <div>
+                      <p class="text-center">No Rules For This Property</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="property-section">
@@ -264,13 +260,11 @@
                   </div>
                 </div>
                 <div class="property-section-body">
-                  <h6>
-                    Strict
-                  </h6>
-                  <p>
-                    Cancel up to 7 days before your trip and get a 50% refund. Cancel within 7 days of your trip and the
-                    reservation is non-refundable.
-                  </p>
+                  <ul>
+                    <li *ngFor="let item of land.cancellation_policy">
+                      {{item.policy}}
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="property-section">
@@ -290,6 +284,9 @@
                       <thead>
                         <tr>
                           <th>
+                            &nbsp;
+                          </th>
+                          <th>
                             Name
                           </th>
                           <th>
@@ -301,39 +298,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr *ngFor="let item of land.realtors">
                           <td class="text-center">
-                            Adediwura Johnson
+                            <button title="Unassign This Realtor" class="btn btn-danger" (click)="unassign($event, item.rid)"><i class="fa fa-trash-alt"></i></button>
                           </td>
                           <td class="text-center">
-                            adejuicythnigs@all.com
+                            {{item.realtor_name}}
                           </td>
                           <td class="text-center">
-                            09034567323
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            Adediwura Johnson
+                            {{item.email}}
                           </td>
                           <td class="text-center">
-                            adejuicythnigs@all.com
-                          </td>
-                          <td class="text-center">
-                            09034567323
+                            {{item.phone_number}}
                           </td>
                         </tr>
-                        <tr>
-                          <td class="text-center">
-                            Adediwura Johnson
-                          </td>
-                          <td class="text-center">
-                            adejuicythnigs@all.com
-                          </td>
-                          <td class="text-center">
-                            09034567323
-                          </td>
-                        </tr>
+                        
                       </tbody>
                     </table>
                   </div>
@@ -363,26 +342,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr *ngFor="let item of land.buyers">
                           <td class="text-center">
-                            Alonga Jons
+                            {{item.customer_name}}
                           </td>
                           <td class="text-center">
-                            alongjons@allthem.com
+                            {{item.email}}
                           </td>
                           <td class="text-center">
-                            08175061874
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            Alonga Jons
-                          </td>
-                          <td class="text-center">
-                            alongjons@allthem.com
-                          </td>
-                          <td class="text-center">
-                            08175061874
+                            {{item.phone_number}}
                           </td>
                         </tr>
                       </tbody>
@@ -405,22 +373,36 @@
                         aria-hidden="true">
                         &times;</span></button>
                   </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="" class="float-left">
-                          Please Select Realtor</label>
-                        <select class="form-control">
-                          <option value="">-- Select Realtor --</option>
-                          <option>Balogun Abdulrahman</option>
-                        </select>
+                  <form [formGroup]="addLandRealtor" (ngSubmit)="onLRSubmit()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="" class="float-left">
+                            Please Select Realtor</label>
+                          <select
+                            formControlName="realt"
+                            class="form-control"
+                            [ngClass]="{'is-invalid': g.realt.touched && g.realt.invalid}">
+                            <option selected [ngValue]="null">-- Select Realtor --</option>
+                            <option *ngFor="let item of realtors;" [value]="item.uid">{{item.firstname}} {{item.lastname}}</option>
+                          </select>
+                        </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                      <button [disabled]="addLandRealtor.invalid" class="btn btn-primary" type="submit"> Assign Realtor</button>
+
+                      <div>
+                          <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                          *ngIf="landinfosubmitted1=='true'">Realtor Assigned To This Property</p>
                       </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">
-                      Close</button><button class="btn btn-primary" type="button"> Assign Realtor</button>
-                  </div>
+                      <div>
+                          <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                          *ngIf="landinfosubmitted1=='false'">An Error Occurred</p>
+                      </div>
+                      
+                    </div>
+                  </form>  
                 </div>
               </div>
             </div>
@@ -468,15 +450,55 @@
           <!--------------------
             START - Related Properties
             ------------------              -->
-          <div class="related-listings-w">
+          <!-- <div class="related-listings-w">
             <h2 class="property-section-big-header">
               Related Properties
             </h2>
-            <div class="related-listings">
+            <div class="related-listings"> -->
               <!--------------------
                 START - Property Item
                 -------------------->
-              <div class="property-item">
+              <!-- <div class="property-item">
+                <a class="item-media-w" [routerLink]="['/adminsinglelandproperty']">
+                  <div class="item-media" style="background-image: url(./assets/img/landplot.jpg)">
+                  </div>
+                </a>
+                <div class="item-info">
+                  <div class="item-features">
+                    <div class="feature">
+                      Beach
+                    </div>
+                    <div class="feature">
+                      500 SqMt
+                    </div>
+                    <div class="feature">
+                      32 plots
+                    </div>
+                  </div>
+                  <h3 class="item-title">
+                    <a [routerLink]="['/adminsinglelandproperty']">3 Acres of Land</a>
+                  </h3>
+                  <div>1, Wale Balogun close off pa shekoni crescent Ajah Lagos
+                    state</div>
+                  <div class="item-price-buttons">
+                    <div class="item-price">
+                      <strong>$250</strong><span>/per acre</span>
+                    </div>
+                    <div class="item-buttons">
+                      <a class="btn btn-outline-primary"
+                        [routerLink]="['/adminsinglelandproperty']"><span>Details</span><i
+                          class="os-icon os-icon-arrow-2-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!--------------------
+                END - Property Item
+                -------------------->
+              <!--------------------
+                START - Property Item
+                -------------------->
+              <!-- <div class="property-item">
                 <a class="item-media-w" [routerLink]="['/adminsinglelandproperty']">
                   <div class="item-media" style="background-image: url(./assets/img/landplot.jpg)">
                   </div>
@@ -509,14 +531,14 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!--------------------
                 END - Property Item
                 -------------------->
               <!--------------------
                 START - Property Item
                 -------------------->
-              <div class="property-item">
+              <!-- <div class="property-item">
                 <a class="item-media-w" [routerLink]="['/adminsinglelandproperty']">
                   <div class="item-media" style="background-image: url(./assets/img/landplot.jpg)">
                   </div>
@@ -549,52 +571,12 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!--------------------
                 END - Property Item
                 -------------------->
-              <!--------------------
-                START - Property Item
-                -------------------->
-              <div class="property-item">
-                <a class="item-media-w" [routerLink]="['/adminsinglelandproperty']">
-                  <div class="item-media" style="background-image: url(./assets/img/landplot.jpg)">
-                  </div>
-                </a>
-                <div class="item-info">
-                  <div class="item-features">
-                    <div class="feature">
-                      Beach
-                    </div>
-                    <div class="feature">
-                      500 SqMt
-                    </div>
-                    <div class="feature">
-                      32 plots
-                    </div>
-                  </div>
-                  <h3 class="item-title">
-                    <a [routerLink]="['/adminsinglelandproperty']">3 Acres of Land</a>
-                  </h3>
-                  <div>1, Wale Balogun close off pa shekoni crescent Ajah Lagos
-                    state</div>
-                  <div class="item-price-buttons">
-                    <div class="item-price">
-                      <strong>$250</strong><span>/per acre</span>
-                    </div>
-                    <div class="item-buttons">
-                      <a class="btn btn-outline-primary"
-                        [routerLink]="['/adminsinglelandproperty']"><span>Details</span><i
-                          class="os-icon os-icon-arrow-2-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--------------------
-                END - Property Item
-                -------------------->
-            </div>
-          </div>
+            <!-- </div>
+          </div> -->
           <!--------------------
             END - Related Properties
             ------------------        -->

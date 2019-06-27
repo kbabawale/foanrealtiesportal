@@ -1,0 +1,45 @@
+<table class="table table-padded">
+    <thead>
+        <tr>
+            <th class="text-center">
+                Realtor Name
+            </th>
+            <th class="text-center">
+                Email
+            </th>
+            <th class="text-center">
+                Phone Number
+            </th>
+            <th class="text-center">
+                Account Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let realtor of realtors">
+            <td class="text-center">
+                {{ realtor.firstname }} {{realtor.lastname}}
+            </td>
+            <td class="text-center">
+                {{ realtor.email }}
+            </td>
+            <td class="text-center">
+                {{ realtor.phone_number}}
+            </td>
+            <td class="row-actions">
+                <div *ngIf="realtor.status">
+                    <button type="button" (click)="editAccountStatus('deactivate', realtor.uid)" class="btn btn-danger">Deactivate Account</button>
+                </div>
+                <div *ngIf="!realtor.status">
+                    <button type="button" (click)="editAccountStatus('activate', realtor.uid)" class="btn btn-success">Activate Account</button>
+                </div>
+
+            </td>
+            <td class="text-center">
+                <a class="badge badge-success" 
+                [routerLink]="['/adminrealtorsinglepage', realtor.uid]">View</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

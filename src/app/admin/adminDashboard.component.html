@@ -29,14 +29,14 @@
              -->
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a [routerLink]="['/admindashboard']">Home</a>
                 </li>
-                <li class="breadcrumb-item">
+                <!-- <li class="breadcrumb-item">
                     <a href="index.html">Products</a>
                 </li>
                 <li class="breadcrumb-item">
                     <span>Laptop with retina screen</span>
-                </li>
+                </li> -->
             </ul>
             <!-- 
             END - Breadcrumbs
@@ -47,46 +47,46 @@
             <div class="content-i">
                 <div class="content-box">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-md-12">
                             <div class="element-wrapper">
                                 <div class="element-content">
                                     <div class="row">
-                                        <div class="col-sm-4 col-xxxl-3">
-                                            <a class="element-box el-tablo" [routerLink]="['/adminallcustomers']">
+                                        <div class="col-md-4">
+                                            <a href="javascript:void(0);" class="element-box el-tablo" >
                                                 <div class="label">
                                                     No Of Customers
                                                 </div>
                                                 <div class="value">
-                                                    572
+                                                    {{genCus}}
                                                 </div>
                                                 <div class="trending trending-up-basic">
-                                                    <span>12%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                                    <!-- <span>12%</span><i class="os-icon os-icon-arrow-up2"></i> -->
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-4 col-xxxl-3">
-                                            <a class="element-box el-tablo" [routerLink]="['/adminallrealtors']">
+                                        <div class="col-md-4">
+                                            <a href="javascript:void(0);" class="element-box el-tablo">
                                                 <div class="label">
                                                     No Of Realtors
                                                 </div>
                                                 <div class="value">
-                                                    457
+                                                    {{genReal}}
                                                 </div>
                                                 <div class="trending trending-up-basic">
-                                                    <span>19%</span><i class="os-icon os-icon-arrow-up2"></i>
+                                                    <!-- <span>19%</span><i class="os-icon os-icon-arrow-up2"></i> -->
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-4 col-xxxl-3">
-                                            <a class="element-box el-tablo" [routerLink]="['/adminallland']">
+                                        <div class="col-md-4">
+                                            <a href="javascript:void(0);" class="element-box el-tablo" >
                                                 <div class="label">
                                                     No Of Properties
                                                 </div>
                                                 <div class="value">
-                                                    125
+                                                    {{genPro}}
                                                 </div>
                                                 <div class="trending trending-down-basic">
-                                                    <span>45%</span><i class="os-icon os-icon-arrow-down"></i>
+                                                    <!-- <span>45%</span><i class="os-icon os-icon-arrow-down"></i> -->
                                                 </div>
                                             </a>
                                         </div>
@@ -96,10 +96,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-xxxl-6">
+                        <div class="col-md-12">
                             <div class="element-wrapper">
                                 <h6 class="element-header">
-                                    All Purchase
+                                    Recent Purchases
                                 </h6>
                                 <div class="element-box">
                                     <div class="table-responsive">
@@ -121,48 +121,31 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr *ngFor="let item of statPurchases">
                                                     <td class="text-center">
-                                                        <a class="badge badge-success" href="">Approved</a>
+                                                        {{item.purchases_details.status}}
                                                     </td>
                                                     <td class="text-center">
-                                                        <a [routerLink]="['/adminsinglelandproperty']">4 Plots Of
-                                                            Land</a>
+                                                        <a [routerLink]="['/adminsinglelandproperty', item.land_info[0].pid]">{{item.land_info[0].name}}</a>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a [routerLink]="['/admincustomersinglepage']">Olorungbe
-                                                            Adio</a>
+                                                        <a [routerLink]="['/admincustomersinglepage', item.purchases_details.cid]">{{item.purchases_details.customer_name}}</a>
                                                     </td>
                                                     <td class="text-center">
-                                                        N 23,400
+                                                        {{item.land_info[0].price|currency:'NGN'}}
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="text-center">
-                                                        <a class="badge badge-danger" href="">Disapproved</a>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a [routerLink]="['/adminsinglelandproperty']">2 Acres Of
-                                                            Land</a>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a [routerLink]="['/admincustomersinglepage']">Mamodu
-                                                            Agebkoya</a>
-                                                    </td>
-                                                    <td class="row-actions">
-                                                        N 1,200
-                                                    </td>
-                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-none d-xxxl-block col-xxxl-6">
+                        <div class="col-md-12">
                             <!--START - Questions per Product-->
                             <div class="element-wrapper">
-                                <div class="element-actions">
+                                <!-- <div class="element-actions">
                                     <form class="form-inline justify-content-sm-end">
                                         <select class="form-control form-control-sm rounded">
                                             <option value="Pending">
@@ -176,112 +159,57 @@
                                             </option>
                                         </select>
                                     </form>
-                                </div>
+                                </div> -->
                                 <h6 class="element-header">
-                                    Inventory Stats
+                                    New Customers
                                 </h6>
                                 <div class="element-box">
-                                    <div class="os-progress-bar primary">
-                                        <div class="bar-labels">
-                                            <div class="bar-label-left">
-                                                <span class="bigger">Eyeglasses</span>
-                                            </div>
-                                            <div class="bar-label-right">
-                                                <span class="info">25 items / 10 remaining</span>
-                                            </div>
-                                        </div>
-                                        <div class="bar-level-1" style="width: 100%">
-                                            <div class="bar-level-2" style="width: 70%">
-                                                <div class="bar-level-3" style="width: 40%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="os-progress-bar primary">
-                                        <div class="bar-labels">
-                                            <div class="bar-label-left">
-                                                <span class="bigger">Outwear</span>
-                                            </div>
-                                            <div class="bar-label-right">
-                                                <span class="info">18 items / 7 remaining</span>
-                                            </div>
-                                        </div>
-                                        <div class="bar-level-1" style="width: 100%">
-                                            <div class="bar-level-2" style="width: 40%">
-                                                <div class="bar-level-3" style="width: 20%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="os-progress-bar primary">
-                                        <div class="bar-labels">
-                                            <div class="bar-label-left">
-                                                <span class="bigger">Shoes</span>
-                                            </div>
-                                            <div class="bar-label-right">
-                                                <span class="info">15 items / 12 remaining</span>
-                                            </div>
-                                        </div>
-                                        <div class="bar-level-1" style="width: 100%">
-                                            <div class="bar-level-2" style="width: 60%">
-                                                <div class="bar-level-3" style="width: 30%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="os-progress-bar primary">
-                                        <div class="bar-labels">
-                                            <div class="bar-label-left">
-                                                <span class="bigger">Jeans</span>
-                                            </div>
-                                            <div class="bar-label-right">
-                                                <span class="info">12 items / 4 remaining</span>
-                                            </div>
-                                        </div>
-                                        <div class="bar-level-1" style="width: 100%">
-                                            <div class="bar-level-2" style="width: 30%">
-                                                <div class="bar-level-3" style="width: 10%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 border-top pt-3">
-                                        <div class="element-actions d-none d-sm-block">
-                                            <form class="form-inline justify-content-sm-end">
-                                                <select class="form-control form-control-sm form-control-faded">
-                                                    <option selected="true">
-                                                        Last 30 days
-                                                    </option>
-                                                    <option>
-                                                        This Week
-                                                    </option>
-                                                    <option>
-                                                        This Month
-                                                    </option>
-                                                    <option>
-                                                        Today
-                                                    </option>
-                                                </select>
-                                            </form>
-                                        </div>
-                                        <h6 class="element-box-header">
-                                            Inventory History
-                                        </h6>
-                                        <div class="el-chart-w">
-                                            <canvas data-chart-data="13,28,19,24,43,49,40,35,42,46,38,32,45" height="50"
-                                                id="liteLineChartV3" width="300"></canvas>
-                                        </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-padded">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">
+                                                        Customer Name
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Phone Number
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Email Address
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of statNewCustomers">
+                                                    <td class="text-center">
+                                                        <a [routerLink]="['/admincustomersinglepage', item.uid]">{{item.firstname}} {{item.lastname}}</a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{item.phone_number}}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{item.email}}
+                                                    </td>
+                                                    
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                             <!--END - Questions per product                  -->
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-xxxl-9">
+                    <!-- <div class="row">
+                        <div class="col-md-12">
                             <div class="element-wrapper">
                                 <h6 class="element-header mb-3">
                                     Sales Performance
                                 </h6>
 
                                 <div class="row">
-                                    <div class="col-sm-4 col-xxxl-3">
+                                    <div class="col-md-4">
                                         <a class="element-box el-tablo" [routerLink]="['/adminallcustomers']">
                                             <div class="label">
                                                 No Of Customers
@@ -294,7 +222,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-sm-4 col-xxxl-3">
+                                    <div class="col-md-4">
                                         <a class="element-box el-tablo" [routerLink]="['/adminallrealtors']">
                                             <div class="label">
                                                 No Of Realtors
@@ -307,7 +235,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-sm-4 col-xxxl-3">
+                                    <div class="col-md-4">
                                         <a class="element-box el-tablo" [routerLink]="['/adminallland']">
                                             <div class="label">
                                                 No Of Properties
@@ -322,8 +250,8 @@
                                     </div>
                                 </div>
 
-                                <!-- <fusioncharts [type]="type" [width]="width" [height]="height" [dataSource]="dataSource">
-                                </fusioncharts> -->
+                                 <fusioncharts [type]="type" [width]="width" [height]="height" [dataSource]="dataSource">
+                                </fusioncharts>
                             </div>
                         </div>
                         <div class="d-none d-xxxl-block col-xxxl-3">
@@ -389,7 +317,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- 
               START - Sidebar
@@ -456,62 +384,73 @@
                     <!-- 
                 START - Support Agents
                  -->
+                 <br><br>
+                    <div class="element-wrapper">
+                        <h6 class="element-header">
+                            Top Selling Customers
+                        </h6>
+                        <div class="element-box-tp">
+                            <div class="profile-tile" *ngFor="let items of statTopCustomers">
+                                <a class="profile-tile-box" href="users_profile_small.html">
+                                    <div class="pt-avatar-w">
+                                        <img alt="Profile Picture" src="../../assets/img/placeholder.png">
+                                    </div>
+                                    <div class="pt-user-name">
+                                        {{items.firstname}}
+                                    </div>
+                                </a>
+                                <div class="profile-tile-meta">
+                                    <ul>
+                                        <li>
+                                            Email<strong>{{items.email}}</strong>
+                                        </li>
+                                        <li>
+                                            Tel:<strong>{{items.phone_number}}</strong>
+                                        </li>
+                                    </ul>
+                                    <div class="pt-btn">
+                                        <a class="btn btn-success btn-sm"
+                                            [routerLink]="['/admincustomersinglepage', items.uid]">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
                     <div class="element-wrapper">
                         <h6 class="element-header">
                             Top Realtors
                         </h6>
                         <div class="element-box-tp">
-                            <div class="profile-tile">
+                            <div class="profile-tile" *ngFor="let item of topRealtors">
                                 <a class="profile-tile-box" href="users_profile_small.html">
                                     <div class="pt-avatar-w">
-                                        <img alt="Profile Picture" src="">
+                                        <img alt="Profile Picture" src="../../assets/img/placeholder.png">
                                     </div>
                                     <div class="pt-user-name">
-                                        Peter Adebayo
+                                        {{item.firstname}}
                                     </div>
                                 </a>
                                 <div class="profile-tile-meta">
                                     <ul>
                                         <li>
-                                            Email<strong>aguns@gmail.com</strong>
+                                            Email<strong>{{item.email}}</strong>
                                         </li>
                                         <li>
-                                            Tel:<strong>08123456723</strong>
+                                            Tel:<strong>{{item.phone_number}}</strong>
                                         </li>
                                     </ul>
                                     <div class="pt-btn">
                                         <a class="btn btn-success btn-sm"
-                                            [routerLink]="['/adminrealtorsinglepage']">View Profile</a>
+                                            [routerLink]="['/adminrealtorsinglepage', item.uid]">View Profile</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="profile-tile">
-                                <a class="profile-tile-box" href="users_profile_small.html">
-                                    <div class="pt-avatar-w">
-                                        <img alt="" src="../../assets/img/avatar3.jpg">
-                                    </div>
-                                    <div class="pt-user-name">
-                                        Agun Gbolahan
-                                    </div>
-                                </a>
-                                <div class="profile-tile-meta">
-                                    <ul>
-                                        <li>
-                                            Email<strong>aguns@gmail.com</strong>
-                                        </li>
-                                        <li>
-                                            Tel:<strong>08123456723</strong>
-                                        </li>
-                                    </ul>
-                                    <div class="pt-btn">
-                                        <a class="btn btn-success btn-sm"
-                                            [routerLink]="['/adminrealtorsinglepage']">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
-                    <!-- 
+                <!-- 
                 END - Support Agents
                  -->
                 </div>

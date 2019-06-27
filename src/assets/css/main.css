@@ -23655,9 +23655,18 @@ TODO Application
 
 .property-single .property-media {
   height: 60vh;
-  position: relative;
+  /* border:1px solid yellow;
+  float:left;
+  clear:both; */
+  position: relative; 
   background-size: cover;
   background-position: center center;
+}
+.property-single .property-media img{
+  /* width:60%;
+  overflow:hidden;
+  justify-content:center; */
+  
 }
 
 .property-single .property-media .media-buttons {

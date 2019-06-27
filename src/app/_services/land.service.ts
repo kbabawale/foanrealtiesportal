@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface myStates{
@@ -151,5 +151,40 @@ export class LandService {
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
     return this.http.post<myProperty>('/api/property/all', {"pid":pid},{headers: headers, observe: 'response'});
+  }
+
+  downloadFile(filename, pid):Observable<any>{
+    let headers = new HttpHeaders({
+      'responseType': 'blob',
+      'Content-Type': 'application/json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+    return this.http.post('/api/download', {"filename":filename, "pid":pid},{headers: headers});
+  }
+
+  //addLandRealtor
+  addLandRealtor(pid, rid){
+        
+    let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType': 'json',
+        'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+    return this.http.post('/api/property/realtors/add', {"pid":pid,
+    "rid":rid},{headers: headers, observe: 'response'});
+    
+  }
+
+  //unassignRealtor
+  unassignRealtor(pid, rid){
+    
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+  });
+
+    return this.http.post('/api/property/realtors/delete', {"pid":pid, "rid":rid}, {headers:headers, observe:'response'});
+    
   }
 }

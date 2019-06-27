@@ -1,0 +1,20 @@
+<div class="container element-content">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let re of receipts">
+            <a [routerLink]="['/adminsinglereceipt', re.reid]" class="element-box el-tablo">
+                <div class=" mb-3 text-danger">
+                    {{re.receipt_number}}
+                </div>
+                <div class="">
+                    {{re.description}}
+                </div>
+                <div class="value mt-3">
+                    {{re.price|currency:'NGN'}}
+                </div>
+                <div class="mt-4 text-size-1">
+                    <i class="os-icon os-icon-clock mr-1"></i>{{re.due_date}}
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

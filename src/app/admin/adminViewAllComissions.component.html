@@ -1,0 +1,148 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                          START - Mobile Menu
+                           -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                          START - Main Menu
+                           -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+                          END - Main Menu
+                           -->
+
+        <div class="content-w">
+            <!-- 
+                            START - Top Bar
+                             -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+                            END - Top Bar
+                             -->
+
+            <!-- 
+                            START - Breadcrumbs
+                             -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
+                </li>
+                
+            </ul>
+            <!-- 
+                            END - Breadcrumbs
+                             -->
+
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <div class="element-box-tp">
+                            <div class="element-box-tp">
+                                <!--------------------
+                                                            START - Controls Above Table
+                                                            -------------------->
+                                <div class="controls-above-table">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--------------------
+                                                            END - Controls Above Table
+                                                            ------------------          -->
+                                <!--------------------
+                                                            START - Table with actions
+                                                            ------------------  -->
+                                <div class="table-responsive">
+                                    <table class="table table-padded">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+
+                                                </th>
+                                                <th class="text-center">
+                                                    Status
+                                                </th>
+                                                <th class="text-center">
+                                                    Land Name
+                                                </th>
+                                                <th class="text-center">
+                                                    Client
+                                                </th>
+                                                <th class="text-center">
+                                                    Realtor
+                                                </th>
+                                                <th class="text-center">
+                                                    % Comission
+                                                </th>
+                                                <th class="text-center">
+                                                    Amount
+                                                </th>
+                                                <th class="text-center">
+                                                    Date
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                            <!-- <tr *ngFor="let commission of commissions">
+                                                <td class="text-center">
+                                                    <input class="form-control" type="checkbox">
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="badge badge-{{ commission.Status ? 'success' : 'danger' }}"
+                                                        href="#">{{ commission.Status ? 'Paid' : 'Not Paid' }}</a>
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.LandName }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.ClientName }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.CommissionRealtorName }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.PercentageCommission }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.CommissionAmount }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ commission.Date }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="badge badge-success" href="#">Mark as Paid</a>
+                                                </td>
+                                            </tr> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <!--------------------
+                                                            END - Table with actions
+                                                            ------------------            -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

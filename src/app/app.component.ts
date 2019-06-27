@@ -12,7 +12,7 @@ export class AppComponent {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.auth.setToken();
   }
 }

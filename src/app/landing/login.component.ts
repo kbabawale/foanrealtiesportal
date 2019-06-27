@@ -1,10 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { AuthenticationService } from '../_services/authentication.service';
 
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserService } from '../_services/user.service';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -19,12 +19,15 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private userService: UserService
     ) {
         
     }
 
     ngOnInit() {
+        this.authenticationService.setToken();
+
         // redirect to home if already logged in
         this.authenticationService.testLoginValidity().subscribe(valis=>{
             let vali = valis.body.statResponse;
@@ -51,6 +54,14 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
+    sendIt(browsers, uid){
+        this.userService.sendVisitLog(browsers, uid).subscribe(data=>{
+            if(data.status == 200){
+              
+            }
+        });
+    }
+
     onSubmit() {
         this.submitted = true;
         this.loading = true;
@@ -67,7 +78,8 @@ export class LoginComponent implements OnInit {
                         this.authenticationService.setLoginToken(data.body.token, data.body.user.uid, data.body.user.user_type_id);
                         this.processed = true;
                         this.loading = false;
-                        // console.log(data); 
+
+                        
                         if (data.body.user.user_type_id == 1) {
                             this.router.navigate(['/admindashboard']);
                         } else if (data.body.user.user_type_id == 2) {

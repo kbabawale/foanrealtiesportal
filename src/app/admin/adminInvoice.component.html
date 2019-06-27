@@ -29,10 +29,10 @@
              -->
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Customer Dashboard</a>
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="index.html">Invoices</a>
+                    <a [routerLink]="['/admininvoice']">Invoices</a>
                 </li>
             </ul>
             <!-- 
@@ -48,11 +48,14 @@
                             <div class="element-wrapper">
                                 <div class="controls-above-table">
                                     <div class="row">
+                                        <p class="text-primary">* Case-sensitive Search</p>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6">
-                                            <input class="form-control" placeholder="Search Invoice" type="text">
+                                            <input class="form-control" placeholder="Search Invoice" [(ngModel)]="typedTerm" type="text">
                                         </div>
                                         <div class="col-sm-6">
-                                            <a class="btn btn-sm btn-success float-right "
+                                            <a class="btn btn-sm btn-success float-right"
                                                 data-target="#onboardingFormModal" data-toggle="modal" href="#">Add New
                                                 Invoice</a>
                                         </div>
@@ -73,115 +76,100 @@
                                                     type="button"><span aria-hidden="true">
                                                         &times;</span></button>
                                             </div>
+                                            <form [formGroup]="addInvoice" (ngSubmit)="onISubmit()">
                                             <div class="modal-body">
-                                                <form>
+                                                
                                                     <div class="form-group">
-                                                        <label for=""> Invoice Number</label><input class="form-control"
-                                                            placeholder="Invoice Number" type="text">
+                                                        <label class="text-primary" for=""><b>* Invoice Number is automatically generated</b></label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for=""> Select Customer</label><select
+                                                            formControlName="customer"
+                                                            [ngClass]="{'is-invalid': g.customer.touched && g.customer.invalid}"
                                                             class="form-control">
-                                                            <option>
-                                                                Agunbiade Jons
-                                                            </option>
-                                                            <option>
-                                                                Ogun
-                                                            </option>
-                                                            <option>
-                                                                Oyo
-                                                            </option>
-                                                            <option>
-                                                                FCT
-                                                            </option>
+                                                            <option selected [ngValue]="null">Select A Customer:</option>
+                                                            <option *ngFor="let item of customers;" [value]="item.id">{{item.firstname}} {{item.lastname}}</option>
+                                                            
                                                         </select>
                                                     </div>
-                                                    <div class="el-buttons-list full-width">
-                                                        <a class="btn btn-white btn-sm"><i
-                                                                class="os-icon os-icon-plus"></i><span>Add
-                                                                New Customer</span></a>
+                                                    <div class="form-group">
+                                                        <label for=""> Select Property</label><select
+                                                            formControlName="pid"
+                                                            [ngClass]="{'is-invalid': g.pid.touched && g.pid.invalid}"
+                                                            class="form-control">
+                                                            <option selected [ngValue]="null">Select A Property:</option>
+                                                            <option *ngFor="let item of property;" [value]="item.id">{{item.land_info[0].name}} - {{item.location[0].city}} ({{item.land_info[0].price|currency:'NGN'}})</option>
+                                                            
+                                                        </select>
                                                     </div>
-
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="">
-                                                                    Customer Name</label><input class="form-control"
-                                                                    placeholder="Customer Name" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="">
-                                                                    Customer Email</label><input class="form-control"
-                                                                    placeholder="Customer Email" type="email">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="">
-                                                                    Customer No</label><input class="form-control"
-                                                                    placeholder="Customer No" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="">
-                                                                    Customer Address</label><input class="form-control"
-                                                                    placeholder="Customer Address" type="email">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <!-- single-daterange  -->
                                                     <div class="form-group">
                                                         <label for=""> Due Date</label>
                                                         <div class="date-input">
-                                                            <input class="single-daterange form-control"
-                                                                placeholder="Date of birth" type="text"
-                                                                value="04/12/1978">
+                                                            <input class="form-control"
+                                                            formControlName="due_date"
+                                                            [ngClass]="{'is-invalid': g.due_date.touched && g.due_date.invalid}"
+                                                                placeholder="Due Date" type="date"
+                                                                >
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="">
+                                                            Description</label><input class="form-control"
+                                                            placeholder="Description" 
+                                                            formControlName="description"
+                                                            [ngClass]="{'is-invalid': g.description.touched && g.description.invalid}"
+                                                            type="text">
+                                                    </div>
                                                     <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <div class="form-group">
-                                                                <label for="">
-                                                                    Description</label><input class="form-control"
-                                                                    placeholder="Description" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="">
                                                                     Quantity</label><input class="form-control"
-                                                                    placeholder="Quantity" type="text">
+                                                                    placeholder="Quantity" type="text"
+                                                                    formControlName="quantity"
+                                                                    [ngClass]="{'is-invalid': g.quantity.touched && g.quantity.invalid}">
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="">
                                                                     Price</label><input class="form-control"
-                                                                    placeholder="Price" type="text">
+                                                                    placeholder="Price" type="text"
+                                                                    formControlName="price"
+                                                                    [ngClass]="{'is-invalid': g.price.touched && g.price.invalid}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Terms And Condition</label><textarea
+                                                        formControlName="terms"
+                                                        [ngClass]="{'is-invalid': g.terms.touched && g.terms.invalid}"
                                                             class="form-control" rows="3"></textarea>
                                                     </div>
-                                                </form>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" data-dismiss="modal" type="button">
-                                                    Close</button><button class="btn btn-primary" type="button"> Save
+                                                    Close</button><button class="btn btn-primary" type="submit"
+                                                    [disabled]="addInvoice.invalid"> Save
                                                     changes</button>
+                                                    <div>
+                                                        <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                        *ngIf="landinfosubmitted=='true'">Invoice Created</p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                        *ngIf="landinfosubmitted=='false'">An Error Occurred</p>
+                                                    </div>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <app-invoice></app-invoice>
+                                <app-invoice [searchTerm]="typedTerm"></app-invoice>
                                 
                             </div>
                         </div>

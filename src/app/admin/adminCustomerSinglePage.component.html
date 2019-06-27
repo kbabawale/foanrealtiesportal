@@ -1,0 +1,689 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                  START - Mobile Menu
+                   -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                  START - Main Menu
+                   -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+                  END - Main Menu
+                   -->
+
+        <div class="content-w">
+            <!-- 
+                    START - Top Bar
+                     -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+                    END - Top Bar
+                     -->
+
+            <!-- 
+                    START - Breadcrumbs
+                     -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/adminallcustomers']">Customers</a>
+                </li>
+                <!-- <li class="breadcrumb-item">
+                    <a href="index.html">Customer Page</a>
+                </li> -->
+            </ul>
+            <!-- 
+                    END - Breadcrumbs
+                     -->
+            <div class="content-panel-toggler">
+                <i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span>
+            </div>
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="element-wrapper-2">
+                                <div class="element-content">
+                                    <div class="row">
+
+
+
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="element-wrapper">
+                                                <div class="element-box">
+                                                    <div class="os-tabs-w mx-4">
+                                                        <div class="os-tabs-controls">
+                                                            <ul class="nav nav-tabs upper">
+                                                                <li class="nav-item">
+                                                                    <a aria-expanded="false" class="nav-link active"
+                                                                        data-toggle="tab" href="#personal">
+                                                                        Personal</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a aria-expanded="false" class="nav-link"
+                                                                        data-toggle="tab" href="#employment">
+                                                                        Employment</a>
+                                                                </li>
+                                                                <!-- <li class="nav-item">
+                                                                    <a aria-expanded="false" class="nav-link"
+                                                                        data-toggle="tab" href="#payment">
+                                                                        Payment</a>
+                                                                </li> -->
+                                                                <li class="nav-item">
+                                                                    <a aria-expanded="false" class="nav-link"
+                                                                        data-toggle="tab" href="#referral">
+                                                                        Referral</a>
+                                                                </li>
+                                                            </ul>
+
+
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade show active" id="personal"
+                                                                    role="tabpanel" aria-labelledby="one-tab">
+
+                                                                    <div class="content-i">
+                                                                        <div class="content-box">
+                                                                            <div class="row">
+
+                                                                                <div class="user-profile compact">
+                                                                                    <div class="up-head-w"
+                                                                                        style="background-image:url(./assets/img/profile_bg1.jpg)">
+                                                                                        <div class="up-social">
+                                                                                            <!-- <a href="#"><i
+                                                                                                    class="os-icon os-icon-twitter"></i></a><a
+                                                                                                href="#"><i
+                                                                                                    class="os-icon os-icon-facebook"></i></a> -->
+                                                                                        </div>
+                                                                                        <div class="up-main-info">
+                                                                                            <div class="user-avatar-w">
+                                                                                                <div
+                                                                                                    class="user-avatar">
+                                                                                                    <img alt=""
+                                                                                                        src="./assets/img/avatar1.jpg">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <h2 class="up-header">
+                                                                                                {{customers.basic_details[0].firstname}} {{customers.basic_details[0].lastname}}
+                                                                                            </h2>
+                                                                                            <h6 class="up-sub-header">
+                                                                                                Customer
+                                                                                            </h6>
+                                                                                        </div>
+                                                                                        <svg class="decor" width="842px"
+                                                                                            height="219px"
+                                                                                            viewBox="0 0 842 219"
+                                                                                            preserveAspectRatio="xMaxYMax meet"
+                                                                                            version="1.1"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                                            <g transform="translate(-381.000000, -362.000000)"
+                                                                                                fill="#FFFFFF">
+                                                                                                <path class="decor-path"
+                                                                                                    d="M1223,362 L1223,581 L381,581 C868.912802,575.666667 1149.57947,502.666667 1223,362 Z">
+                                                                                                </path>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                    </div>
+
+                                                                                    <div class="element-box-tp">
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Marital Status
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].marital_status}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Date Of Birth
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-success">
+                                                                                                        {{customers.basic_details[0].date_of_birth}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Nationality
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].country}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Residential
+                                                                                                        Address
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].address}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Mailing Address
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].address}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Email
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].email}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Phone Number
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        {{customers.basic_details[0].phone_number}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Customer ID
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.basic_details[0].uid}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <!-- <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Total
+                                                                                                        Transactions
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        12
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr> -->
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Date Added
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-success">
+                                                                                                        {{customers.basic_details[0].createdAt}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+
+                                                                                        <h5>Next of Kin</h5>
+
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Name
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.next_of_kin[0].name}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Address
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{customers.next_of_kin[0].address}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Email
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{customers.next_of_kin[0].email}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Phone Number
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        {{customers.next_of_kin[0].phone_number}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+
+
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="tab-pane fade" id="employment"
+                                                                    role="tabpanel" aria-labelledby="two-tab">
+
+
+                                                                    <div class="content-i">
+                                                                        <div class="content-box">
+                                                                            <div class="row">
+
+                                                                                <div class="user-profile compact">
+                                                                                    <div class="element-box-tp">
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Employer
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.employment[0].employer}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Designation
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.employment[0].designation}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Phone Number
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        {{customers.employment[0].phone_number}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Address
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{customers.employment[0].address}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                                <div class="tab-pane fade" id="payment" role="tabpanel"
+                                                                    aria-labelledby="three-tab">
+
+
+                                                                    <div class="content-i">
+                                                                        <div class="content-box">
+                                                                            <div class="row">
+
+                                                                                <div class="user-profile compact">
+                                                                                    <div class="element-box-tp">
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Purpose Of
+                                                                                                        Purchase
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        Land Banking / 0
+                                                                                                        - 6 Months
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Payment Option
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        3 Months
+                                                                                                        (attracts 5%)
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Plot Size
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        250sqm
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Property Type
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        Land
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                                <div class="tab-pane fade" id="referral" role="tabpanel"
+                                                                    aria-labelledby="four-tab">
+
+
+                                                                    <div class="content-i">
+                                                                        <div class="content-box">
+                                                                            <div class="row">
+
+                                                                                <div class="user-profile compact">
+                                                                                    <div class="element-box-tp">
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Referral's Name
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{customers.referrals[0].name}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Referral's
+                                                                                                        Number
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        {{customers.referrals[0].phone_number}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Referral's Email
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{customers.referrals[0].email}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Date Treated
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div
+                                                                                                        class="value text-danger">
+                                                                                                        {{customers.referrals[0].createdAt}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                        <!-- <div class="col-sm-12 col-md-6">
+                                            <div class="element-wrapper">
+                                                <div class="element-box">
+                                                    <div class="os-tabs-w mx-4">
+                                                        <div class="os-tabs-controls">
+                                                            <ul class="nav nav-tabs upper">
+                                                                <li class="nav-item">
+                                                                    <a aria-expanded="false" class="nav-link active"
+                                                                        data-toggle="tab" href="#customerlands">
+                                                                        Customer Lands</a>
+                                                                </li>
+                                                            </ul>
+
+
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade show active p-3"
+                                                                    id="customerlands" role="tabpanel"
+                                                                    aria-labelledby="one-tab">
+
+                                                                    <div class="rentals-list-w">
+                                                                        <div class="property-items as-list">
+                                                                            
+                                                                            <div class="property-item">
+                                                                                <a class="item-media-w"
+                                                                                    [routerLink]="['/adminsinglelandproperty']">
+                                                                                    <div class="item-media"
+                                                                                        style="background-image: url(./assets/img/landplot.jpg)">
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div class="item-info">
+                                                                                    <div class="item-features">
+                                                                                        <div class="feature">
+                                                                                            Beach
+                                                                                        </div>
+                                                                                        <div class="feature">
+                                                                                            500 SqMt
+                                                                                        </div>
+                                                                                        <div class="feature">
+                                                                                            32 plots
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <h3 class="item-title">
+                                                                                        <a
+                                                                                            [routerLink]="['/adminsinglelandproperty']">3
+                                                                                            Acres of Land</a>
+                                                                                    </h3>
+                                                                                    <div>1, Wale Balogun close off pa
+                                                                                        shekoni crescent Ajah Lagos
+                                                                                        state</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="property-item">
+                                                                                <a class="item-media-w"
+                                                                                    [routerLink]="['/adminsinglelandproperty']">
+                                                                                    <div class="item-media"
+                                                                                        style="background-image: url(./assets/img/landplot.jpg)">
+                                                                                    </div>
+                                                                                </a>
+                                                                                <div class="item-info">
+                                                                                    <div class="item-features">
+                                                                                        <div class="feature">
+                                                                                            Beach
+                                                                                        </div>
+                                                                                        <div class="feature">
+                                                                                            500 SqMt
+                                                                                        </div>
+                                                                                        <div class="feature">
+                                                                                            32 plots
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <h3 class="item-title">
+                                                                                        <a
+                                                                                            [routerLink]="['/adminsinglelandproperty']">3
+                                                                                            Acres of Land</a>
+                                                                                    </h3>
+                                                                                    <div>1, Wale Balogun close off pa
+                                                                                        shekoni crescent Ajah Lagos
+                                                                                        state</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

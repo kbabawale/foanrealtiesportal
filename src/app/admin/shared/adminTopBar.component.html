@@ -94,12 +94,13 @@
         <div class="logged-user-w">
             <div class="logged-user-i">
                 <div class="avatar-w">
-                    <img alt="" [src]="user_details.ProfilePix">
+                    <img alt="Profile Picture" src="../../assets/img/placeholder.png">
                 </div>
                 <div class="logged-user-menu color-style-bright">
                     <div class="logged-user-avatar-info">
                         <div class="avatar-w">
-                            <img alt="" [src]="user_details.ProfilePix">
+                            <!-- <img alt="" [src]="user_details.ProfilePix"> -->
+                            <img alt="" src="../../../assets/img/placeholder.png">
                         </div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">
@@ -119,9 +120,9 @@
                                     class="os-icon os-icon-user-male-circle2"></i><span>Profile
                                     Details</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a [routerLink]="['/adminsettings']"><i class="os-icon os-icon-ui-46"></i><span>Settings</span></a>
                         </li>

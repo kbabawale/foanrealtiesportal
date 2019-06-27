@@ -1,0 +1,180 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                          START - Mobile Menu
+                           -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                          START - Main Menu
+                           -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+                          END - Main Menu
+                           -->
+
+        <div class="content-w">
+            <!-- 
+                            START - Top Bar
+                             -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+                            END - Top Bar
+                             -->
+
+            <!-- 
+                            START - Breadcrumbs
+                             -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/adminallcustomers']">Customers</a>
+                </li>
+            </ul>
+            <!-- 
+                            END - Breadcrumbs
+                             -->
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <div class="element-box-tp">
+                            <div class="element-box-tp">
+                                <!--------------------
+                                        START - Controls Above Table
+                                        -------------------->
+                                <div class="controls-above-table">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search Customers" type="text" [(ngModel)]="typedTerm">
+                                        </div>
+                                        <!-- <div class="col-sm-6">
+                                            <a class="btn btn-sm btn-success float-right "
+                                                data-target="#onboardingFormModal" data-toggle="modal" href="#">Add New
+                                                Customer</a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <!--------------------
+                                        END - Controls Above Table
+                                        ------------------          -->
+                                <!--------------------
+                                        START - Table with actions
+                                        ------------------  -->
+                                <div class="table-responsive">
+                                    <app-customer [searchTerm]="typedTerm"></app-customer>
+                                </div>
+
+
+                                <!--- Modal for tables-->
+
+                                <!-- <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                    id="onboardingFormModal" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="onboardingFormModal">
+                                                    Add New Customer
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal"
+                                                    type="button"><span aria-hidden="true">
+                                                        &times;</span></button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for=""> Full
+                                                            Customer Name</label><input class="form-control"
+                                                            placeholder="Full Name" type="email">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">
+                                                                    Email</label><input class="form-control"
+                                                                    placeholder="Email" type="email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">
+                                                                    Phone Number</label><input class="form-control"
+                                                                    placeholder="Phone Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                                    Close</button><button class="btn btn-primary" type="button"> Save
+                                                    changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                                <!-- <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                    id="exampleModal1" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModal1">
+                                                    Edit Customer
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal"
+                                                    type="button"><span aria-hidden="true">
+                                                        &times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="" class="float-left">
+                                                            Customer Name</label><input class="form-control"
+                                                            placeholder="Full Name" type="email">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="" class="float-left">
+                                                                    Email</label><input class="form-control"
+                                                                    placeholder="Email" type="email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="" class="float-left">
+                                                                    Phone Number</label><input class="form-control"
+                                                                    placeholder="Phone Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                                    Close</button><button class="btn btn-primary" type="button"> Save
+                                                    changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!--------------------
+                                        END - Table with actions
+                                        ------------------            -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

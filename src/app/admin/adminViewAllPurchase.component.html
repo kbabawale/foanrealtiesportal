@@ -1,0 +1,93 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                      START - Mobile Menu
+                       -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                      START - Main Menu
+                       -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+                      END - Main Menu
+                       -->
+
+        <div class="content-w">
+            <!-- 
+                        START - Top Bar
+                         -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+                        END - Top Bar
+                         -->
+
+            <!-- 
+                        START - Breadcrumbs
+                         -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/admindashboard']">Admin Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/adminviewallpurchase']">View All Purchases</a>
+                </li>
+            </ul>
+            <!-- 
+                        END - Breadcrumbs
+                         -->
+
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <div class="element-box-tp">
+                            <div class="element-box-tp">
+                                <!--------------------
+                                                        START - Controls Above Table
+                                                        -------------------->
+                                <div class="controls-above-table">
+                                    <div class="row">
+                                        <p class="text-primary">* Search by Date, Status, Property Name or Customer Name</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search" type="text" [(ngModel)]="typedTerm">
+                                        </div>
+                                        <div class="col-sm-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--------------------
+                                                        END - Controls Above Table
+                                                        ------------------          -->
+                                <!--------------------
+                                                        START - Table with actions
+                                                        ------------------  -->
+                                <div class="table-responsive">
+                                    
+                                    <app-purchases [searchTerm]="typedTerm"></app-purchases>
+                                        
+                                </div>
+
+
+
+                                <!--------------------
+                                                        END - Table with actions
+                                                        ------------------            -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

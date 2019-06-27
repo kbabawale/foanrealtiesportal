@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12 text-center text-success" *ngIf="changedStat">
+    Status Changing...
+  </div>
+</div>
+<table class="table table-padded">
+  <thead>
+      <tr>
+          <th class="text-center">
+              Status
+          </th>
+          <th class="text-center">
+              Land Name
+          </th>
+          <th class="text-center">
+              Customer Name
+          </th>
+          <th class="text-center">
+              Price
+          </th>
+          <th class="text-center">
+              Date Bought
+          </th>
+          <!-- <th class="text-center">
+              Sold By (Realtor)
+          </th> -->
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let purchase of purchases">
+        <td class="text-center">
+            <button title="Click to change Status" (click)="changeStatus(purchase.purchases_details.status, purchase.purchases_details.pbid)" [ngClass]="{'btn': true, 'btn-danger': purchase.purchases_details.status === 'Unapproved', 'btn-success': purchase.purchases_details.status === 'Approved'}" 
+            >  {{ purchase.purchases_details.status }}</button>
+        </td>
+        <td class="text-center">
+            <a
+                [routerLink]="['/adminsinglelandproperty', purchase.purchases_details.pid]">{{ purchase.land_info[0].name }}</a>
+        </td>
+        <td class="text-center">
+            <a
+                [routerLink]="['/admincustomersinglepage', purchase.purchases_details.cid]">{{ purchase.purchases_details.customer_name }}</a>
+        </td>
+        <td class="text-center">
+            {{ purchase.land_info[0].price|currency:'NGN' }}
+        </td>
+        <td class="text-center">
+            {{ purchase.purchases_details.createdAt }}
+        </td>
+        <!-- <td class="text-center">
+            {{ purchase.purchases_details.sold_by }}
+        </td> -->
+    </tr>
+  </tbody>
+</table>

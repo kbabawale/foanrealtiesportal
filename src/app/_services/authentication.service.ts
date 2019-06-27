@@ -36,8 +36,11 @@ export class AuthenticationService {
     }
 
     setToken(){
-        if(localStorage.getItem('FRLS').toString()==undefined){
+        if(localStorage.getItem('FRLS')==null){
             localStorage.setItem('FRLS', '');
+        }
+        if(localStorage.getItem('pid')==null){
+            localStorage.setItem('pid', '');
         }
     }
 

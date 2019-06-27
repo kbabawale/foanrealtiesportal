@@ -1,0 +1,182 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+              START - Mobile Menu
+               -->
+        <app-adminmobilemenu></app-adminmobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+              START - Main Menu
+               -->
+        <app-adminmainmenu></app-adminmainmenu>
+        <!-- 
+              END - Main Menu
+               -->
+
+        <div class="content-w">
+            <!-- 
+                START - Top Bar
+                 -->
+            <app-admintopbar></app-admintopbar>
+            <!-- 
+                END - Top Bar
+                 -->
+
+            <!-- 
+                START - Breadcrumbs
+                 -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/admindashboard']">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/adminreceipt']">Receipts</a>
+                </li>
+            </ul>
+            <!-- 
+                END - Breadcrumbs
+                 -->
+            <div class="content-panel-toggler">
+                <i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span>
+            </div>
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="element-wrapper">
+
+                                <div class="controls-above-table">
+                                        <div class="row">
+                                            <p class="text-primary">* Case-sensitive Search</p>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="Search Receipt" type="text" [(ngModel)]="typedTerm">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a class="btn btn-sm btn-success float-right "
+                                                data-target="#onboardingFormModal" data-toggle="modal" href="#">Add New
+                                                Receipt</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Modal for Add new Invoice-->
+                                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+                                    id="onboardingFormModal" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="onboardingFormModal">
+                                                    Add New Receipt
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal"
+                                                    type="button"><span aria-hidden="true">
+                                                        &times;</span></button>
+                                            </div>
+                                            <form [formGroup]="addReceipt" (ngSubmit)="onRSubmit()">
+                                                    <div class="modal-body">
+                                                        
+                                                            <div class="form-group">
+                                                                <label class="text-primary" for=""><b>* Receipt Number is automatically generated</b></label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for=""> Select Customer</label><select
+                                                                    formControlName="customer"
+                                                                    [ngClass]="{'is-invalid': g.customer.touched && g.customer.invalid}"
+                                                                    class="form-control">
+                                                                    <option selected [ngValue]="null">Select A Customer:</option>
+                                                                    <option *ngFor="let item of customers;" [value]="item.id">{{item.firstname}} {{item.lastname}}</option>
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for=""> Select Property</label><select
+                                                                    formControlName="pid"
+                                                                    [ngClass]="{'is-invalid': g.pid.touched && g.pid.invalid}"
+                                                                    class="form-control">
+                                                                    <option selected [ngValue]="null">Select A Property:</option>
+                                                                    <option *ngFor="let item of property;" [value]="item.id">{{item.land_info[0].name}} - {{item.location[0].city}} ({{item.land_info[0].price|currency:'NGN'}})</option>
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                            <!-- single-daterange  -->
+                                                            <div class="form-group">
+                                                                <label for=""> Date</label>
+                                                                <div class="date-input">
+                                                                    <input class="form-control"
+                                                                    formControlName="due_date"
+                                                                    [ngClass]="{'is-invalid': g.due_date.touched && g.due_date.invalid}"
+                                                                        placeholder="Due Date" type="date"
+                                                                        >
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">
+                                                                    Description</label><input class="form-control"
+                                                                    placeholder="Description" 
+                                                                    formControlName="description"
+                                                                    [ngClass]="{'is-invalid': g.description.touched && g.description.invalid}"
+                                                                    type="text">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="">
+                                                                            Quantity</label><input class="form-control"
+                                                                            placeholder="Quantity" type="text"
+                                                                            formControlName="quantity"
+                                                                            [ngClass]="{'is-invalid': g.quantity.touched && g.quantity.invalid}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="">
+                                                                            Price</label><input class="form-control"
+                                                                            placeholder="Price" type="text"
+                                                                            formControlName="price"
+                                                                            [ngClass]="{'is-invalid': g.price.touched && g.price.invalid}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label> Terms And Condition</label><textarea
+                                                                formControlName="terms"
+                                                                [ngClass]="{'is-invalid': g.terms.touched && g.terms.invalid}"
+                                                                    class="form-control" rows="3"></textarea>
+                                                            </div>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                                                            Close</button><button class="btn btn-primary" type="submit"
+                                                            [disabled]="addReceipt.invalid"> Save
+                                                            changes</button>
+                                                            <div>
+                                                                <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                *ngIf="landinfosubmitted=='true'">Receipt Created</p>
+                                                            </div>
+                                                            <div>
+                                                                <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                *ngIf="landinfosubmitted=='false'">An Error Occurred</p>
+                                                            </div>
+                                                    </div>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <app-receipt [searchTerm]="typedTerm"></app-receipt>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>
