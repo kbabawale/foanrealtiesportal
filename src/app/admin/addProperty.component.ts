@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { HttpErrorResponse, HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
 import { LandService } from '../_services/land.service';
 
@@ -129,6 +129,7 @@ export class AddPropertyComponent implements OnInit {
     get f() { return this.addLandInfoForm.controls; }
     get g() { return this.addLandLocation.controls; }
     get h() { return this.addLandPaymentPlan.controls; }
+    get formData() { return <FormArray>this.addLandFacilities.get('fac'); }
     
 
     onLISubmit(){
@@ -267,7 +268,7 @@ export class AddPropertyComponent implements OnInit {
         this.uploadText = this.selectedFile.name;
     }
 
-    onFUSubmit(eventt){
+    onFUSubmit(){
         
         if(this.selectedFile==null){
             this.landinfosubmitted5 = 'empty';

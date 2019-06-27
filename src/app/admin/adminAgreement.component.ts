@@ -17,7 +17,7 @@ export class AdminAgreementComponent implements OnInit {
     errorMessage: any;
     // currentUser: User = new User();
     myDate = new Date();
-    // agreements: Agreement;
+    agreements: any;
     // agreement: Agreement = new Agreement();
 
     constructor(
