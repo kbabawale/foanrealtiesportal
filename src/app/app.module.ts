@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthGuard } from './_guards/auth.guard';
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
@@ -179,7 +179,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
         RealtorComponent
     ],
     providers: [
-        AuthGuard
+        [AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}]
     ],
     bootstrap: [AppComponent]
 })
