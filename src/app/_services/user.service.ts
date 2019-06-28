@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../../environments/environment';
 
 interface UserAll{
   user:[
@@ -59,7 +60,7 @@ interface GenStat{
   providedIn: 'root'
 })
 export class UserService {
-
+  hostUrl = environment.apiUrl;
   constructor(private http:HttpClient,
               private auth: AuthenticationService) { }
 
@@ -68,9 +69,16 @@ export class UserService {
       'Content-Type': 'application/json',
       'responseType': 'json'
     });
-    return this.http.post('/api/log/visit/add', {
-      "browser":browser,"uid":uid
-    },{headers: headers, observe: 'response'});
+    if(environment.production){
+      return this.http.post(this.hostUrl+'/api/log/visit/add', {
+        "browser":browser,"uid":uid
+      },{headers: headers, observe: 'response'});
+    }else{
+      return this.http.post('/api/log/visit/add', {
+        "browser":browser,"uid":uid
+      },{headers: headers, observe: 'response'});
+    }
+    
   }
 
   //fetch logged in user's details            
@@ -80,7 +88,9 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/admin/all', {uid: localStorage.getItem('FRLS-D').toString()}, {headers: headers});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/admin/all', {uid: localStorage.getItem('FRLS-D').toString()}, {headers: headers});
+    
+    
   }
 
   getAdmins(){
@@ -89,7 +99,9 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/admin/all', {}, {headers: headers});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/admin/all', {}, {headers: headers});
+    
+    
   }
 
   getAdmin(uid){
@@ -98,7 +110,9 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/admin/all', {"uid":uid}, {headers: headers});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/admin/all', {"uid":uid}, {headers: headers});
+    
+    
   }
 
   //load realtors
@@ -108,7 +122,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/realtor/all', {},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/realtor/all', {},{headers: headers, observe: 'response'});  
+    
   }
 
   //load realtor
@@ -118,7 +133,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/realtor/all', {"uid":uid},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/realtor/all', {"uid":uid},{headers: headers, observe: 'response'});
+    
   }
 
   
@@ -128,7 +144,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<Downlines>('/api/realtor/downline/all', {"rid":uid},{headers: headers, observe: 'response'});
+      return this.http.post<Downlines>(this.hostUrl+'/api/realtor/downline/all', {"rid":uid},{headers: headers, observe: 'response'});
+    
   }
 
   //load customers
@@ -138,7 +155,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/customer/all', {},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/customer/all', {},{headers: headers, observe: 'response'});
+    
   }
 
   //load customer
@@ -148,7 +166,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/user/customer/all', {"uid":uid},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/customer/all', {"uid":uid},{headers: headers, observe: 'response'});
+    
   }
 
   changeStatus(status,uid){
@@ -157,7 +176,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post('/api/user/delete', {"action":status, "uid":uid},{headers: headers, observe: 'response'});
+      return this.http.post(this.hostUrl+'/api/user/delete', {"action":status, "uid":uid},{headers: headers, observe: 'response'});
+    
   };
 
   loadNationalities(){
@@ -166,7 +186,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<Country>('/api/country/all', {},{headers: headers, observe: 'response'});
+      return this.http.post<Country>(this.hostUrl+'/api/country/all', {},{headers: headers, observe: 'response'});
+    
   }
 
   addUser(firstname,lastname,email,phone_number,role_id,password,user_type_id,uid){
@@ -175,9 +196,10 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post('/api/register', {
-      "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"password":password,"user_type_id":user_type_id,"uid":uid
-    },{headers: headers, observe: 'response'});
+      return this.http.post(this.hostUrl+'/api/register', {
+        "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"password":password,"user_type_id":user_type_id,"uid":uid
+      },{headers: headers, observe: 'response'});
+    
   }
 
   editUser(firstname,lastname,email,phone_number,country_id,marital_status,date_of_birth,address,uid){
@@ -186,9 +208,10 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post('/api/user/update', {
-      "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"country_id":country_id,"marital_status":marital_status,"date_of_birth":date_of_birth,"address":address,"uid":uid
-    },{headers: headers, observe: 'response'});
+      return this.http.post(this.hostUrl+'/api/user/update', {
+        "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"country_id":country_id,"marital_status":marital_status,"date_of_birth":date_of_birth,"address":address,"uid":uid
+      },{headers: headers, observe: 'response'});
+    
   }
 
   editUser2(firstname,lastname,email,phone_number,role_id,uid){
@@ -197,9 +220,10 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post('/api/user/update', {
-      "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"uid":uid
-    },{headers: headers, observe: 'response'});
+      return this.http.post(this.hostUrl+'/api/user/update', {
+        "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"uid":uid
+      },{headers: headers, observe: 'response'});
+    
   }
 
   changePassword(newpassword, uid){
@@ -208,9 +232,10 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post('/api/user/password/change', {
-      "newpassword":newpassword,"uid":uid
-    },{headers: headers, observe: 'response'});
+      return this.http.post(this.hostUrl+'/api/user/password/change', {
+        "newpassword":newpassword,"uid":uid
+      },{headers: headers, observe: 'response'});
+    
   }
 
   loadRoles(){
@@ -219,7 +244,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<myRoles>('/api/role/all', {},{headers: headers, observe: 'response'});
+      return this.http.post<myRoles>(this.hostUrl+'/api/role/all', {},{headers: headers, observe: 'response'});
+    
   }
 
   loadTopRealtors(){
@@ -228,7 +254,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<myTRealtors>('/api/realtor/top-performance', {},{headers: headers, observe: 'response'});
+      return this.http.post<myTRealtors>(this.hostUrl+'/api/realtor/top-performance', {},{headers: headers, observe: 'response'});
+    
   }
 
   getStatPurchases(){
@@ -237,7 +264,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<myProperty>('/api/property/stats/purchases', {},{headers: headers, observe: 'response'});
+      return this.http.post<myProperty>(this.hostUrl+'/api/property/stats/purchases', {},{headers: headers, observe: 'response'});
+    
   }
 
   getNewCustomers(){
@@ -246,7 +274,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/property/stats/customers/new', {},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/property/stats/customers/new', {},{headers: headers, observe: 'response'});
+    
   }
 
   getTopCustomers(){
@@ -255,7 +284,8 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<UserAll>('/api/property/stats/customers/top', {},{headers: headers, observe: 'response'});
+      return this.http.post<UserAll>(this.hostUrl+'/api/property/stats/customers/top', {},{headers: headers, observe: 'response'});
+    
   }
 
   getGeneralStats(){
@@ -264,6 +294,7 @@ export class UserService {
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-    return this.http.post<GenStat>('/api/property/stats/general', {},{headers: headers, observe: 'response'});
+      return this.http.post<GenStat>(this.hostUrl+'/api/property/stats/general', {},{headers: headers, observe: 'response'});
+    
   }
 }

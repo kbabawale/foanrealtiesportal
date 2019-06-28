@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { HttpErrorResponse, HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
 import { LandService } from '../_services/land.service';
+import {environment} from '../../environments/environment';
 
 @Component ({
     selector: 'app-add-property',
@@ -27,6 +28,7 @@ export class AddPropertyComponent implements OnInit {
     uploadText:String = 'Upload A File';
     submittedSuccess:Boolean = false;
     freshProperty:Boolean = false;
+    apiUrl = environment.apiUrl;
 
     constructor(private formBuilder: FormBuilder,
        private landService: LandService,
@@ -284,7 +286,7 @@ export class AddPropertyComponent implements OnInit {
                 let headers = new HttpHeaders({
                     'Foan-Token': localStorage.getItem('FRLS').toString()
                 });
-                this.http.post('/api/property/picture/upload', formData, {
+                    this.http.post(this.apiUrl+'/api/property/picture/upload', formData, {
                         headers:headers,
                         reportProgress: true,
                         observe: 'events'
@@ -299,7 +301,8 @@ export class AddPropertyComponent implements OnInit {
                                 this.landinfosubmitted5 = 'error';
                             }
                         }
-                });
+                    }); 
+                
             }
         }
     }

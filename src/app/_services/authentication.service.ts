@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 interface loginData{
     statusMsg:String,
@@ -17,6 +18,8 @@ interface vali{
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+
+    hostUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) {
 
@@ -52,7 +55,9 @@ export class AuthenticationService {
 
     //login method
     login(email, password){
-        return this.http.post<loginData>('/api/login', {email, password}, {observe: 'response'});
+        
+        return this.http.post<loginData>(this.hostUrl+'/api/login', {email, password}, {observe: 'response'});    
+        
     }
 
     //for checking validility of token before entering any route
@@ -63,7 +68,8 @@ export class AuthenticationService {
             'responseType': 'json',
             'Foan-Token': localStorage.getItem('FRLS').toString()
         });
-        return this.http.get<vali>('/api/ping', {headers: headers, observe: 'response'});
+        
+        return this.http.get<vali>(this.hostUrl+'/api/ping', {headers: headers, observe: 'response'});
         
     }
 
