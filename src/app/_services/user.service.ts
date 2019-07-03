@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
+import { add } from 'ngx-bootstrap/chronos/public_api';
 
 interface UserAll{
   user:[
@@ -27,6 +28,11 @@ interface UserAll{
       'updatedAt':String
     }
   ]
+}
+
+interface AddUser{
+  status:any,
+  users:any
 }
 
 interface Downlines{
@@ -64,22 +70,7 @@ export class UserService {
   constructor(private http:HttpClient,
               private auth: AuthenticationService) { }
 
-  sendVisitLog(browser,uid){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'responseType': 'json'
-    });
-    if(environment.production){
-      return this.http.post(this.hostUrl+'/api/log/visit/add', {
-        "browser":browser,"uid":uid
-      },{headers: headers, observe: 'response'});
-    }else{
-      return this.http.post('/api/log/visit/add', {
-        "browser":browser,"uid":uid
-      },{headers: headers, observe: 'response'});
-    }
-    
-  }
+  
 
   //fetch logged in user's details            
   getUserDetails(){
@@ -89,8 +80,26 @@ export class UserService {
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
       return this.http.post<UserAll>(this.hostUrl+'/api/user/admin/all', {uid: localStorage.getItem('FRLS-D').toString()}, {headers: headers});
-    
-    
+  }
+
+  //fetch logged in user's details            
+  getUserDetails2(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/realtor/all', {uid: localStorage.getItem('FRLS-D').toString()}, {headers: headers});
+  }
+
+  //fetch logged in user's details            
+  getUserDetails3(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<UserAll>(this.hostUrl+'/api/user/customer/all', {uid: localStorage.getItem('FRLS-D').toString()}, {headers: headers});
   }
 
   getAdmins(){
@@ -190,17 +199,52 @@ export class UserService {
     
   }
 
-  addUser(firstname,lastname,email,phone_number,role_id,password,user_type_id,uid){
+  addUser(firstname,lastname,email,phone_number,password,user_type_id,nationality=null,date_of_birth=null,marital_status=null,address=null,role_id=null){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
     });
-      return this.http.post(this.hostUrl+'/api/register', {
-        "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"password":password,"user_type_id":user_type_id,"uid":uid
+      return this.http.post<AddUser>(this.hostUrl+'/api/register', {
+        "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"password":password,"user_type_id":user_type_id,"nationality_id":nationality,"date_of_birth":date_of_birth,"marital_status":marital_status,"address":address
       },{headers: headers, observe: 'response'});
     
   }
+
+  updateCustomerEmployment(employer,designation,address,phone_number,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/info/update', {
+        "cid":cid,"employer":employer,"emp_phone_number":phone_number,"emp_designation":designation,"emp_address":address
+      },{headers: headers, observe: 'response'});
+  }
+
+  updateCustomerNextOfKin(name,email,address,phone_number,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/info/update', {
+        "cid":cid,"nk_name":name,"nk_phone_number":phone_number,"nk_email":email,"nk_address":address
+      },{headers: headers, observe: 'response'});
+  }
+
+  updateCustomerReferral(name,email,phone_number,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/referral/update', {
+        "cid":cid,"name":name,"phone_number":phone_number,"email":email
+      },{headers: headers, observe: 'response'});
+  }
+
+  
 
   editUser(firstname,lastname,email,phone_number,country_id,marital_status,date_of_birth,address,uid){
     let headers = new HttpHeaders({
@@ -224,6 +268,28 @@ export class UserService {
         "firstname":firstname,"lastname":lastname,"phone_number":phone_number,"email":email,"role_id":role_id,"uid":uid
       },{headers: headers, observe: 'response'});
     
+  }
+
+  editRealtorReferral(name,phone_number,email,rid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/realtor/referral/update', {
+        "name":name,"phone_number":phone_number,"email":email,"rid":rid
+      },{headers: headers, observe: 'response'});
+  }
+
+  editRealtorNextOfKin(name,address,phone_number,email,rid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/realtor/info/update', {
+        "name":name,"phone_number":phone_number,"email":email,"rid":rid,"address":address
+      },{headers: headers, observe: 'response'});
   }
 
   changePassword(newpassword, uid){

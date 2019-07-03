@@ -1,0 +1,536 @@
+<div class="all-wrapper solid-bg-all">
+
+    <div class="layout-w">
+        <!--------------------
+                              START - Mobile Menu
+                              -------------------->
+        <app-realtormobilemenu></app-realtormobilemenu>
+        <!--------------------
+                              END - Mobile Menu
+                              -------------------->
+        <!--------------------
+                              START - Main Menu
+                              -------------------->
+        <app-realtormainmenu></app-realtormainmenu>
+        <!--------------------
+                              END - Main Menu
+                              -------------------->
+        <div class="content-w">
+            <!--------------------
+                                START - Top Bar
+                                -------------------->
+            <app-realtortopbar></app-realtortopbar>
+            <!--------------------
+                                END - Top Bar
+                                -------------------->
+            <!--------------------
+                                START - Breadcrumbs
+                                -------------------->
+                                <ul class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a [routerLink]="['/realtordashboard']">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a [routerLink]="['/realtorallland']">All Properties</a>
+                                        </li>
+                                        <!-- <li class="breadcrumb-item">
+                                            <span>Laptop with retina screen</span>
+                                        </li> -->
+                                    </ul>
+            <!--------------------
+                                END - Breadcrumbs
+                                -------------------->
+
+            <div class="all-wrapper rentals">
+                <div class="content-i">
+                    <div class="content-box">
+                        <!--START - Control panel above projects-->
+                        <div class="os-tabs-w mx-4">
+                            <div class="os-tabs-controls">
+                                
+
+                                <tabset #staticTabs>
+                                    <tab heading="Customer" id="tab1">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-md-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                <form [formGroup]="addSelectCustomerForm" (ngSubmit)="doSelectCustomer()">
+                                                                    <h5 class="mt-3">
+                                                                        Select a customer who is buying this property or create new
+                                                                    </h5>
+
+                                                                    <div class="form-group">
+                                                                        <select
+                                                                        formControlName="customer"
+                                                                        class="form-control"
+                                                                        [ngClass]="{'is-invalid': g.customer.touched && g.customer.invalid}"
+                                                                        >
+                                                                        <option selected [ngValue]="null">Select A Customer:</option>
+                                                                        <option *ngFor="let item of customers;" [value]="item.uid">{{item.firstname}} {{item.lastname}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    
+                                                                    <div class="form-buttons-w">
+                                                                        <button class="btn btn-primary w-40"
+                                                                        [disabled]="addSelectCustomerForm.invalid"
+                                                                            type="submit">Next</button>
+                                                                        <button class="btn btn-primary w-40" type="button" (click)="goToPersonalTab()">Create New Customer</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Personal">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-lg-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                <form [formGroup]="addCustomerForm" (ngSubmit)="addCustomerDetails()">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for=""> Firstname</label><input
+                                                                                    class="form-control"
+                                                                                    [ngClass]="{'is-invalid': h.firstname.touched && h.firstname.invalid}"
+                                                                                    formControlName="firstname"
+                                                                                    placeholder="Firstname"
+                                                                                    type="text">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Lastname</label><input
+                                                                                    class="form-control"
+                                                                                    placeholder="Lastname"
+                                                                                    [ngClass]="{'is-invalid': h.lastname.touched && h.lastname.invalid}"
+                                                                                    formControlName="lastname"
+                                                                                    type="text">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">Marital Status</label><select
+                                                                                    formControlName="marital_status"
+                                                                                        class="form-control"
+                                                                                        [ngClass]="{'is-invalid': h.marital_status.touched && h.marital_status.invalid}">
+                                                                                        <option selected [ngValue]="null">Select One:</option>
+                                                                                        <option *ngFor="let item of marital_status_array;" [value]="item">{{item}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for=""> Date Of Birth</label>
+                                                                                <input class="form-control"
+                                                                                formControlName="date_of_birth"
+                                                                                [ngClass]="{'is-invalid': h.date_of_birth.touched && h.date_of_birth.invalid}"
+                                                                                    placeholder="Date of birth" type="date">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for=""> Password</label><input
+                                                                                    class="form-control"
+                                                                                    [ngClass]="{'is-invalid': h.password.touched && h.password.invalid}"
+                                                                                    formControlName="password"
+                                                                                    placeholder="Password"
+                                                                                    type="password">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="">Confirm Password</label><input
+                                                                                    class="form-control"
+                                                                                    placeholder="Confirm Password"
+                                                                                    [ngClass]="{'is-invalid': h.confirm_password.touched && h.confirm_password.invalid}"
+                                                                                    formControlName="confirm_password"
+                                                                                    type="password">
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for=""> Nationality</label><select
+                                                                        formControlName="nationality"
+                                                                            class="form-control"
+                                                                            [ngClass]="{'is-invalid': h.nationality.touched && h.nationality.invalid}">
+                                                                            <option selected [ngValue]="null">Select One:</option>
+                                                                            <option *ngFor="let item of nationality_array;" [value]="item.id">{{item.name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Address</label><input
+                                                                        [ngClass]="{'is-invalid': h.address.touched && h.address.invalid}"
+                                                                        formControlName="address"
+                                                                            class="form-control" placeholder="Address"
+                                                                            type="text">
+                                                                    </div>
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for=""> *Email address</label><input
+                                                                                formControlName="email"
+                                                                                [ngClass]="{'is-invalid': h.email.touched && h.email.invalid}"
+                                                                                    class="form-control" placeholder="Enter email"
+                                                                                    type="email">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for=""> *Phone Number</label><input
+                                                                                    formControlName="phone_number"
+                                                                                        class="form-control"
+                                                                                        placeholder="Phone Number" type="text"
+                                                                                        [ngClass]="{'is-invalid': h.phone_number.touched && h.phone_number.invalid}" maxlength="15">
+                                                                                </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-buttons-w">
+                                                                        <button class="btn btn-primary w-100"
+                                                                            type="submit" [disabled]="addCustomerForm.invalid">
+                                                                            Next</button>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted=='match'">Passwords Dont Match</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted=='false'">An Error Occurred</p>
+                                                                        </div>    
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Employment">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-lg-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                <form [formGroup]="addCustomerEmploymentForm" (ngSubmit)="addCustomerEmployment()">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <label for=""> Employer</label><input
+                                                                                    class="form-control"
+                                                                                    formControlName="employer"
+                                                                                    [ngClass]="{'is-invalid': i.employer.touched && i.employer.invalid}"
+                                                                                    placeholder="Employer" type="text">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <label for="">Designation</label><input
+                                                                                    class="form-control"
+                                                                                    formControlName="designation"
+                                                                                    [ngClass]="{'is-invalid': i.designation.touched && i.designation.invalid}"
+                                                                                    placeholder="Designation"
+                                                                                    type="text">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <label for="">Phone Number</label><input
+                                                                                    class="form-control"
+                                                                                    formControlName="phone_number"
+                                                                                    [ngClass]="{'is-invalid': i.phone_number.touched && i.phone_number.invalid}"
+                                                                                    placeholder="Phone Number"
+                                                                                    type="phone">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for=""> Address</label><input
+                                                                            class="form-control" placeholder="Address"
+                                                                            formControlName="address"
+                                                                            [ngClass]="{'is-invalid': i.address.touched && i.address.invalid}"
+                                                                            type="text">
+                                                                    </div>
+                                                                    <div class="form-buttons-w">
+                                                                        <button class="btn btn-primary w-100"
+                                                                            type="submit" [disabled]="addCustomerEmployment.invalid">
+                                                                            Submit</button>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted1=='false'">An Error Occurred</p>
+                                                                        </div> 
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Next Of Kin">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-lg-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                    <form [formGroup]="addCustomerNextOfKinForm" (ngSubmit)="addCustomerNextOfKin()">
+                                                                        <div class="form-group">
+                                                                            <label for="">Name</label><input
+                                                                            formControlName="name"
+                                                                            [ngClass]="{'is-invalid': j.name.touched && j.name.invalid}"
+                                                                                class="form-control" placeholder="Name"
+                                                                                type="text">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="">Address</label><input
+                                                                            formControlName="address"
+                                                                            [ngClass]="{'is-invalid': j.address.touched && j.address.invalid}"
+                                                                                class="form-control" placeholder="Address"
+                                                                                type="text">
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">Email</label><input
+                                                                                        class="form-control"
+                                                                                        formControlName="email"
+                                                                                        [ngClass]="{'is-invalid': j.email.touched && j.email.invalid}"
+                                                                                        placeholder="email" type="email">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">Phone Number</label><input
+                                                                                        class="form-control"
+                                                                                        formControlName="phone_number"
+                                                                                        [ngClass]="{'is-invalid': j.phone_number.touched && j.phone_number.invalid}"
+                                                                                        placeholder="Phone Number"
+                                                                                        type="text">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-buttons-w">
+                                                                            <button class="btn btn-primary w-100"
+                                                                                type="submit" [disabled]="addCustomerNextOfKinForm.invalid">
+                                                                                Submit</button>
+                                                                            <div>
+                                                                                <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                                *ngIf="landinfosubmitted2=='false'">An Error Occurred</p>
+                                                                            </div> 
+                                                                        </div>
+                                                                    </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Referral">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-lg-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                <form [formGroup]="addCustomerReferralForm" (ngSubmit)="addCustomerReferral()">
+                                                                    <div class="form-group">
+                                                                        <label for=""> Referral Name</label><input
+                                                                            class="form-control"
+                                                                            formControlName="name"
+                                                                            [ngClass]="{'is-invalid': k.name.touched && k.name.invalid}"
+                                                                            placeholder="Referral Name" type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for=""> Referral Phone
+                                                                            Number</label><input class="form-control"
+                                                                            formControlName="phone_number"
+                                                                            [ngClass]="{'is-invalid': k.phone_number.touched && k.phone_number.invalid}"
+                                                                            placeholder="Phone Number" type="text">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="form-group">
+                                                                                <label for=""> Referral
+                                                                                    Email</label><input
+                                                                                    class="form-control"
+                                                                                    formControlName="email"
+                                                                                    [ngClass]="{'is-invalid': k.email.touched && k.email.invalid}"
+                                                                                    placeholder="Referral Email"
+                                                                                    type="email">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-buttons-w">
+                                                                        <button class="btn btn-primary w-100"
+                                                                            type="submit" [disabled]="addCustomerReferralForm.invalid">
+                                                                            Submit</button>
+                                                                            <div>
+                                                                                <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                                *ngIf="landinfosubmitted3=='false'">An Error Occurred</p>
+                                                                            </div> 
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    <tab heading="Payment Plan">
+                                        <div class="content-i">
+                                            <div class="content-box p-0 mt-5">
+                                                <div class="row">
+
+                                                    <div class="col-lg-9">
+                                                        <div class="element-wrapper">
+                                                            <div class="element-box">
+                                                                <form [formGroup]="addPaymentPlanForm" (ngSubmit)="addPaymentPlan()">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-padded">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="text-center">&nbsp;</th>
+                                                                                    <th class="text-center">
+                                                                                        Square Meters
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        Outright Plan
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        Initial Deposit
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        3 Months Plan
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        6 Months Plan
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        12 Months Plan
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        18 Months Plan
+                                                                                    </th>
+                                                                                    <th class="text-center">
+                                                                                        24 Months Plan
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody *ngIf="payment_plan_count;else other_content">
+                                                                                <tr *ngFor="let item of payment_plan">
+                                                                                    <td><input type="radio" 
+                                                                                        formControlName="payment_plan"
+                                                                                        [value]="item.pppid"></td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.square_meters}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.outright_plan}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.initial_deposit}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.three_months_plan}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.six_months_plan}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.twelve_months_plan}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.eighteen_months_plan}}
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        {{item.twentyfour_months_plan}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                
+                                                                            </tbody>
+                                                                            <ng-template #other_content>
+                                                                                <tr>
+                                                                                    <td colspan="8" class="text-center">No Payment Plan For This Property Yet</td>
+                                                                                </tr>
+                                                                            </ng-template>
+                                                                            
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="form-buttons-w">
+                                                                        <button class="btn btn-primary w-100"
+                                                                            type="submit" [disabled]="addPaymentPlanForm.invalid">
+                                                                            Submit</button>
+                                                                            <div *ngIf="landinfosubmitted4=='true'">
+                                                                                <p class="mt-4 text-center text-1 text-success font-weight-bold">Purchase has been triggered. Buyer Reference is {{l.payment_plan.value}}</p>
+                                                                                <small class="text-center">*The Buyer Reference must be known to the customer to enable him make payment.</small>
+                                                                                <p class="text-center text-success"><button type="button" class="btn btn-success" (click)="goBack()">Back To Property Page</button></p>
+                                                                            </div> 
+                                                                            <div>
+                                                                                <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                                *ngIf="landinfosubmitted4=='false'">An Error Occurred</p>
+                                                                            </div> 
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tab>
+                                </tabset>
+
+
+                            </div>
+
+
+                            
+                        </div>
+                        <!--END - Control panel above projects-->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

@@ -579,7 +579,7 @@
 
 
 
-                                        <!-- <div class="col-sm-12 col-md-6">
+                                         <div class="col-sm-12 col-md-6">
                                             <div class="element-wrapper">
                                                 <div class="element-box">
                                                     <div class="os-tabs-w mx-4">
@@ -594,75 +594,72 @@
 
 
                                                             <div class="tab-content">
-                                                                <div class="tab-pane fade show active p-3"
+                                                                    <div class="tab-pane fade show active"
                                                                     id="customerlands" role="tabpanel"
                                                                     aria-labelledby="one-tab">
 
-                                                                    <div class="rentals-list-w">
-                                                                        <div class="property-items as-list">
-                                                                            
-                                                                            <div class="property-item">
-                                                                                <a class="item-media-w"
-                                                                                    [routerLink]="['/adminsinglelandproperty']">
-                                                                                    <div class="item-media"
-                                                                                        style="background-image: url(./assets/img/landplot.jpg)">
+                                                                    <div class="content-i">
+                                                                        <div class="content-box">
+                                                                            <div class="row">
+
+                                                                                <div class="user-profile compact">
+                                                                                    <div class="pipeline-body">
+                                                                                        
+                                                                                        <div class="pipeline-item" *ngFor="let purchase of purchases">
+                                                                                            <div class="pi-controls">
+                                                                                                <div class="status status-green"
+                                                                                                    data-placement="top"
+                                                                                                    data-toggle="tooltip"
+                                                                                                    title="Active Status">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="pi-body">
+                                                                                                <div class="item-media">
+                                                                                                    <img class="img-size"
+                                                                                                        alt=""
+                                                                                                        src="./assets/img/property1.jpg">
+                                                                                                </div>
+                                                                                                <div class="pi-info">
+                                                                                                    <div
+                                                                                                        class="h6 pi-name">
+                                                                                                        {{purchase.land_info.name}}
+                                                                                                    </div>
+                                                                                                    <div class="pi-sub">
+                                                                                                        <div
+                                                                                                            class="reviews-stars mt-1">
+                                                                                                            {{purchase.land_info.no_of_plots}} plot(s)
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="pi-sub">
+                                                                                                        <div
+                                                                                                            class="reviews-count mt-1">
+                                                                                                            {{purchase.location[0].city}}, {{purchase.location[0].state}}
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="pi-foot">
+                                                                                                <div class="tags">
+                                                                                                    <a
+                                                                                                        class="tag">{{purchase.land_info.price|currency:'NGN'}}</a>
+                                                                                                </div>
+                                                                                                <a class="tag"
+                                                                                                    [routerLink]="['/realtorsingleland', purchase.land_info.pid]">Details
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        
                                                                                     </div>
-                                                                                </a>
-                                                                                <div class="item-info">
-                                                                                    <div class="item-features">
-                                                                                        <div class="feature">
-                                                                                            Beach
-                                                                                        </div>
-                                                                                        <div class="feature">
-                                                                                            500 SqMt
-                                                                                        </div>
-                                                                                        <div class="feature">
-                                                                                            32 plots
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <h3 class="item-title">
-                                                                                        <a
-                                                                                            [routerLink]="['/adminsinglelandproperty']">3
-                                                                                            Acres of Land</a>
-                                                                                    </h3>
-                                                                                    <div>1, Wale Balogun close off pa
-                                                                                        shekoni crescent Ajah Lagos
-                                                                                        state</div>
+
+
                                                                                 </div>
+
+
+
                                                                             </div>
-                                                                            
-                                                                            <div class="property-item">
-                                                                                <a class="item-media-w"
-                                                                                    [routerLink]="['/adminsinglelandproperty']">
-                                                                                    <div class="item-media"
-                                                                                        style="background-image: url(./assets/img/landplot.jpg)">
-                                                                                    </div>
-                                                                                </a>
-                                                                                <div class="item-info">
-                                                                                    <div class="item-features">
-                                                                                        <div class="feature">
-                                                                                            Beach
-                                                                                        </div>
-                                                                                        <div class="feature">
-                                                                                            500 SqMt
-                                                                                        </div>
-                                                                                        <div class="feature">
-                                                                                            32 plots
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <h3 class="item-title">
-                                                                                        <a
-                                                                                            [routerLink]="['/adminsinglelandproperty']">3
-                                                                                            Acres of Land</a>
-                                                                                    </h3>
-                                                                                    <div>1, Wale Balogun close off pa
-                                                                                        shekoni crescent Ajah Lagos
-                                                                                        state</div>
-                                                                                </div>
-                                                                            </div>
-                                                                            
                                                                         </div>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
 
@@ -673,7 +670,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div> 
 
                                     </div>
                                 </div>

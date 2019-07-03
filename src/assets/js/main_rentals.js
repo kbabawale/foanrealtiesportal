@@ -37,18 +37,18 @@ $(function () {
 
   // #3. STAR RATING
 
-  $('.item-star-rating').barrating({ theme: 'osadmin', readonly: true });
+  // $('.item-star-rating').barrating({ theme: 'osadmin', readonly: true });
 
   // #4. DATE RANGE PICKER
   var rental_start = moment();
   var rental_end = moment().add(14, 'days');
-  $('.date-range-picker').daterangepicker({
-    startDate: rental_start,
-    endDate: rental_end,
-    locale: {
-      format: 'MMM D, YYYY'
-    }
-  });
+  // $('.date-range-picker').daterangepicker({
+  //   startDate: rental_start,
+  //   endDate: rental_end,
+  //   locale: {
+  //     format: 'MMM D, YYYY'
+  //   }
+  // });
 
   // #5. FILTER TOGGLER
 

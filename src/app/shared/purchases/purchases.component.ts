@@ -60,7 +60,8 @@ export class PurchasesComponent implements OnInit {
                 
                 if ((item.purchases_details.status !== undefined && typeof(item.purchases_details.status) === 'string' && item.purchases_details.status.indexOf(this.searchTerm) > -1) || 
                 (item.land_info[0].name !== undefined && typeof(item.land_info[0].name) === 'string' && item.land_info[0].name.indexOf(this.searchTerm) > -1) ||
-                (item.purchases_details.customer_name !== undefined && typeof(item.purchases_details.customer_name) === 'string' && item.purchases_details.customer_name.indexOf(this.searchTerm) > -1) || 
+                (item.purchases_details.customer_name !== undefined && typeof(item.purchases_details.customer_name) === 'string' && item.purchases_details.customer_name.indexOf(this.searchTerm) > -1) ||
+                (item.purchases_details.pbid !== undefined && typeof(item.purchases_details.pbid) === 'string' && item.purchases_details.pbid.indexOf(this.searchTerm) > -1) || 
                 (item.purchases_details.createdAt !== undefined && typeof(item.purchases_details.createdAt) === 'string' && item.purchases_details.createdAt.indexOf(this.searchTerm) > -1)) {
                     this.tempPurchases.push(item);
                 } 
@@ -76,6 +77,7 @@ export class PurchasesComponent implements OnInit {
               if ((item.purchases_details.status !== undefined && typeof(item.purchases_details.status) === 'string' && item.purchases_details.status.indexOf(this.searchTerm) > -1) || 
               (item.land_info[0].name !== undefined && typeof(item.land_info[0].name) === 'string' && item.land_info[0].name.indexOf(this.searchTerm) > -1) ||
               (item.purchases_details.customer_name !== undefined && typeof(item.purchases_details.customer_name) === 'string' && item.purchases_details.customer_name.indexOf(this.searchTerm) > -1) || 
+              (item.purchases_details.pbid !== undefined && typeof(item.purchases_details.pbid) === 'string' && item.purchases_details.pbid.indexOf(this.searchTerm) > -1) || 
               (item.purchases_details.createdAt !== undefined && typeof(item.purchases_details.createdAt) === 'string' && item.purchases_details.createdAt.indexOf(this.searchTerm) > -1)) {
                   this.tempPurchases.push(item);
               } 

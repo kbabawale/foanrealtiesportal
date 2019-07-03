@@ -54,13 +54,7 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
-    sendIt(browsers, uid){
-        this.userService.sendVisitLog(browsers, uid).subscribe(data=>{
-            if(data.status == 200){
-              
-            }
-        });
-    }
+    
 
     onSubmit() {
         this.submitted = true;

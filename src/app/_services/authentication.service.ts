@@ -74,8 +74,8 @@ export class AuthenticationService {
     }
 
     //registration method
-    register(){
-
+    register(firstname, lastname, email, phone_number, user_type_id, password){
+        return this.http.post(this.hostUrl+'/api/register', {"email":email, "password":password,"firstname":firstname,"lastname":lastname,"phone_number":phone_number,"user_type_id":user_type_id}, {observe: 'response'});  
     }
 
 

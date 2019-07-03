@@ -116,7 +116,7 @@ export class AddPropertyComponent implements OnInit {
 
         });
 
-        this.landService.loadPaymentPlan().subscribe(data=>{
+        this.landService.loadPaymentPlan(localStorage.getItem('pid').toString()).subscribe(data=>{
             this.payment_plan = data.body.plans;
             var i = this.payment_plan;
             if(i.length>0){

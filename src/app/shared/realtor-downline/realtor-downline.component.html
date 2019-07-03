@@ -1,0 +1,37 @@
+<div class="table-responsive">
+    <table class="table table-padded">
+        <thead>
+            <tr>
+                <th class="text-center">
+
+                </th>
+                <th class="text-center">
+                    Realtor Name
+                </th>
+                <th class="text-center">
+                    Email
+                </th>
+                <th class="text-center">
+                    Generation
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let downline of finaldownlines">
+                <td class="text-center">
+                    <!-- <input class="form-control" type="checkbox"> -->
+                </td>
+                <td class="text-center">
+                    <!-- <a [routerLink]="['/realtorprofilepage', downline.downline]">{{ downline.realtor_name }}</a> -->
+                    {{ downline.realtor_name }}
+                </td>
+                <td class="text-center">
+                        {{ downline.realtor_email }}
+                </td>
+                <td class="text-center">
+                        {{ downline.generation }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

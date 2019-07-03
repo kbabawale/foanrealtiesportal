@@ -12,6 +12,10 @@ interface myFacilities{
   facilities:any
 }
 
+interface propertyFac{
+  property_facilities:any
+}
+
 interface landInfo{
   statusMsg,
   land_info: {
@@ -37,6 +41,10 @@ interface myPPP{
 
 interface myProperty{
   property:any;
+}
+
+interface Inspections{
+  inspections:any
 }
 
 @Injectable({
@@ -127,15 +135,25 @@ export class LandService {
   
   }
 
-  //load payment plan
-  loadPaymentPlan(){
+  //load facilities
+  loadPropertyFacilities(pid){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'responseType': 'json',
       'Foan-Token': localStorage.getItem('FRLS').toString()
   });
-    return this.http.post<myPPP>(this.hostUrl+'/api/property/payment-plan/all', {"pid":localStorage.getItem('pid').toString()},{headers: headers, observe: 'response'});
+    return this.http.post<propertyFac>(this.hostUrl+'/api/property/facilities/all', {"pid":pid},{headers: headers, observe: 'response'});
   
+  }
+
+  //load payment plan
+  loadPaymentPlan(pid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+  });
+    return this.http.post<myPPP>(this.hostUrl+'/api/property/payment-plan/all', {"pid":pid},{headers: headers, observe: 'response'});
   }
 
   //load all properties
@@ -192,6 +210,27 @@ export class LandService {
       'Foan-Token': localStorage.getItem('FRLS').toString()
   });
     return this.http.post(this.hostUrl+'/api/property/realtors/delete', {"pid":pid, "rid":rid}, {headers:headers, observe:'response'});
+    
+  }
+
+  buyProperty(pid, cid, bought_by=null, sold_by, pppid){
+   
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+  });
+    return this.http.post(this.hostUrl+'/api/property/buy', {"pid":pid, "cid":cid, "bought_by":bought_by, "sold_by":sold_by, "pppid":pppid}, {headers:headers, observe:'response'});
+  }
+
+  loadRealtorInspection(rid){
+    
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<Inspections>(this.hostUrl+'/api/property/inspection/realtor/all', {"rid":rid},{headers: headers, observe: 'response'});
     
   }
 }

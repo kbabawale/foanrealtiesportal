@@ -4681,6 +4681,7 @@ input[type="button"].btn-block {
   color: #636c72;
   background-color: transparent;
   border-color: transparent;
+  pointer-events: none;
 }
 
 .nav-tabs .nav-link.active,
@@ -23814,6 +23815,11 @@ TODO Application
 
 .property-single .property-info-w .property-info-main .badge.badge-red {
   background-color: #F70E2D;
+  color: #fff;
+}
+
+.property-single .property-info-w .property-info-main .badge.badge-green {
+  background-color: rgb(40, 136, 11);
   color: #fff;
 }
 

@@ -25,6 +25,17 @@ export class PurchasesService {
     
   }
 
+  //load all properties
+  loadCustomerPurchases(cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myPurchases>(this.hostUrl+'/api/purchases/customer/all', {"cid":cid},{headers: headers, observe: 'response'});
+    
+  }
+
   //change status of a purchase
   changePurchase(status,pbid){
     let headers = new HttpHeaders({

@@ -316,6 +316,46 @@
                                                                                             </tr>
                                                                                         </table>
 
+                                                                                        <table
+                                                                                            class="table table-clean mt-3">
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Category
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                        {{realtors.category_details[0].name}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        Amount Payable
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{realtors.category_details[0].amount_payable}}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="value">
+                                                                                                        % Comission
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td class="text-right">
+                                                                                                    <div class="value">
+                                                                                                            {{realtors.category_details[0].commission_percent}}%
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+
 
                                                                                     </div>
 
@@ -536,11 +576,11 @@
                                                                         data-toggle="tab" href="#downlines">
                                                                         Downlines</a>
                                                                 </li>
-                                                                <li class="nav-item">
+                                                                <!-- <li class="nav-item">
                                                                     <a aria-expanded="false" class="nav-link"
                                                                         data-toggle="tab" href="#customers">
                                                                         Customers</a>
-                                                                </li>
+                                                                </li> -->
                                                             </ul>
 
 
@@ -578,32 +618,31 @@
                                                                                                             class="text-center">
                                                                                                             Email
                                                                                                         </th>
+                                                                                                        <!-- <th
+                                                                                                            class="text-center">
+                                                                                                            Generation
+                                                                                                        </th> -->
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
-                                                                                                    <tr *ngFor="let item of downlines">
+                                                                                                    <tr *ngFor="let down of downlines">
                                                                                                         <td
                                                                                                             class="text-center">
-                                                                                                            {{item.realtor_name}}
+                                                                                                            {{down.realtor_name}}
                                                                                                                 <!-- (click)="navigateToRoute('/adminrealtorsinglepage/'+item.downline)" -->
                                                                                                                 <!-- [routerLink]="['/adminrealtorsinglepage', item.downline]" -->
                                                                                                         </td>
                                                                                                         <td
                                                                                                             class="text-center">
-                                                                                                            {{item.realtor_email}}
+                                                                                                            {{down.realtor_email}}
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <!-- <tr>
                                                                                                         <td
                                                                                                             class="text-center">
-                                                                                                            <a
-                                                                                                                [routerLink]="['/adminrealtorsinglepage']">Seun
-                                                                                                                Tadegbade</a>
+                                                                                                           {{down.generation}}
                                                                                                         </td>
-                                                                                                        <td
-                                                                                                            class="text-center">
-                                                                                                            alongjons@allthem.com
-                                                                                                        </td>
+                                                                                                        
                                                                                                     </tr> -->
                                                                                                 </tbody>
                                                                                             </table>

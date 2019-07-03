@@ -1,0 +1,43 @@
+<div class="table-responsive">
+    <table class="table table-padded">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    Property Name
+                </th>
+                <th class="text-center">
+                    Property Address
+                </th>
+                <th class="text-center">
+                    Customer Name
+                </th>
+                <th class="text-center">
+                    Date Requested
+                </th>
+                <th class="text-center">
+                    Inspection Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let inspectionlist of ins_list">
+                <td class="text-center">
+                        {{ inspectionlist.property_name }}
+                </td>
+                <td class="text-center">
+                        {{ inspectionlist.property_address }}
+                </td>
+                <td class="text-center">
+                    <a [routerLink]="['/realtorcustomersinglepage', inspectionlist.cid]">{{ inspectionlist.customer_name }}</a>
+                </td>
+                <td class="text-center">
+                        {{ inspectionlist.createdAt }}
+                </td>
+                <td class="text-center">
+                        {{ inspectionlist.inspection_date }}
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>

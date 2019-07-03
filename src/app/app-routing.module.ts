@@ -25,26 +25,26 @@ import { AdminViewAllRealtorComponent } from './admin/adminViewAllRealtor.compon
 import { AdminCustomerSinglePageComponent } from './admin/adminCustomerSinglePage.component';
 import { AdminViewAllPurchaseComponent } from './admin/adminViewAllPurchase.component';
 import { AdminReceiptComponent } from './admin/adminReceipt.component';
-// import { RealtorDashboardComponent } from './realtors/realtorDashboard.component';
-// import { RealtorInvoiceComponent } from './realtors/realtorInvoice.component';
+import { RealtorDashboardComponent } from './realtors/realtorDashboard.component';
+import { RealtorInvoiceComponent } from './realtors/realtorInvoice.component';
 // import { RealtorAgreementComponent } from './realtors/realtorAgreement.component';
 // import { RealtorReceiptComponent } from './realtors/realtorReceipt.component';
 import { AdminSingleLandPropertyComponent } from './admin/adminSingleLandProperty.component';
 import { AdminViewAllComissionsComponent } from './admin/adminViewAllComissions.component';
-// import { RealtorAllLandsComponent } from './realtors/realtorAllLands.component';
-// import { RealtorSingleLandComponent } from './realtors/realtorSingleLand.component';
+import { RealtorAllLandsComponent } from './realtors/realtorAllLands.component';
+import { RealtorSingleLandComponent } from './realtors/realtorSingleLand.component';
 // import { RealtorViewSavedLandComponent } from './realtors/realtorViewSavedLand.componnt';
-// import { RealtorSingleInvoiceComponent } from './realtors/realtorSingleInvoice.component';
-// import { RealtorViewInspectionListComponent } from './realtors/realtorViewInspectionList.component';
-// import { RealtorCustomerSinglePageComponent } from './realtors/realtorCustomerSinglePage.component';
-// import { RealtorViewDownlineComponent } from './realtors/realtorViewDownline.component';
-// import { RealtorProfilePageComponent } from './realtors/realtorProfilePage.component';
-// import { RealtorSettingsComponent } from './realtors/realtorSettings.component';
+import { RealtorSingleInvoiceComponent } from './realtors/realtorSingleInvoice.component';
+import { RealtorViewInspectionListComponent } from './realtors/realtorViewInspectionList.component';
+import { RealtorCustomerSinglePageComponent } from './realtors/realtorCustomerSinglePage.component';
+import { RealtorViewDownlineComponent } from './realtors/realtorViewDownline.component';
+import { RealtorProfilePageComponent } from './realtors/realtorProfilePage.component';
+import { RealtorSettingsComponent } from './realtors/realtorSettings.component';
 import { AddPropertyComponent } from './admin/addProperty.component';
 import { AdminRealtorSinglePageComponent } from './admin/adminRealtorSinglePage.component';
 // import { CustomerSubscriptionFormComponent } from './customers/customerSubscriptionForm.component';
 // import { CustomerMyPropertyComponent } from './customers/customerMyProperty.component';
-// import { RealtorPurchaseFormComponent } from './realtors/realtorPurchaseForm.component';
+import { RealtorPurchaseFormComponent } from './realtors/realtorPurchaseForm.component';
 // import { RealtorSubscriptionFormComponent } from './realtors/realtorSubscriptionForm.component';
 // import { AdminElectronicIdCardComponent } from './admin/adminElectronicIdCard.component';
 // import { CustomerProfilePageComponent } from './customers/customerProfilePage.component';
@@ -98,20 +98,20 @@ const appRoutes: Routes = [
     // { path: 'adminsalesperformance', component: AdminSalesPerformanceComponent, canActivate: [AuthGuard] },
 
     // // Realtor Route
-    // { path: 'realtordashboard', component: RealtorDashboardComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorinvoice',  component: RealtorInvoiceComponent, canActivate: [AuthGuard] },
+    { path: 'realtordashboard', component: RealtorDashboardComponent, canActivate: [AuthGuard] },
+    { path: 'realtorinvoice',  component: RealtorInvoiceComponent, canActivate: [AuthGuard] },
     // { path: 'realtoragreement', component: RealtorAgreementComponent, canActivate: [AuthGuard] },
     // { path: 'realtorreceipt', component: RealtorReceiptComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorallland', component: RealtorAllLandsComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorsingleland', component: RealtorSingleLandComponent, canActivate: [AuthGuard] },
+    { path: 'realtorallland', component: RealtorAllLandsComponent, canActivate: [AuthGuard] },
+    { path: 'realtorsingleland/:pid', component: RealtorSingleLandComponent, canActivate: [AuthGuard] },
     // { path: 'realtorviewsavedland', component: RealtorViewSavedLandComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorsingleinvoice', component: RealtorSingleInvoiceComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorviewinspectionlist', component: RealtorViewInspectionListComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorcustomersinglepage', component: RealtorCustomerSinglePageComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorviewdownline', component: RealtorViewDownlineComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorprofilepage', component: RealtorProfilePageComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorsettings', component: RealtorSettingsComponent, canActivate: [AuthGuard] },
-    // { path: 'realtorpurchaseform', component: RealtorPurchaseFormComponent, canActivate: [AuthGuard] },
+    { path: 'realtorsingleinvoice/:rid', component: RealtorSingleInvoiceComponent, canActivate: [AuthGuard] },
+    { path: 'realtorviewinspectionlist', component: RealtorViewInspectionListComponent, canActivate: [AuthGuard] },
+    { path: 'realtorcustomersinglepage/:cid', component: RealtorCustomerSinglePageComponent, canActivate: [AuthGuard] },
+    { path: 'realtorviewdownline', component: RealtorViewDownlineComponent, canActivate: [AuthGuard] },
+    { path: 'realtorprofilepage', component: RealtorProfilePageComponent, canActivate: [AuthGuard] },
+    { path: 'realtorsettings', component: RealtorSettingsComponent, canActivate: [AuthGuard] },
+    { path: 'realtorpurchaseform/:pid', component: RealtorPurchaseFormComponent, canActivate: [AuthGuard] },
     // { path: 'realtorsubscriptionform', component: RealtorSubscriptionFormComponent, canActivate: [AuthGuard] },
     // { path: 'realtorviewcommission', component: RealtorCommissionComponent, canActivate: [AuthGuard] },
 

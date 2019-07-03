@@ -54,8 +54,11 @@
           
           <div class="property-info-w">
             <div class="property-info-main">
-              <div class="badge badge-red">
-                For Sale
+              <div *ngIf="land.sales_status" class="badge badge-green">
+                  Bought
+              </div>
+              <div *ngIf="!land.sales_status" class="badge badge-red">
+                  For Sale
               </div>
               <div class="item-features">
                 <div class="feature">
@@ -82,8 +85,8 @@
                 <strong>{{land.land_info[0].price|currency:'NGN'}}</strong><span>Listing Price</span>
 
                 <div class="form-buttons mt-3 mb-3">
-                  <a class="btn btn-primary" data-target="#onboardingFormModal" data-toggle="modal" href="#">Send as
-                    Email</a>
+                  <button [disabled]="land.sales_status" class="btn btn-primary" data-target="#onboardingFormModal" data-toggle="modal" href="#">Send as
+                    Email</button>
                 </div>
 
                 <div class="media-buttons">
@@ -357,6 +360,56 @@
                     </table>
                   </div>
                 </div>
+              </div>
+              <div class="property-section">
+                  <div class="property-section-header">
+                      Payment Plan
+                      <div class="filter-toggle">
+                          <i class="os-icon-minus os-icon"></i>
+                      </div>
+                  </div>
+                  <div class="property-section-body">
+                      <div class="table-responsive">
+                          <table class="table table-padded">
+                              <thead>
+                              <tr>
+                                  <th class="text-center">
+                                  Initial Deposit
+                                  </th>
+                                  <th class="text-center">
+                                  Outright Plan
+                                  </th>
+                                  <th class="text-center">
+                                  Square Meters
+                                  </th>
+                                  <th class="text-center">
+                                      Plan
+                                  </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr *ngFor="let item of land.payment_plan">
+                                  <td class="text-center">
+                                  {{item.initial_deposit| currency:'NGN'}}
+                                  </td>
+                                  <td class="text-center">
+                                  {{item.outright_plan}}
+                                  </td>
+                                  <td class="text-center">
+                                  {{item.square_meters}}
+                                  </td>
+                                  <td class="text-center">
+                                      <p>3 Months: {{item.three_months_plan}}</p>
+                                      <p>6 Months: {{item.six_months_plan}}</p>
+                                      <p>12 Months: {{item.twelve_months_plan}}</p>
+                                      <p>18 Months: {{item.eighteen_months_plan}}</p>
+                                      <p>24 Months: {{item.twentyfour_months_plan}}</p>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
               </div>
             </div>
 

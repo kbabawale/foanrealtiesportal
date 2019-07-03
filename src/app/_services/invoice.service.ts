@@ -31,6 +31,19 @@ export class InvoiceService {
     
   }
 
+  loadRealtorInvoices(rid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+
+      return this.http.post<myInvoices>(this.hostUrl+'/api/invoice/realtor/all', {"rid":rid},{headers: headers, observe: 'response'});
+    
+  }
+
+ 
+
   loadInvoice(iid){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
