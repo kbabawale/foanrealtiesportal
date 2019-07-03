@@ -60,8 +60,8 @@
                 <label for="">Customer or Realtor?</label>
                 <select class="form-control" name="UserRole" formControlName="UserRole"
                     [ngClass]="{ 'is-invalid': submitted && f.UserRole.errors }">
-                    <option value="0">Please Select Role</option>
-                    <!-- <option value="1">Customer</option> -->
+                    <option selected [ngValue]="null">Please Select Role</option>
+                    <option value="2">Customer</option>
                     <option value="3" selected>Realtor</option>
                 </select>
                 <div class="pre-icon os-icon os-icon-users"></div>
