@@ -1,11 +1,11 @@
 <div class="top-bar color-scheme-transparent">
     <!-- 
-          START - Top Menu Controls
-           -->
+      START - Top Menu Controls
+       -->
     <div class="top-menu-controls">
         <!-- 
-            START - Messages Link in secondary top menu
-             -->
+        START - Messages Link in secondary top menu
+         -->
         <!-- <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
             <i class="os-icon os-icon-others-43"></i>
             <div class="new-messages-count">
@@ -77,8 +77,8 @@
             </div>
         </div> -->
         <!-- 
-            END - Messages Link in secondary top menu
-             -->
+        END - Messages Link in secondary top menu
+         -->
 
 
         <!-- START - Tour icon -->
@@ -89,8 +89,8 @@
         <!-- END - Tour icon -->
 
         <!-- 
-            START - User avatar and menu in secondary top menu
-             -->
+        START - User avatar and menu in secondary top menu
+         -->
         <div class="logged-user-w">
             <div class="logged-user-i">
                 <div class="avatar-w">
@@ -103,10 +103,10 @@
                         </div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">
-                                    {{user_details.FirstName}} {{user_details.LastName}}
+                                {{user_details.FirstName}} {{user_details.LastName}}
                             </div>
                             <div class="logged-user-role">
-                                Realtor Account
+                                Administrator
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a [routerLink]="['/realtorprofilepage']"><i
+                            <a [routerLink]="['/customerprofilepage']"><i
                                     class="os-icon os-icon-user-male-circle2"></i><span>Profile
                                     Details</span></a>
                         </li>
@@ -123,7 +123,7 @@
                             <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
                         </li> -->
                         <li>
-                            <a [routerLink]="['/realtorsettings']"><i class="os-icon os-icon-ui-46"></i><span>Settings</span></a>
+                            <a [routerLink]="['/customersettings']"><i class="os-icon os-icon-ui-46"></i><span>Settings</span></a>
                         </li>
                         <li>
                             <a (click)="logout()"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
@@ -133,10 +133,10 @@
             </div>
         </div>
         <!-- 
-            END - User avatar and menu in secondary top menu
-             -->
+        END - User avatar and menu in secondary top menu
+         -->
     </div>
     <!-- 
-          END - Top Menu Controls
-           -->
+      END - Top Menu Controls
+       -->
 </div>

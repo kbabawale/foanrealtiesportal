@@ -292,6 +292,39 @@ export class UserService {
       },{headers: headers, observe: 'response'});
   }
 
+  editCustomerReferral(name,phone_number,email,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/referral/update', {
+        "name":name,"phone_number":phone_number,"email":email,"cid":cid
+      },{headers: headers, observe: 'response'});
+  }
+
+  editCustomerNextOfKin(name,address,phone_number,email,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/info/update', {
+        "nk_name":name,"nk_phone_number":phone_number,"nk_email":email,"cid":cid,"nk_address":address
+      },{headers: headers, observe: 'response'});
+  }
+
+  editCustomerEmployment(employer,address,phone_number,designation,cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post(this.hostUrl+'/api/customer/info/update', {
+        "employer":employer,"nk_phone_number":phone_number,"nk_designation":designation,"cid":cid,"nk_address":address
+      },{headers: headers, observe: 'response'});
+  }
+
   changePassword(newpassword, uid){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

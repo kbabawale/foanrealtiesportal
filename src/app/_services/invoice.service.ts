@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 interface myInvoices{
-  invoices:any
+  invoices:any,
+  statusMsg:any
 }
 
 interface myReceipts{
@@ -39,6 +40,17 @@ export class InvoiceService {
     });
 
       return this.http.post<myInvoices>(this.hostUrl+'/api/invoice/realtor/all', {"rid":rid},{headers: headers, observe: 'response'});
+    
+  }
+
+  loadCustomerInvoices(cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+
+      return this.http.post<myInvoices>(this.hostUrl+'/api/invoice/customer/all', {"cid":cid},{headers: headers, observe: 'response'});
     
   }
 

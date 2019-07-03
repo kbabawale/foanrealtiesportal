@@ -3,15 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './landing/login.component';
 import { RegisterComponent } from './landing/register.component';
 import { AuthGuard } from './_guards/auth.guard';
-// import { CustomerDashboardComponent } from './customers/customerDashboard.component';
-// import { CustomerInvoiceComponent } from './customers/customerInvoice.component';
-// import { CustomerSingleInvoiceComponent } from './customers/customerSingleInvoice.component';
-// import { CustomerAllLandComponent } from './customers/customerAllLand.component';
-// import { CustomerSingleLandPropertyComponent } from './customers/customerSingleLandProperty.component';
-// import { CustomerMyLandsComponent } from './customers/customerMyLands.component';
+import { CustomerDashboardComponent } from './customers/customerDashboard.component';
+import { CustomerInvoiceComponent } from './customers/customerInvoice.component';
+import { CustomerSingleInvoiceComponent } from './customers/customerSingleInvoice.component';
+import { CustomerAllLandComponent } from './customers/customerAllLand.component';
+import { CustomerSingleLandPropertyComponent } from './customers/customerSingleLandProperty.component';
+import { CustomerMyLandsComponent } from './customers/customerMyLands.component';
 // import { CustomerAgreementComponent } from './customers/customerAgreement.component';
 // import { AdminSalesPerformanceComponent } from './admin/adminSalesPerformance.component';
-// import { CustomerSettingsComponent } from './customers/customerSettings.component';
+import { CustomerSettingsComponent } from './customers/customerSettings.component';
 import { AdminDashboardComponent } from './admin/adminDashboard.component';
 import { AdminInvoiceComponent } from './admin/adminInvoice.component';
 import { AdminSingleInvoiceComponent } from './admin/adminSingleInvoice.component';
@@ -47,9 +47,9 @@ import { AdminRealtorSinglePageComponent } from './admin/adminRealtorSinglePage.
 import { RealtorPurchaseFormComponent } from './realtors/realtorPurchaseForm.component';
 // import { RealtorSubscriptionFormComponent } from './realtors/realtorSubscriptionForm.component';
 // import { AdminElectronicIdCardComponent } from './admin/adminElectronicIdCard.component';
-// import { CustomerProfilePageComponent } from './customers/customerProfilePage.component';
+import { CustomerProfilePageComponent } from './customers/customerProfilePage.component';
 // import { RealtorCommissionComponent } from './realtors/realtorCommission.component';
-// import { CustomerPaymentHistoryComponent } from './customers/customerPaymentHistory.component';
+import { CustomerPaymentHistoryComponent } from './customers/customerPaymentHistory.component';
 // import { CustomerViewAllRealtorsComponent } from './customers/customerViewAllRealtors.component';
 // import { CustomerRealtorSinglePageComponent } from './customers/customerRealtorSinglePage.component';
 
@@ -60,19 +60,19 @@ const appRoutes: Routes = [
   
   
     // Customer Routes
-    //  { path: 'customerdashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard] },
-    // { path: 'customerinvoice', component: CustomerInvoiceComponent, canActivate: [AuthGuard] },
-    // { path: 'customersingleinvoice', component: CustomerSingleInvoiceComponent, canActivate: [AuthGuard] },
-    // { path: 'customerallland', component: CustomerAllLandComponent, canActivate: [AuthGuard] },
-    // { path: 'customersinglelandproperty', component: CustomerSingleLandPropertyComponent, canActivate: [AuthGuard] },
-    // { path: 'customermylands', component: CustomerMyLandsComponent, canActivate: [AuthGuard] },
+     { path: 'customerdashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard] },
+    { path: 'customerinvoice', component: CustomerInvoiceComponent, canActivate: [AuthGuard] },
+    { path: 'customersingleinvoice/:invid', component: CustomerSingleInvoiceComponent, canActivate: [AuthGuard] },
+    { path: 'customerallland', component: CustomerAllLandComponent, canActivate: [AuthGuard] },
+    { path: 'customersinglelandproperty/:pid', component: CustomerSingleLandPropertyComponent, canActivate: [AuthGuard] },
+    { path: 'customermylands', component: CustomerMyLandsComponent, canActivate: [AuthGuard] },
     // { path: 'customeragreement', component: CustomerAgreementComponent, canActivate: [AuthGuard] },
-    // { path: 'customersettings', component: CustomerSettingsComponent, canActivate: [AuthGuard] },
-    // { path: 'customerpurchaseform', component: CustomerSubscriptionFormComponent, canActivate: [AuthGuard] },
+    { path: 'customersettings', component: CustomerSettingsComponent, canActivate: [AuthGuard] },
+    // { path: 'customerpurchaseform/:pid', component: CustomerSubscriptionFormComponent, canActivate: [AuthGuard] },
     // { path: 'customermyproperty', component: CustomerMyPropertyComponent, canActivate: [AuthGuard] },
-    // { path: 'customerprofilepage', component: CustomerProfilePageComponent, canActivate: [AuthGuard] },
+    { path: 'customerprofilepage', component: CustomerProfilePageComponent, canActivate: [AuthGuard] },
     // { path: 'customersubscriptionform', component: CustomerSubscriptionFormComponent, canActivate: [AuthGuard] },
-    // { path: 'customerpaymenthistory', component: CustomerPaymentHistoryComponent, canActivate: [AuthGuard] },
+    { path: 'customerpaymenthistory', component: CustomerPaymentHistoryComponent, canActivate: [AuthGuard] },
     // { path: 'customerviewallrealtors', component: CustomerViewAllRealtorsComponent, canActivate: [AuthGuard] },
     // { path: 'customerrealtorsinglepage', component: CustomerRealtorSinglePageComponent, canActivate: [AuthGuard] },
 

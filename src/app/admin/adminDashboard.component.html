@@ -424,7 +424,7 @@
                         </h6>
                         <div class="element-box-tp">
                             <div class="profile-tile" *ngFor="let item of topRealtors">
-                                <a class="profile-tile-box" href="users_profile_small.html">
+                                <a class="profile-tile-box" [routerLink]="['/adminrealtorsinglepage', item.uid]">
                                     <div class="pt-avatar-w">
                                         <img alt="Profile Picture" src="../../assets/img/placeholder.png">
                                     </div>

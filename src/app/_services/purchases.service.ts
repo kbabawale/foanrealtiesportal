@@ -7,6 +7,10 @@ interface myPurchases{
   purchased_properties:any
 }
 
+interface myHistory{
+  history:any
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,4 +50,57 @@ export class PurchasesService {
       return this.http.post(this.hostUrl+'/api/property/buy/status/update', {"status":status, "pbid":pbid},{headers: headers, observe: 'response'});
     
   }
+
+  
+  loadCustomerPaymentHistory(cid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myHistory>(this.hostUrl+'/api/property/payment/history/customer/all', {"cid":cid},{headers: headers, observe: 'response'});
+    
+  }
+
+  loadPropertyPaymentHistory(pid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myHistory>(this.hostUrl+'/api/property/payment/history/all', {"pid":pid},{headers: headers, observe: 'response'});
+    
+  }
+
+  editPaymentHistory(pbid, pphid, amount){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myHistory>(this.hostUrl+'/api/property/payment/history/update', {"pbid":pbid,"pphid":pphid,"amount":amount},{headers: headers, observe: 'response'});
+    
+  }
+
+  addPaymentHistory(pbid, amount){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myHistory>(this.hostUrl+'/api/property/payment/history/add', {"pbid":pbid,"amount":amount},{headers: headers, observe: 'response'});
+    
+  }
+
+  deletePaymentHistory(pphid){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'responseType': 'json',
+      'Foan-Token': localStorage.getItem('FRLS').toString()
+    });
+      return this.http.post<myHistory>(this.hostUrl+'/api/property/payment/history/delete', {"pphid":pphid},{headers: headers, observe: 'response'});
+    
+  }
+
+  
 }

@@ -32,7 +32,7 @@ export class AdminCustomerSinglePageComponent implements OnInit {
         this.purchaseService.loadCustomerPurchases(this.cid).subscribe(data=>{
             if(data.status == 200){
                 this.purchases = data.body.purchased_properties;
-                console.log(this.purchases);
+                // console.log(this.purchases);
             }
         });
     }

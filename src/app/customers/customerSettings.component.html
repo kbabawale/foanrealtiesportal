@@ -1,0 +1,560 @@
+<div class="all-wrapper with-side-panel solid-bg-all">
+
+    <div class="layout-w">
+        <!-- 
+                      START - Mobile Menu
+                       -->
+        <app-customermobilemenu></app-customermobilemenu>
+        <!-- END - Mobile Menu -->
+
+        <!-- 
+                      START - Main Menu
+                       -->
+        <app-customermainmenu></app-customermainmenu>
+        <!-- 
+                      END - Main Menu
+                       -->
+
+        <div class="content-w">
+            <!-- 
+                        START - Top Bar
+                         -->
+            <app-customertopbar></app-customertopbar>
+            <!-- 
+                        END - Top Bar
+                         -->
+
+            <!-- 
+                        START - Breadcrumbs
+                         -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/customerdashboard']">Customer Dashboard</a>
+                </li>
+                <!-- <li class="breadcrumb-item">
+                    <a href="index.html">Invoices</a>
+                </li> -->
+            </ul>
+            <!-- 
+                        END - Breadcrumbs
+                         -->
+
+            <div class="content-i">
+                <div class="content-box">
+                    <!--START - Control panel above projects-->
+                    <div class="os-tabs-w mx-4">
+                        <div class="os-tabs-controls">
+                            <ul class="nav nav-tabs upper">
+                                <li class="nav-item">
+                                    <a aria-expanded="false" class="nav-link active" data-toggle="tab" href="#profile">
+                                        Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-expanded="false" class="nav-link" data-toggle="tab" href="#nok">
+                                        Next Of Kin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-expanded="false" class="nav-link" data-toggle="tab" href="#emp">
+                                       Employment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-expanded="false" class="nav-link" data-toggle="tab" href="#referral">
+                                        Referral</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-expanded="false" class="nav-link" data-toggle="tab" href="#userpass">
+                                        Change Password</a>
+                                </li>
+                            </ul>
+
+
+                            <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel"
+                                    aria-labelledby="one-tab">
+
+                                    <div class="content-i">
+                                        <div class="content-box">
+                                            <div class="row">
+
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <div class="upload-btn-wrapper">
+                                                                <button class="btn uploadcustom"><i
+                                                                        class="os-icon os-icon-upload pr-1"></i>Upload
+                                                                    a file</button>
+                                                                <input type="file" name="myfile" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="col-md-12">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <form [formGroup]="addUserSettings" (ngSubmit)="onUSSubmit()">
+                                                                    <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for=""> *First Name</label><input
+                                                                                    formControlName="firstname"
+                                                                                        class="form-control"
+                                                                                        placeholder="First Name" type="text"
+                                                                                        [ngClass]="{'is-invalid': g.firstname.touched && g.firstname.invalid}">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">*Last Name</label><input
+                                                                                    formControlName="lastname"
+                                                                                        class="form-control"
+                                                                                        placeholder="Last Name" type="text"
+                                                                                        [ngClass]="{'is-invalid': g.lastname.touched && g.lastname.invalid}">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for=""> *Email address</label><input
+                                                                                    formControlName="email"
+                                                                                    [ngClass]="{'is-invalid': g.email.touched && g.email.invalid}"
+                                                                                        class="form-control" placeholder="Enter email"
+                                                                                        type="email">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="">Marital Status</label><select
+                                                                                    formControlName="marital_status"
+                                                                                        class="form-control"
+                                                                                        [ngClass]="{'is-invalid': g.marital_status.touched && g.marital_status.invalid}">
+                                                                                        <option selected [ngValue]="null">Select One:</option>
+                                                                                        <option *ngFor="let item of marital_status_array;" [value]="item">{{item}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for=""> Nationality</label><select
+                                                                            formControlName="nationality"
+                                                                                class="form-control"
+                                                                                [ngClass]="{'is-invalid': g.nationality.touched && g.nationality.invalid}">
+                                                                                <option selected [ngValue]="null">Select One:</option>
+                                                                                <option *ngFor="let item of nationality_array;" [value]="item.id">{{item.name}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for=""> *Phone Number</label><input
+                                                                                    formControlName="phone_number"
+                                                                                        class="form-control"
+                                                                                        placeholder="Phone Number" type="text"
+                                                                                        [ngClass]="{'is-invalid': g.phone_number.touched && g.phone_number.invalid}" maxlength="15">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for=""> Date Of Birth</label>
+                                                                                    <input class="form-control"
+                                                                                    formControlName="dob"
+                                                                                    [ngClass]="{'is-invalid': g.dob.touched && g.dob.invalid}"
+                                                                                        placeholder="Date of birth" type="date">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="">Address</label><input
+                                                                            [ngClass]="{'is-invalid': g.address.touched && g.address.invalid}"
+                                                                            formControlName="address"
+                                                                                class="form-control" placeholder="Address"
+                                                                                type="text">
+                                                                        </div>
+                                                                        <div class="form-buttons-w">
+                                                                            <button class="btn btn-primary w-100" type="submit" [disabled]="addUserSettings.invalid">
+                                                                                Edit Profile</button>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                            *ngIf="landinfosubmitted2=='true'">Info Updated.</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted2=='false'">An Error Occurred</p>
+                                                                        </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="nok" role="tabpanel"
+                                    aria-labelledby="two-tab">
+
+                                    <div class="content-i">
+                                        <div class="content-box">
+                                            <div class="row">
+
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <div class="upload-btn-wrapper">
+                                                                <button class="btn uploadcustom"><i
+                                                                        class="os-icon os-icon-upload pr-1"></i>Upload
+                                                                    a file</button>
+                                                                <input type="file" name="myfile" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="col-md-12">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                               
+                                                            <form  [formGroup]="addUserNokForm" (ngSubmit)="onNOKSubmit()">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Name</label><input
+                                                                                class="form-control"
+                                                                                formControlName="name"
+                                                                                [ngClass]="{'is-invalid': j.name.touched && j.name.invalid}"
+                                                                                placeholder="Name" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for=""> Email address</label><input
+                                                                        class="form-control" placeholder="Enter email"
+                                                                        formControlName="email"
+                                                                        [ngClass]="{'is-invalid': j.email.touched && j.email.invalid}"
+                                                                        type="email">
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Phone Number</label><input
+                                                                                class="form-control"
+                                                                                formControlName="phone_number"
+                                                                                [ngClass]="{'is-invalid': j.phone_number.touched && j.phone_number.invalid}"
+                                                                                placeholder="Phone Number" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Address</label><input
+                                                                        class="form-control" placeholder="Address"
+                                                                        formControlName="address"
+                                                                        [ngClass]="{'is-invalid': j.address.touched && j.address.invalid}"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-buttons-w">
+                                                                    <button class="btn btn-primary w-100" type="submit" [disabled]="addUserNokForm.invalid">
+                                                                        Edit Next Of Kin</button>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                            *ngIf="landinfosubmitted3=='true'">Next Of Kin Updated.</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted3=='false'">An Error Occurred</p>
+                                                                        </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="emp" role="tabpanel"
+                                    aria-labelledby="two-tab">
+
+                                    <div class="content-i">
+                                        <div class="content-box">
+                                            <div class="row">
+
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <div class="upload-btn-wrapper">
+                                                                <button class="btn uploadcustom"><i
+                                                                        class="os-icon os-icon-upload pr-1"></i>Upload
+                                                                    a file</button>
+                                                                <input type="file" name="myfile" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="col-md-12">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                               
+                                                            <form  [formGroup]="addUserEmpForm" (ngSubmit)="onEMPSubmit()">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Employer</label><input
+                                                                                class="form-control"
+                                                                                formControlName="employer"
+                                                                                [ngClass]="{'is-invalid': k.employer.touched && k.employer.invalid}"
+                                                                                placeholder="Employer" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for=""> Designation</label><input
+                                                                        class="form-control" placeholder="Enter email"
+                                                                        formControlName="designation"
+                                                                        [ngClass]="{'is-invalid': k.designation.touched && k.designation.invalid}"
+                                                                        type="text">
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Phone Number</label><input
+                                                                                class="form-control"
+                                                                                formControlName="phone_number"
+                                                                                [ngClass]="{'is-invalid': k.phone_number.touched && k.phone_number.invalid}"
+                                                                                placeholder="Phone Number" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Address</label><input
+                                                                        class="form-control" placeholder="Address"
+                                                                        formControlName="address"
+                                                                        [ngClass]="{'is-invalid': k.address.touched && k.address.invalid}"
+                                                                        type="text">
+                                                                </div>
+                                                                <div class="form-buttons-w">
+                                                                    <button class="btn btn-primary w-100" type="submit" [disabled]="addUserEmpForm.invalid">
+                                                                        Edit Employment Info</button>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                            *ngIf="landinfosubmitted3=='true'">Employment Updated.</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted3=='false'">An Error Occurred</p>
+                                                                        </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="referral" role="tabpanel"
+                                    aria-labelledby="three-tab">
+
+                                    <div class="content-i">
+                                        <div class="content-box">
+                                            <div class="row">
+
+                                                <!-- <div class="col-lg-3">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <div class="upload-btn-wrapper">
+                                                                <button class="btn uploadcustom"><i
+                                                                        class="os-icon os-icon-upload pr-1"></i>Upload
+                                                                    a file</button>
+                                                                <input type="file" name="myfile" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="col-md-12">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                                
+                                                            <form [formGroup]="addUserReferralForm" (ngSubmit)="onRSubmit()">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Name</label><input
+                                                                                class="form-control"
+                                                                                formControlName="name"
+                                                                                [ngClass]="{'is-invalid': i.name.touched && i.name.invalid}"
+                                                                                placeholder="Name" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for=""> Email address</label><input
+                                                                        class="form-control" placeholder="Enter email"
+                                                                        formControlName="email"
+                                                                        [ngClass]="{'is-invalid': i.email.touched && i.email.invalid}"
+                                                                        type="email">
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> Phone Number</label><input
+                                                                                class="form-control"
+                                                                                formControlName="phone_number"
+                                                                                [ngClass]="{'is-invalid': i.phone_number.touched && i.phone_number.invalid}"
+                                                                                placeholder="Phone Number" type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                
+                                                                <div class="form-buttons-w">
+                                                                    <button class="btn btn-primary w-100" type="submit" [disabled]="addUserReferralForm.invalid">
+                                                                        Edit Referral</button>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                            *ngIf="landinfosubmitted=='true'">Referral Updated.</p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                            *ngIf="landinfosubmitted=='false'">An Error Occurred</p>
+                                                                        </div>
+                                                                </div>
+
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="userpass" role="tabpanel"
+                                    aria-labelledby="three-tab">
+
+                                    <div class="content-i">
+                                        <div class="content-box">
+                                            <div class="row">
+
+                                                <div class="col-lg-3">
+                                                    <!-- <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <div class="upload-btn-wrapper">
+                                                                <button class="btn uploadcustom"><i
+                                                                        class="os-icon os-icon-upload pr-1"></i>Upload a
+                                                                    file</button>
+                                                                <input type="file" name="myfile" />
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="element-wrapper">
+                                                        <div class="element-box">
+                                                            <form [formGroup]="addUserPass" (ngSubmit)="onUPSubmit()">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""> *Current Pasword</label><input
+                                                                            formControlName="current_password"
+                                                                                class="form-control"
+                                                                                placeholder="Current Password" type="password"
+                                                                                [ngClass]="{'is-invalid': h.current_password.touched && h.current_password.invalid}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for=""> *New Pasword</label><input
+                                                                            formControlName="new_password"
+                                                                                class="form-control"
+                                                                                placeholder="New Password" type="password"
+                                                                                [ngClass]="{'is-invalid': h.new_password.touched && h.new_password.invalid}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for=""> *Confirm New Pasword</label><input
+                                                                            formControlName="confirm_new_password"
+                                                                                class="form-control"
+                                                                                placeholder="Confirm New Password" type="password"
+                                                                                [ngClass]="{'is-invalid': h.confirm_new_password.touched && h.confirm_new_password.invalid}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-buttons-w">
+                                                                    <button class="btn btn-primary w-100" type="submit" [disabled]="addUserPass.invalid">
+                                                                        Update Password</button>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-success font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='true'">Password Updated. You'll Be Logged Out In Few Seconds</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='false'">An Error Occurred</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="mt-4 text-center text-1 text-danger font-weight-bold"
+                                                                    *ngIf="landinfosubmitted3=='match'">Passwords Dont Match</p>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                    <!--END - Control panel above projects-->
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="display-type"></div>
+</div>

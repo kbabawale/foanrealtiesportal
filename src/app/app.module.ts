@@ -9,16 +9,16 @@ import { routing } from './app-routing.module';
 
 import { LoginComponent } from './landing/login.component';
 import { RegisterComponent } from './landing/register.component';
-// import { CustomerDashboardComponent } from './customers/customerDashboard.component';
-// import { CustomerTopBarComponent } from './customers/shared/customerTopBar.component';
-// import { CustomerMobileMenuComponent } from './customers/shared/customerMobileMenu.component';
-// import { CustomerMainMenuComponent } from './customers/shared/customerMainMenu.component';
-// import { CustomerInvoiceComponent } from './customers/customerInvoice.component';
-// import { CustomerSingleInvoiceComponent } from './customers/customerSingleInvoice.component';
-// import { CustomerAllLandComponent } from './customers/customerAllLand.component';
-// import { CustomerSingleLandPropertyComponent } from './customers/customerSingleLandProperty.component';
-// import { CustomerMyLandsComponent } from './customers/customerMyLands.component';
-// import { CustomerSettingsComponent } from './customers/customerSettings.component';
+import { CustomerDashboardComponent } from './customers/customerDashboard.component';
+import { CustomerTopBarComponent } from './customers/shared/customerTopBar.component';
+import { CustomerMobileMenuComponent } from './customers/shared/customerMobileMenu.component';
+import { CustomerMainMenuComponent } from './customers/shared/customerMainMenu.component';
+import { CustomerInvoiceComponent } from './customers/customerInvoice.component';
+import { CustomerSingleInvoiceComponent } from './customers/customerSingleInvoice.component';
+import { CustomerAllLandComponent } from './customers/customerAllLand.component';
+import { CustomerSingleLandPropertyComponent } from './customers/customerSingleLandProperty.component';
+import { CustomerMyLandsComponent } from './customers/customerMyLands.component';
+import { CustomerSettingsComponent } from './customers/customerSettings.component';
 // import { CustomerSubscriptionFormComponent } from './customers/customerSubscriptionForm.component';
 // import { AdminSalesPerformanceComponent } from './admin/adminSalesPerformance.component';
 // import { CustomerAgreementComponent } from './customers/customerAgreement.component';
@@ -65,10 +65,10 @@ import { AdminRealtorSinglePageComponent } from './admin/adminRealtorSinglePage.
 import { RealtorPurchaseFormComponent } from './realtors/realtorPurchaseForm.component';
 // import { RealtorSubscriptionFormComponent } from './realtors/realtorSubscriptionForm.component';
 // import { AdminElectronicIdCardComponent } from './admin/adminElectronicIdCard.component';
-// import { CustomerProfilePageComponent } from './customers/customerProfilePage.component';
+import { CustomerProfilePageComponent } from './customers/customerProfilePage.component';
 import { InvoiceComponent } from './shared/invoices/invoice.component';
 // import { RealtorCommissionComponent } from './realtors/realtorCommission.component';
-// import { CustomerPaymentHistoryComponent } from './customers/customerPaymentHistory.component';
+import { CustomerPaymentHistoryComponent } from './customers/customerPaymentHistory.component';
 // import { CustomerViewAllRealtorsComponent } from './customers/customerViewAllRealtors.component';
 // import { CustomerRealtorSinglePageComponent } from './customers/customerRealtorSinglePage.component';
 
@@ -89,6 +89,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { InvoiceRealtorComponent } from './shared/invoice-realtor/invoice-realtor.component';
 import { InspectionRealtorComponent } from './shared/inspection-realtor/inspection-realtor.component';
 import { RealtorDownlineComponent } from './shared/realtor-downline/realtor-downline.component';
+import { InvoiceCustomerComponent } from './shared/invoice-customer/invoice-customer.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
 
@@ -106,21 +107,21 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
         LoginComponent,
         RegisterComponent,
 
-        // CustomerDashboardComponent,
-        // CustomerTopBarComponent,
-        // CustomerMobileMenuComponent,
-        // CustomerMainMenuComponent,
-        // CustomerInvoiceComponent,
-        // CustomerSingleInvoiceComponent,
-        // CustomerAllLandComponent,
-        // CustomerSingleLandPropertyComponent,
-        // CustomerMyLandsComponent,
-        // CustomerSettingsComponent,
+        CustomerDashboardComponent,
+        CustomerTopBarComponent,
+        CustomerMobileMenuComponent,
+        CustomerMainMenuComponent,
+        CustomerInvoiceComponent,
+        CustomerSingleInvoiceComponent,
+        CustomerAllLandComponent,
+        CustomerSingleLandPropertyComponent,
+        CustomerMyLandsComponent,
+        CustomerSettingsComponent,
         // CustomerSubscriptionFormComponent,
         // CustomerAgreementComponent,
         // CustomerMyPropertyComponent,
-        // CustomerProfilePageComponent,
-        // CustomerPaymentHistoryComponent,
+        CustomerProfilePageComponent,
+        CustomerPaymentHistoryComponent,
         // CustomerViewAllRealtorsComponent,
         // CustomerRealtorSinglePageComponent,
     
@@ -183,7 +184,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
         RealtorComponent,
         InvoiceRealtorComponent,
         InspectionRealtorComponent,
-        RealtorDownlineComponent
+        RealtorDownlineComponent,
+        InvoiceCustomerComponent
     ],
     providers: [
         [AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}]
@@ -195,6 +197,8 @@ export class AppModule { }
 
 
 // Pending
-// add and edit realtors details from admin (category,etc)
-// add and edit customers details
+// add and edit realtors details from admin (category,etc), bank account
+// add and edit customers details, reflect payment history
 // roles management
+// related properties
+// send email from property pages and dashboards 
